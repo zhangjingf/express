@@ -1,0 +1,118 @@
+/* pages/pickup/pickup.wxss */
+.pickup {
+  background: #e5e5e5;
+}
+.person-info {
+  padding: 46rpx 28rpx 54rpx 30rpx;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+.middle {
+  flex: 1;
+  font-size: 24rpx;
+  border-right: 1rpx solid #e5e5e5;
+}
+.middle view:nth-child(2) {
+  padding: 12rpx 0 10rpx 0;
+  font-size: 20rpx;
+}
+.right {
+  padding-left: 46rpx;
+  font-size: 24rpx;
+  color: #2a82e4;
+}
+.write {
+  padding-top: 16rpx;
+  font-size: 24rpx;
+}
+.express-info {
+  padding: 4rpx 26rpx;
+  background: #ffffff;
+}
+.express-info>view {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  line-height: 84rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.express-info input {
+  flex: 1;
+}
+.express-info:nth-child(n) {
+  margin-top: 22rpx;
+}
+.label {
+  width: 172rpx;
+}
+.price {
+  color: #a6a6a6;
+}
+.delete{
+  font-size: 30rpx;
+  line-height: 70rpx;
+  border-radius: 8rpx;
+  color: #ffffff;
+  text-align: center;
+  background: #e42a2a;
+}
+.delete view {
+  width: 100%;
+}
+.add {
+  padding: 20rpx 26rpx;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  background: #e5e5e5;
+}
+.add view {
+  border: 1rpx solid #2a82e4;
+  border-radius: 8rpx;
+  color: #2a82e4;
+  text-align: center;
+  background: #ffffff;
+}
+.time {
+  padding: 0 34rpx 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  line-height: 76rpx;
+  background: #ffffff;
+}
+.date {
+  display: inline-block;
+  color: #2a82e4;
+}
+.agree {
+  padding: 44rpx 30rpx 34rpx 30rpx;
+  font-size: 24rpx;
+  background: #e5e5e5;
+}
+.money {
+  font-size: 24rpx;
+  text-align: center;
+  background: #e5e5e5;
+}
+.money view {
+  padding-top: 16rpx;
+  display: inline-block;
+  color: #e42b2b;
+}
+.money view:nth-child(2) {
+  color: #a6a6a6;
+}
+.confrim {
+  padding: 18rpx 30rpx;
+  background: #e5e5e5;
+}
+.confrim view {
+  height: 82rpx;
+  font-size: 40rpx;
+  line-height: 82rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  color: #ffffff;
+  background: #2a82e4;
+}

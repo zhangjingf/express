@@ -1,0 +1,18 @@
+<!--pages/logistics/logistics.wxml-->
+<view class="logistics">
+  <view class="search">
+    <view class="input">
+      <icon type="search" size="15"></icon>
+      <input></input>
+    </view>
+    <view class="scan">sss</view>
+  </view>
+  <view class="submit"><view>查询</view></view>
+  <view class="history">
+    <view class="title">历史记录</view>
+    <view class="list" wx:for="{{logisticsHistory}}" wx:key="item.id">
+      <view>{{item.name}}</view><view class="delete">X</view>
+    </view>
+    <view class="clear" bindtap='clear'>清除历史记录</view>
+  </view>
+</view>

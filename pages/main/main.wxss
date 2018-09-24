@@ -1,0 +1,32 @@
+.main {
+  background-color: #f0efef;
+}
+.blank1 {
+  height: 8rpx;
+  background: #f0efef;
+}
+.blank2 {
+  height: 24rpx;
+  background: #f0efef;
+}
+.search {
+  margin-bottom: 14rpx;
+  font-size: 28rpx;
+  line-height: 61rpx;
+  text-align: center;
+  color: #ededed;
+  background: #ffffff;
+}
+.slide-image {
+  width: 750rpx;
+  height: 300rpx;
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 24rpx;
+  height: 204rpx;
+  font-size: 40rpx;
+  color: #383838;
+  background: #ffffff;
+}

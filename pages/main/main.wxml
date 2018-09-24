@@ -1,0 +1,17 @@
+<view class="main">
+  <view class="blank1"></view>
+  <view class="search">湖北理工学院</view>
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"
+    indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="item">取快递</view>
+  <view class="item">寄快递</view>
+  <view class="item">查快递</view>
+  <view class="blank2"></view>
+</view>
+<nav checkedStatus="{{checkedStatus}}"/>

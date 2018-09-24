@@ -1,0 +1,6 @@
+<!--components/nav/nav.wxml-->
+<view class="nav">
+  <view class="{{checkedStatus == 'main' ? 'nav-active' : ''}}">首页</view>
+  <view class="{{checkedStatus == 'order' ? 'nav-active' : ''}}">订单</view>
+  <view class="{{checkedStatus == 'mine' ? 'nav-active' : ''}}">我的</view>
+</view>

@@ -1,0 +1,57 @@
+/* pages/logistics/logistics.wxss */
+.logistics {
+  height: 100%;
+  background: #e5e5e5;
+}
+.search {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 20rpx;
+  background: #ffffff;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.search icon {
+  background: #e5e5e5;
+}
+.search .input {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 14rpx;
+  width: 616rpx;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  background: #e5e5e5;
+}
+.search .input input {
+  flex: 1;
+}
+.submit {
+  padding: 24rpx 16rpx 104rpx 16rpx;
+  background: #ffffff;
+}
+.submit view {
+  height: 70rpx;
+  font-size: 32rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 8rpx;
+  background-color: #2a82e4;
+}
+.history .title  {
+  padding: 72rpx 0 34rpx 36rpx;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #a6a6a6;
+}
+.history .list {
+  display: flex;
+  justify-content: space-between;
+  padding: 24rpx 38rpx;
+  font-size: 24rpx;
+  border-bottom: 1rpx solid #a6a6a6;
+}
+.history .clear  {
+  padding: 36rpx;
+  font-size: 26rpx;
+  text-align: center;
+}

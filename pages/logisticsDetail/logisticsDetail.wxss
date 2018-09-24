@@ -1,0 +1,46 @@
+/* pages/logisticsDetail/logisticsDetail.wxss */
+.logistics-detail {
+  padding: 48rpx 52rpx;
+  background: #017aff;
+}
+.detail {
+  border-radius: 8rpx;
+  background: #ffffff;
+}
+.company {
+  padding-top: 48rpx;
+  padding-bottom: 28rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #8d918f;
+}
+.company view:nth-child(1) {
+  font-size: 34rpx;
+}
+.company view:nth-child(2) {
+  font-size: 38rpx;
+  line-height: 72rpx;
+  color:#6d6d6d;
+}
+.company view:nth-child(3) {
+  font-size: 24rpx;
+  color:#6d6d6d;
+}
+.record {
+  padding: 68rpx 64rpx;
+}
+.record .dot {
+  width: 10rpx;
+  height: 10rpx;
+  margin-right: 5rpx;
+  border-radius: 10rpx;
+  background: #6b6b6b;
+}
+.record .item {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.record .item:nth-child(n+2) {
+  margin-top: 48rpx;
+}

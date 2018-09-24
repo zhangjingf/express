@@ -1,0 +1,29 @@
+<view class="pickup">
+  <view class="person-info">
+    <view class="left"></view>
+    <view class="middle">
+      <view>单类 15220231231</view>
+      <view>湖北省黄石市返回否则大范围</view>
+      <view>2718</view>
+    </view>
+    <view class="right" bindtap='goAddress'>地址簿</view>
+  </view>
+  <view class="write">请填写相关快递信息</view>
+  <view class="express-info" wx:for="{{orderNum}}" wx:key="{{item.index}}">
+    <view><view class="label">取货码</view><input placeholder='可粘贴短信至此'></input></view>
+    <view><view class="label">快递点</view><input></input></view>
+    <view><view class="label">包裹规格</view></view>
+    <view><view class="label">备注</view><input placeholder='快递单上名字电话不同请备注'></input></view>
+    <view><view class="label">优惠</view></view>
+    <view class="price">当前为{{item}}件，价格为2元</view>
+    <view class="delete" wx:if="{{item > 1}}"><view>删除</view></view>
+  </view>
+  <view class="add" bindtap='add'><view>添加快递</view></view>
+  <view class="time">
+    <view>期望到达时间</view>
+    <view class="date">今天12:00-13:00</view>
+  </view>
+  <view class="agree"><checkbox checked='{{agree}}'>我已阅读并同意<view class="date">《取件协议》</view></checkbox></view>
+  <view class="money">共{{orderNum.length}}件包裹，合计<view>¥5</view>, <view class="discount">共优惠¥2元</view></view>
+  <view class="confrim"><view>确认支付</view></view>
+</view>

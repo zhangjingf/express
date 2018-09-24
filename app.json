@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/editor/editor",
+    "pages/pickup/pickup",
+    "pages/logisticsDetail/logisticsDetail",
+    "pages/logistics/logistics",
+    "pages/chooseSchool/chooseSchool",
+    "pages/main/main",
+    "pages/index/index",
+    "pages/logs/logs",
+    "components/nav/nav"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "代代裹裹",
+    "navigationBarTextStyle": "black"
+  }
+}

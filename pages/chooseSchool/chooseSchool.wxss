@@ -1,0 +1,57 @@
+/* pages/chooseSchool/chooseSchool.wxss */
+.choose-school {
+
+}
+input {
+  margin: 8rpx 20rpx 2rpx 20rpx;
+  height: 64rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  background-color: #f0efef;
+}
+.blank1 {
+  height: 4rpx;
+  background-color: #f0efef;
+}
+.blank2 {
+  height: 10rpx;
+  background-color: #f0efef;
+}
+.title {
+  padding: 26rpx 0 0 36rpx;
+  font-size: 22rpx;
+  color: #cbcbcb;
+}
+.school {
+  padding: 30rpx 36rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 36rpx;
+}
+.location {
+  color: #2a82e4;
+}
+.near-school {
+  padding: 0 36rpx 12rpx 36rpx;
+}
+.near-school view {
+  padding: 30rpx 0 28rpx 0;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f0efef;
+}
+.history .item {
+  padding: 26rpx 36rpx 12rpx 36rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22rpx;
+}
+.history .left view:nth-child(1) {
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.history .left view:nth-child(3) {
+  line-height: 34rpx;
+  color: #505050;
+}

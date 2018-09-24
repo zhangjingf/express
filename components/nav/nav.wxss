@@ -1,0 +1,18 @@
+/* components/nav/nav.wxss */
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 86rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #959595;
+}
+.nav view {
+  flex: 1;
+  text-align: center;
+}
+.nav-active {
+  color: #2a82e4;
+}

@@ -1,11 +1,19 @@
+<view class="editor">
+  <view><view>姓名</view></view>
+  <view><view>电话</view></view>
+  <view></view>
+  <view></view>
+  <view></view>
+  <view></view>
+</view>
 <i-modal title="标题" visible="{{ visible1 }}" bind:ok="handleClose1" bind:cancel="handleClose1">
+    <view>一些文本</view> 
     <view>一些文本</view>
     <view>一些文本</view>
     <view>一些文本</view>
     <view>一些文本</view>
     <view>一些文本</view>
     <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
+    <view>一些文本</view> 
     <view>一些文本</view>
 </i-modal>

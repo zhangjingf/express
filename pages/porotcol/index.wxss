@@ -1,0 +1,11 @@
+/* pages/porotcol/index.wxss */
+.title {
+  padding: 14rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+text {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-indent: 2em;
+}

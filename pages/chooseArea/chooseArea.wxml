@@ -1,0 +1,8 @@
+<view class="choose-area">
+  <input placeholder='输入区域名称'></input>
+</view>
+<view class="tips" wx:if="{{areaList.length == 0}}">未有区域，暂不服务，造成不便，敬请谅解</view>
+<i-radio-group current="{{current}}" bindchange="handleChange">
+  <i-radio wx:for="{{areaList}}" position="{{position}}" color="{{color}}" wx:key="{{item.name}}" value="{{item.value}}">
+  </i-radio>
+</i-radio-group>

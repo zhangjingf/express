@@ -1,0 +1,21 @@
+/* pages/chooseArea/chooseArea.wxss */
+.choose-area {
+  padding: 16rpx 20rpx;
+}
+input {
+  font-size: 24rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  background: #e5e5e5;
+}
+.tips {
+  font-size: 28rpx;
+  text-align: center;
+  color: #a6a6a6;
+}
+.radio-group label {
+  display: block;
+  font-size: 28rpx;
+  line-height: 80rpx;
+}

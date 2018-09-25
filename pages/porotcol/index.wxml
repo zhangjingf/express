@@ -1,0 +1,4 @@
+<view class="porotcol">
+<view class="title">取件服务协议</view>
+<text>{{porotcol}}</text>
+</view>

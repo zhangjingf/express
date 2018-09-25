@@ -1,0 +1,12 @@
+<view class="my-address">
+  <view wx:for="{{addressInfo}}" wx:key="item.name" bindtap="check">
+    <view class="left">
+      <view>{{item.name}} {{item.phone}}</view>
+      <view>{{item.address}}</view>
+    </view>
+    <view class="rihgt">    
+      <icon wx:if="{{item.checked}}" type="success" size="20" color="{{color}}"></icon>
+    </view>
+  </view>                 
+</view>
+<view class="add"><view>新建地址</view></view>

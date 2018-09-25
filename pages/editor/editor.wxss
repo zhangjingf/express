@@ -1,1 +1,58 @@
 /* pages/editor/editor.wxss */
+page {
+  font-size: 24rpx;
+  color: #a6a6a6;
+  background: #e5e5e5;
+}
+.editor {
+  height: 100%;
+  padding-top: 20rpx;
+}
+.form {
+  padding: 24rpx 0;
+  background: #ffffff;
+}
+.form>view {
+  display: flex;
+  align-items: center;
+  padding-left: 16rpx;
+}
+.form>view input, .address>view, .area>view {
+  flex: 1;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.school view:nth-child(1){
+  height: 38rpx;
+  font-size: 22rpx;
+  line-height: 38rpx;
+}
+.school view:nth-child(2){
+  height: 38rpx;
+  color: #505050;
+  line-height: 38rpx;
+}
+i-icon {
+  position: absolute;
+  right: 32rpx;
+}
+.save, .delete {
+  padding: 26rpx;
+  padding-bottom: 0;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+.save view{
+  width: 100%;
+  border-radius: 8rpx;
+  color: #ffffff;
+  background: #2a82e4;
+}
+.delete view{
+  width: 100%;
+  border-radius: 8rpx;
+  color: red;
+  background: #ffffff;
+}

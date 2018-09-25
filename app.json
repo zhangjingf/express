@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/send/index",
+    "pages/porotcol/index",
     "pages/editor/editor",
+    "pages/myAddress/index",
     "pages/pickup/pickup",
     "pages/logisticsDetail/logisticsDetail",
     "pages/logistics/logistics",
@@ -8,7 +11,8 @@
     "pages/main/main",
     "pages/index/index",
     "pages/logs/logs",
-    "components/nav/nav"
+    "components/nav/nav",
+    "pages/chooseArea/chooseArea"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,9 @@
+/* pages/send/index.wxss */
+page {
+  background: #e5e5e5;
+}
+view {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+}

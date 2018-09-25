@@ -1,0 +1,35 @@
+/* pages/myAddress/index.wxss */
+page {
+  background: #e5e5e5;
+}
+.my-address>view {
+  margin-top: 14rpx;
+  padding: 0 30rpx 0 24rpx;
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+.left {
+  flex: 1;
+  font-size: 28rpx;
+}
+.left view:nth-child(2) {
+  font-size: 20rpx;
+  color: #6c6c6c;
+}
+.add {
+  position: absolute;
+  bottom: 0;
+  width: 698rpx;
+  padding: 32rpx 26rpx;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background: #ffffff;
+}
+.add view {
+  border-radius: 8rpx;
+  color: #ffffff;
+  background: #2a82e4;
+}

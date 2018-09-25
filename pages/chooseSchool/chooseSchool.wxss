@@ -1,7 +1,4 @@
 /* pages/chooseSchool/chooseSchool.wxss */
-.choose-school {
-
-}
 input {
   margin: 8rpx 20rpx 2rpx 20rpx;
   height: 64rpx;

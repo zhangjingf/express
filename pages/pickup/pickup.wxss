@@ -1,5 +1,5 @@
 /* pages/pickup/pickup.wxss */
-.pickup {
+page {
   background: #e5e5e5;
 }
 .person-info {

@@ -1,10 +1,22 @@
 <view class="editor">
-  <view><view>姓名</view></view>
-  <view><view>电话</view></view>
-  <view></view>
-  <view></view>
-  <view></view>
-  <view></view>
+  <view class="form">
+    <view><icon></icon><input placeholder='姓名' bindtap="name"></input></view>
+    <view><icon></icon><input placeholder='电话' bindtap="phone"></input></view>
+    <view class="address">
+      <icon></icon>
+      <view class="school">
+         <view>111111</view>
+         <view>222222222</view>
+      </view>
+    </view>
+    <view class="area" bindtap="chooseArea">
+      <icon></icon>
+      <view>{{areaVal}}<i-icon type="enter" size="20"/></view>
+    </view>
+    <view><icon></icon><input placeholder='宿舍号、门牌号'></input></view>
+  </view>
+  <view class="delete" bindtap="delete"><view>删除</view></view>
+  <view class="save" bindtap="save"><view>保存</view></view>
 </view>
 <i-modal title="标题" visible="{{ visible1 }}" bind:ok="handleClose1" bind:cancel="handleClose1">
     <view>一些文本</view> 

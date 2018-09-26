@@ -1,11 +1,56 @@
 <!--pages/send/index.wxml-->
 <view class="send">
-
+  <view class="info">
+    <view class="left">
+      <view>蛋类 131423423</view>
+      <view>曾多次调查市场调查的</view>
+    </view>
+    <view class="right" bindtap='goMyAddress'>地址簿</view>
+  </view>
+  <view class="middle">
+    <i-icon type="switch" size="20" color="{{switchColor}}"/>
+    <view class="line"></view>
+  </view>
+  <view class="info">
+    <view class="left">
+      <view>蛋类 131423423</view>
+      <view>曾多次调查市场调查的</view>
+    </view>
+    <view class="right" bindtap='goMyAddress'>地址簿</view>
+  </view>
 </view>
-<view><text>期望上门时间</text></view>
-<view><text>物品类型</text></view>
-<view><text>留言</text></view>
-<view><text>服务费</text></view>
-<view><text>小费</text></view>
-<view></view>
-<view><text>¥3</text><view>下单</view></view>
+<view class="same">
+  <picker mode="multiSelector" bindchange="bindTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      <text>期望上门时间</text>
+      <view>
+        <view class="porotcol">{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}</view>
+        <i-icon type="enter" size="20"/>
+      </view>
+    </view>
+  </picker>
+</view>
+<view class="same">
+  <picker bindchange="bindTypeChange" value="{{index}}" range="{{thingTypeList}}">
+    <view class="picker">
+     <text>物品类型</text>
+     <view>
+      {{thingTypeList[index]}}
+      <i-icon type="enter" size="20"/>
+     </view>
+    </view>
+  </picker>
+</view>
+<view class="same">
+  <text>留言:</text><input maxlength="20" bindinput="bindInput"></input>
+  <text>{{wordNum}}/20</text>
+</view>
+<view class="same"><text>服务费</text><text>服务费不包括包裹运费</text><text>1元</text></view>
+<view class="same"><text>小费</text><text>包裹太大，给点小费吧</text><text>2元</text></view>
+<view class="agree">
+  <view>
+    <radio checked='{{isChecked}}' color="{{color}}" size="20"></radio>我已阅读并同意 
+    <text class="porotcol">《取件协议》</text>
+  </view>
+</view>
+<view class="submit"><text>¥3</text><view>下单</view></view>

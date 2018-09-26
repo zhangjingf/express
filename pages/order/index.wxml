@@ -1,0 +1,16 @@
+<!--pages/order/index.wxml-->
+<view class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
+  <view class="part1">
+    <view>{{item.type == 1 ? '寄快递' : '取快递'}}</view>
+    <view>{{item.time}}</view>
+    <view>{{item.name}} {{item.phone}}</view>
+    <view>{{item.address}}</view>
+    <view>{{item.bookingTime}}</view>
+  </view>
+  <view class="part2">
+    <view wx:if="{{item.status == 11}}">订单已完成</view>
+    <view>{{item.expressType}} <text>{{item.orderNum}}</text></view>
+    <view>{{item.money}}</view>
+    <view class="bnts"><view>删除</view><view>查看物流</view></view>
+  </view>
+</view>

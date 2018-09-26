@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/order/index",
     "pages/send/index",
     "pages/porotcol/index",
     "pages/editor/editor",

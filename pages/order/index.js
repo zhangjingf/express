@@ -18,9 +18,20 @@ Page({
     wx.setNavigationBarTitle({
       title: '订单',
     })
+    this.setData({
+      checkedStatus: 'order'
+    })
   },
   onReady: function () {
     var self = getApp()
     console.log(self.globalData)
+  },
+  goDetail: function () {
+    wx,wx.navigateTo({
+      url: '../orderDetail/index'
+    })
+  },
+  delete: function() {
+    console.log('delete')
   }
 })

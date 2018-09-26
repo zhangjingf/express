@@ -1,6 +1,6 @@
 <!--components/nav/nav.wxml-->
 <view class="nav">
-  <view class="{{checkedStatus == 'main' ? 'nav-active' : ''}}">首页</view>
-  <view class="{{checkedStatus == 'order' ? 'nav-active' : ''}}">订单</view>
-  <view class="{{checkedStatus == 'mine' ? 'nav-active' : ''}}">我的</view>
+  <view class="{{checkedStatus == 'main' ? 'nav-active' : ''}}" bindtap='goMain'>首页</view>
+  <view class="{{checkedStatus == 'order' ? 'nav-active' : ''}}" bindtap="goOrder">订单</view>
+  <view class="{{checkedStatus == 'mine' ? 'nav-active' : ''}}" bindtap="goMymenu">我的</view>
 </view>

@@ -1,1 +1,66 @@
 /* pages/order/index.wxss */
+page {
+  background: #e5e5e5;
+}
+page>view {
+  display: flex;
+  padding: 12rpx 16rpx; 
+}
+.part1, .part2 {
+  padding: 20px 0 10rpx 0;
+  background: #ffffff;
+}
+.part1 {
+  flex: 1;
+  padding-left: 24rpx;
+}
+.part2 {
+  padding-right: 12rpx;
+  text-align: right;
+}
+.part1>view:nth-child(1), .part2>view:nth-child(1) {
+  font-size: 24rpx;
+}
+.part1>view:nth-child(2), .part2>view:nth-child(2) {
+  margin-top: 14rpx;
+  font-size: 20rpx;
+}
+.part1>view:nth-child(n+3) {
+  margin-top: 14rpx;
+  font-size: 20rpx;
+}
+.part2>view:nth-child(3) {
+  padding: 20rpx 0;
+  font-size: 24rpx;
+}
+.part2 text {
+  color: #2a82e4;
+}
+.circle1,  .circle2{
+  display: inline-block;
+  margin-right: 10rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background: #ff5b38;
+}
+.circle2 {
+  background: #808080;
+}
+.btns {
+  display: flex;
+}
+.btns view {
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  font-size: 20rpx;
+  border-radius: 8rpx;
+}
+.btns view:nth-child(1) {
+  border: 1rpx solid #505050;
+}
+.btns view:nth-child(2) {
+  margin-left: 20rpx;
+  color: #2a82e4;
+  border: 1rpx solid #2a82e4;
+}

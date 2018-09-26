@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/order/index",
     "pages/send/index",
     "pages/porotcol/index",
@@ -9,11 +10,12 @@
     "pages/logisticsDetail/logisticsDetail",
     "pages/logistics/logistics",
     "pages/chooseSchool/chooseSchool",
-    "pages/main/main",
     "pages/index/index",
     "pages/logs/logs",
     "components/nav/nav",
-    "pages/chooseArea/chooseArea"
+    "pages/chooseArea/chooseArea",
+    "pages/orderDetail/index",
+    "pages/myMenu/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

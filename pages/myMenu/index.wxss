@@ -1,1 +1,37 @@
 /* pages/myMenu/index.wxss */
+page {
+  background: #e5e5e5;
+}
+.person {
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+}
+.person open-data:nth-child(1) {
+  margin-bottom: 50rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  overflow: hidden;
+}
+.address, .service, .advice, .setting {
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  line-height: 90rpx;
+  background: #ffffff;
+}
+.address, .service, .setting{
+  margin-top: 20rpx;
+}
+.advice>view {
+  flex: 1;
+  border-top: 1rpx solid #e5e5e5;
+}
+.advice i-icon {
+  border-top: 1rpx solid #e5e5e5;
+}

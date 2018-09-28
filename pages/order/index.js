@@ -27,7 +27,7 @@ Page({
     console.log(self.globalData)
   },
   goDetail: function () {
-    wx,wx.navigateTo({
+    wx.navigateTo({
       url: '../orderDetail/index'
     })
   },

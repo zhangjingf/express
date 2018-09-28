@@ -1,0 +1,9 @@
+<view class="person">
+  <open-data type="userAvatarUrl"></open-data>
+  <open-data type="userNickName"></open-data>
+</view>
+<view class="address" bindtap="goAddress"><view>我的地址簿</view><i-icon type="enter" size="20"/></view>
+<view class="service" bindtap="goService"><view>我的客服</view><i-icon type="enter" size="20"/></view>
+<view class="advice" bindtap="goAdvice"><view>我的建议</view><i-icon type="enter" size="20"/></view>
+<view class="setting" bindtap="goSetting"><view>设置</view><i-icon type="enter" size="20"/></view>
+<nav checkedStatus="{{checkedStatus}}"/>

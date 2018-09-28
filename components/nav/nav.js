@@ -17,17 +17,17 @@ Component({
   },
   methods: {
     goMain: function () {
-      wx.navigateTo({
+      wx.reLaunch({
         url: '../main/main',
       })
     },
     goOrder: function () {
-      wx.navigateTo({
+      wx.reLaunch({
         url: '../order/index',
       })
     },
     goMymenu: function () {
-      wx.navigateTo({
+      wx.reLaunch({
         url: '../myMenu/index',
       })
     }

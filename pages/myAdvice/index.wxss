@@ -1,0 +1,27 @@
+/* pages/myAdvice/index.wxss */
+page {
+  background: #e5e5e5;
+}
+.tips {
+  padding: 40rpx 0 24rpx 46rpx;
+  font-size: 20rpx;
+  color: #a6a6a6;
+}
+.myadvice {
+  padding: 0 36rpx;
+}
+.myadvice textarea {
+  width: 100%;
+  background: #ffffff;
+}
+.submit {
+  padding: 24rpx 254rpx;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  color: #ffffff;
+}
+.submit view {
+  text-align: center;
+  border-radius: 8rpx;
+  background: #2a82e4;
+}

@@ -11,13 +11,20 @@ Page({
       checkedStatus: 'mine'
     })
   },
-  onReady: function () {
-
+  goAddress: function () {
+    wx.navigateTo({
+      url: '../myAddress/index',
+    })
   },
-  onShow: function () {
-
+  goService: function () {
+    console.log('goservice')
   },
-  onHide: function () {
-
+  goAdvice: function () {
+    wx.navigateTo({
+      url: '../myAdvice/index',
+    })
+  },
+  goSetting: function () {
+    console.log('goset')
   }
 })

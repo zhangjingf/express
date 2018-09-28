@@ -14,3 +14,4 @@
     <view class="btns"><view bindtap="delete">删除</view><view bindtap='goDetail'>查看物流</view></view>
   </view>
 </view>
+<nav checkedStatus="{{checkedStatus}}"/>

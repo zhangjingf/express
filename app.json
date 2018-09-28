@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/orderDetail/index",
     "pages/main/main",
     "pages/order/index",
     "pages/send/index",
@@ -14,8 +15,8 @@
     "pages/logs/logs",
     "components/nav/nav",
     "pages/chooseArea/chooseArea",
-    "pages/orderDetail/index",
-    "pages/myMenu/index"
+    "pages/myMenu/index",
+    "pages/myAdvice/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

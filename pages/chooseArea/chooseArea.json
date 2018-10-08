@@ -1,7 +1,5 @@
 {
   "component": "true",
   "usingComponents": {
-    "i-radio-group": "/components/radio-group/index",
-    "i-radio": "/components/radio/index"
   }
 }

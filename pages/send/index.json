@@ -2,5 +2,6 @@
   "component": "true",
   "usingComponents": {
     "i-icon": "/components/icon/index"
-  }
+  },
+  "navigationBarTitleText": "寄快递"
 }

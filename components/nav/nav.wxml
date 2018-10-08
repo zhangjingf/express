@@ -1,6 +1,24 @@
 <!--components/nav/nav.wxml-->
 <view class="nav">
-  <view class="{{checkedStatus == 'main' ? 'nav-active' : ''}}" bindtap='goMain'>首页</view>
-  <view class="{{checkedStatus == 'order' ? 'nav-active' : ''}}" bindtap="goOrder">订单</view>
-  <view class="{{checkedStatus == 'mine' ? 'nav-active' : ''}}" bindtap="goMymenu">我的</view>
+  <view class="{{checkedStatus == 'main' ? 'nav-active' : ''}}" bindtap='goMain'>
+    <view class="image">
+      <image wx:if="{{checkedStatus == 'main'}}" src="../../images/nav_01.png"></image>
+      <image wx:else src="../../images/nav_11.png"></image>
+    </view>
+    <view>首页</view>
+  </view>
+  <view class="{{checkedStatus == 'order' ? 'nav-active' : ''}}" bindtap="goOrder">
+    <view class="image">
+      <image wx:if="{{checkedStatus == 'order'}}" src="../../images/nav_22.png"></image>
+      <image wx:else src="../../images/nav_02.png"></image>
+    </view>
+    <view>订单</view>
+  </view>
+  <view class="{{checkedStatus == 'mine' ? 'nav-active' : ''}}" bindtap="goMymenu">
+    <view class="image">
+      <image wx:if="{{checkedStatus == 'mine'}}" src="../../images/nav_33.png"></image>
+      <image wx:else src="../../images/nav_03.png"></image>
+    </view>
+    <view>我的</view>
+  </view>
 </view>

@@ -1,19 +1,24 @@
 <view class="choose-school">
-  <view class="blank1"></view>
-  <input placeholder='请输入学校名称' bindinput="bindKeyInput" auto-focus></input>
+  <view class="input">
+    <image class="search" src="../../images/serach.png"/>
+    <input placeholder='请输入学校名称' bindinput="bindKeyInput" auto-focus></input>
+  </view>
   <view class="title">当前学校</view>
   <view class="school">
     <view>{{schoolName}}</view>
-    <view class="location">重新定位</view>
+    <view class="location">
+      <image src="../../images/location.png"/>
+      重新定位
+    </view>
   </view>
-  <view class="blank2"></view>
+  <view class="blank"></view>
   <view class="title">附近学校</view>
   <view class="near-school">
     <view wx:for="{{nearSchool}}" wx:key="{{item.id}}">
       {{item.name}}
     </view>
   </view>
-  <view class="blank2"></view>
+  <view class="blank"></view>
   <view class="title">常用地址</view>
   <view class="history">
     <view class="item">
@@ -22,7 +27,7 @@
         <view>某某公寓</view>
         <view>xxxx 15220618484</view>
       </view>
-      <view class="right" bindtap="remove">X</view>
+      <!-- <view class="right" bindtap="remove">X</view> -->
     </view>
   </view>
 </view>

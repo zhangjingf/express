@@ -1,8 +1,13 @@
 <view class="choose-area">
-  <input placeholder='输入区域名称'></input>
+  <view>
+    <image class="search" src="../../images/serach.png"/>
+    <input placeholder='输入区域名称'></input>
+  </view>
 </view>
-<view class="tips" wx:if="{{areaList.length == 0}}">未有区域，暂不服务，造成不便，敬请谅解</view>
-<i-radio-group current="{{current}}" bindchange="handleChange">
-  <i-radio wx:for="{{areaList}}" position="{{position}}" color="{{color}}" wx:key="{{item.name}}" value="{{item.value}}">
-  </i-radio>
-</i-radio-group>
+<view class="tips">未有区域，暂不服务，造成不便，敬请谅解</view>
+<view class="area" wx:for="{{areaList}}" wx:key="{{item.name}}" data-id="{{item.id}}" bindtap="handle">
+  <view>
+    <view>{{item.name}}</view>
+    <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png"/>
+  </view>
+</view>

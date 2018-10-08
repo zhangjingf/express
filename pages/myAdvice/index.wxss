@@ -1,27 +1,33 @@
 /* pages/myAdvice/index.wxss */
 page {
-  background: #e5e5e5;
+  background: rgba(245, 245, 245, 1);
 }
-.tips {
-  padding: 40rpx 0 24rpx 46rpx;
-  font-size: 20rpx;
-  color: #a6a6a6;
-}
+
 .myadvice {
-  padding: 0 36rpx;
+  padding: 20rpx;
 }
+
 .myadvice textarea {
+  padding: 27rpx;
   width: 100%;
   background: #ffffff;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(204, 204, 204, 1);
 }
+
 .submit {
   padding: 24rpx 254rpx;
   font-size: 30rpx;
-  line-height: 70rpx;
-  color: #ffffff;
+  line-height: 60rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1);
 }
+
 .submit view {
   text-align: center;
-  border-radius: 8rpx;
+  border-radius: 5rpx;
   background: #2a82e4;
 }

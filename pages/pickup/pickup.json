@@ -1,1 +1,9 @@
-{}
+{
+  "navigationBarTitleText": "取件",
+  "component": true,
+  "usingComponents": {
+    "i-icon":"/components/icon/index",
+    "i-modal":"/components/modal/index",
+    "i-action-sheet": "/components/action-sheet/index"
+  }
+}

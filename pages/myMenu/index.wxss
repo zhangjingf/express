@@ -1,37 +1,73 @@
 /* pages/myMenu/index.wxss */
 page {
-  background: #e5e5e5;
+  background: rgba(245, 245, 245, 1);
 }
+
 .person {
-  padding: 40rpx 0;
+  padding: 59rpx 312rpx 34rpx 318rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #ffffff;
 }
+
 .person open-data:nth-child(1) {
-  margin-bottom: 50rpx;
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 80rpx;
+  margin-bottom: 28rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
   overflow: hidden;
 }
-.address, .service, .advice, .setting {
-  padding: 0 20rpx;
+
+.person open-data:nth-child(2) {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+}
+
+.address,
+.service,
+.advice,
+.setting {
+  padding: 0 27rpx 0 31rpx;
+  height: 120rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 24rpx;
-  line-height: 90rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
   background: #ffffff;
 }
-.address, .service, .setting{
+
+.address,
+.service,
+.setting {
   margin-top: 20rpx;
 }
-.advice>view {
-  flex: 1;
-  border-top: 1rpx solid #e5e5e5;
+.line {
+  padding: 0 27rpx 0 31rpx;
+  background: #ffffff;
 }
-.advice i-icon {
-  border-top: 1rpx solid #e5e5e5;
+.line view{
+  width: 691rpx;
+  height: 1rpx;
+  background: rgba(220, 220, 220, 1);
+}
+
+.content {
+  flex: 1;
+}
+
+.image {
+  margin-right: 30rpx;
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.image image {
+  width: 100%;
+  height: 100%;
 }

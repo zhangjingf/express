@@ -1,21 +1,56 @@
 /* pages/chooseArea/chooseArea.wxss */
+page {
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  background: rgba(245, 245, 245, 1);
+}
+
 .choose-area {
   padding: 16rpx 20rpx;
+  background: #ffffff;
 }
+.choose-area view {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  background: rgba(245, 245, 245, 1);
+  border-radius: 5rpx;
+}
+.search {
+  margin-left: 237rpx;
+  width: 31rpx;
+  height: 31rpx;
+}
+
 input {
+  flex: 1;
   font-size: 24rpx;
   line-height: 60rpx;
-  text-align: center;
-  border-radius: 8rpx;
-  background: #e5e5e5;
 }
+
 .tips {
-  font-size: 28rpx;
+  padding-bottom: 19rpx;
+  font-size: 22rpx;
   text-align: center;
-  color: #a6a6a6;
+  color: rgba(153, 153, 153, 1);
+  background: #ffffff;
 }
-.radio-group label {
-  display: block;
-  font-size: 28rpx;
-  line-height: 80rpx;
+.area {
+  padding-left: 28rpx;
+  background: #ffffff;
+}
+.area>view{
+  padding-right: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  border-top: 1rpx solid rgba(220,220,220,1);
+  color: rgba(0, 0, 0, 1);
+}
+
+.checked {
+  width: 29rpx;
+  height: 29rpx;
 }

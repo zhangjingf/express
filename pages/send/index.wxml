@@ -1,6 +1,7 @@
-<!--pages/send/index.wxml-->
+<!-- pages/send/index.wxml -->
 <view class="send">
   <view class="info">
+    <view class="title blue">寄</view>
     <view class="left">
       <view>蛋类 131423423</view>
       <view>曾多次调查市场调查的</view>
@@ -8,10 +9,11 @@
     <view class="right" bindtap='goMyAddress'>地址簿</view>
   </view>
   <view class="middle">
-    <i-icon type="switch" size="20" color="{{switchColor}}"/>
+    <i-icon type="switch" size="20" color="{{switchColor}}" />
     <view class="line"></view>
   </view>
   <view class="info">
+    <view class="title orange">收</view>
     <view class="left">
       <view>蛋类 131423423</view>
       <view>曾多次调查市场调查的</view>
@@ -19,38 +21,52 @@
     <view class="right" bindtap='goMyAddress'>地址簿</view>
   </view>
 </view>
-<view class="same">
-  <picker mode="multiSelector" bindchange="bindTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <view class="picker">
-      <text>期望上门时间</text>
-      <view>
-        <view class="porotcol">{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}</view>
-        <i-icon type="enter" size="20"/>
-      </view>
+<view class="same-list">
+  <view class="same">
+    <text>期望上门时间</text>
+    <view>
+      <view class="porotcol">123131232</view>
+      <i-icon type="enter" size="20" />
     </view>
-  </picker>
-</view>
-<view class="same">
-  <picker bindchange="bindTypeChange" value="{{index}}" range="{{thingTypeList}}">
-    <view class="picker">
-     <text>物品类型</text>
-     <view>
-      {{thingTypeList[index]}}
-      <i-icon type="enter" size="20"/>
-     </view>
+  </view>
+  <view class="same">
+    <text>物品类型</text>
+    <view>
+      1111
+      <i-icon type="enter" size="20" />
     </view>
-  </picker>
+  </view>
+  <view class="same">
+    <text>留言:</text>
+    <input maxlength="20" bindinput="bindInput"></input>
+    <text>{{wordNum}}/20</text>
+  </view>
+  <view class="same">
+    <text>服务费</text>
+    <text>1元</text>
+  </view>
+  <view class="same">
+    <text>小费</text>
+    <view>
+      <text style="color:#CCCCCC">包裹太大，给点小费吧</text>
+      <text>2元</text>
+    </view>
+  </view>
 </view>
-<view class="same">
-  <text>留言:</text><input maxlength="20" bindinput="bindInput"></input>
-  <text>{{wordNum}}/20</text>
-</view>
-<view class="same"><text>服务费</text><text>服务费不包括包裹运费</text><text>1元</text></view>
-<view class="same"><text>小费</text><text>包裹太大，给点小费吧</text><text>2元</text></view>
 <view class="agree">
   <view>
-    <radio checked='{{isChecked}}' color="{{color}}" size="20"></radio>我已阅读并同意 
+    <radio checked='{{isChecked}}' color="{{color}}"></radio>
+    我已阅读并同意
     <text class="porotcol">《取件协议》</text>
   </view>
 </view>
-<view class="submit"><text>¥3</text><view>下单</view></view>
+<view class="submit">
+  <view>
+    <view class="fee">
+      <text>¥</text>
+      5
+    </view>
+    <view>此费用不包含包裹费用</view>
+  </view>
+  <view>下单</view>
+</view>

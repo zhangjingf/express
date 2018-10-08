@@ -1,46 +1,65 @@
 // pages/main/main.js
+import main from "../../services/main"
+const app = getApp()
 Page({
   data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
+    imgUrls: [],
     indicatorDots: true,
-    indicatorColor: '#ffffff',
-    indicatorActiveColor: '#ffc300',
+    indicatorColor: '#FBFBFB',
+    indicatorActiveColor: '#626262',
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    checkedStatus: ''
+    checkedStatus: '',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '首页',
-    })
+  onLoad: function () {
+    var self = this
     this.setData({
       checkedStatus: 'main'
     })
+    main.wxBindImg({}, function(res) {
+      if (res.errno == 0) {
+        self.setData({
+          imgUrls: res.data.banner
+        })
+      }
+    })
+    wx.getLocation({
+      success: function (res) {
+        let param = {
+          lngLong: res.longitude,
+          latLong: res.latitude
+        }
+        main.wxBindPosition(param, function (res) {
+          console.log(res)
+        })
+      }
+    })
   },
-  onReady: function () {
-    
+  getUserInfo: function (e) {
+    console.log(e)
   },
-  onShow: function () {
-  
+  gosend: function () {
+    wx.navigateTo({
+      url: '../send/index',
+    })
   },
-  onHide: function () {
-  
+  gopickup: function () {
+    wx.navigateTo({
+      url: '../pickup/pickup'
+    })
   },
-  onUnload: function () {
-  
+  gologistics: function () {
+    wx.navigateTo({
+      url: '../logistics/logistics'
+    })
   },
-  onPullDownRefresh: function () {
-  
-  },
-  onReachBottom: function () {
-  
-  },
-  onShareAppMessage: function () {
-  
+  goSchool: function () {
+    wx.navigateTo({
+      url: '../chooseSchool/chooseSchool'
+    })
   }
 })

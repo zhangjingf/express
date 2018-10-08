@@ -2,7 +2,7 @@
 Page({
   data: {
     visible1: false,
-    areaVal: '所在区域',
+    areaVal: '',
     name: '',
     phone: ''
   },
@@ -12,10 +12,8 @@ Page({
    })
   },
   onReady: function () {
-  
   },
   onShow: function () {
-  
   },
   handleClose1: function () {
     this.setData({

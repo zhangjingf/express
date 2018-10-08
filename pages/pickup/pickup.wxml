@@ -1,29 +1,116 @@
 <view class="pickup">
   <view class="person-info">
-    <view class="left"></view>
+    <view class="left">收</view>
     <view class="middle">
       <view>单类 15220231231</view>
       <view>湖北省黄石市返回否则大范围</view>
-      <view>2718</view>
     </view>
     <view class="right" bindtap='goAddress'>地址簿</view>
   </view>
   <view class="write">请填写相关快递信息</view>
   <view class="express-info" wx:for="{{orderNum}}" wx:key="{{item.index}}">
-    <view><view class="label">取货码</view><input placeholder='可粘贴短信至此'></input></view>
-    <view><view class="label">快递点</view><input></input></view>
-    <view><view class="label">包裹规格</view></view>
-    <view><view class="label">备注</view><input placeholder='快递单上名字电话不同请备注'></input></view>
-    <view><view class="label">优惠</view></view>
+    <view>
+      <view class="label">取货码</view>
+      <input placeholder='可粘贴短信至此'></input>
+    </view>
+    <view bindtap="checkExpress">
+      <view class="label">快递点</view>
+      <view>{{checkedExpressName}}</view>
+    </view>
+    <view class="special">
+      <view class="label">包裹规格</view>
+      <view class="range" bindtap="chooseRange">
+        <block wx:for="{{pkgList}}" wx:key="{{item.id}}">
+          <text data-id="{{item.id}}" class="{{item.checked}}">{{item.pkgName}}</text>
+        </block>
+      </view>
+      <view class="help" bindtap="handleVisible">?</view>
+    </view>
+    <view>
+      <view class="label">备注</view>
+      <input placeholder='快递单上名字电话不同请备注'></input>
+    </view>
+    <view class="coupon">
+      <view class="label">优惠</view>
+      <view>
+        无
+        <i-icon type="enter" size="20" />
+      </view>
+    </view>
     <view class="price">当前为{{item}}件，价格为2元</view>
-    <view class="delete" wx:if="{{item > 1}}"><view>删除</view></view>
+    <view class="delete" wx:if="{{item > 1}}">
+      <view>删除</view>
+    </view>
   </view>
-  <view class="add" bindtap='add'><view>添加快递</view></view>
+  <view class="add" bindtap='add'>
+    <view>添加快递</view>
+  </view>
   <view class="time">
     <view>期望到达时间</view>
-    <view class="date">今天12:00-13:00</view>
+    <view class="date">
+      今天12:00-13:00
+      <i-icon class="arrow" type="enter" size="20" />
+    </view>
   </view>
-  <view class="agree"><checkbox checked='{{agree}}'>我已阅读并同意<view class="date">《取件协议》</view></checkbox></view>
-  <view class="money">共{{orderNum.length}}件包裹，合计<view>¥5</view>, <view class="discount">共优惠¥2元</view></view>
-  <view class="confrim"><view>确认支付</view></view>
+  <view class="agree">
+    <view class="cancel" bindtap="cancel">
+      <image wx:if="{{cancel}}" src="../../images/cancel.png" />
+    </view>
+    我已阅读并同意
+    <view class="date">《取件协议》</view>
+  </view>
+  <view class="money">
+    共{{orderNum.length}}件包裹，合计
+    <view>¥5</view>
+    ,
+    <view class="discount">共优惠¥2元</view>
+  </view>
+  <view class="confrim">
+    <view>确认支付</view>
+  </view>
 </view>
+<i-modal title="包裹规格说明" visible="{{ visible }}" bind:ok="handleVisible" show-cancel="{{showCancel}}">
+  <block wx:for="{{pkgList}}" wx:key="{{item.id}}">
+    <view class="explain">
+      <view>{{item.pkgName}}</view>
+      <view>
+        <!-- <view>重量：5-8kg</view> -->
+        <view>描述：{{item.pkgKgdesc}}</view>
+      </view>
+    </view>
+  </block>
+</i-modal>
+<i-action-sheet visible="{{ visible2 }}" show-cancel="{{showCancel}}" mask-closable="{{ false }}">
+  <view slot="header">
+    <view class="header">选择快递点</view>
+    <view class="address-list">
+      <block wx:for="{{expressList}}" wx:key="{{item.id}}">
+        <view bindtap="chooseExpress" data-id="{{item.id}}">
+          <text>{{item.expressName}}</text>
+          <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png" />
+        </view>
+      </block>
+    </view>
+  </view>
+</i-action-sheet>
+<i-action-sheet visible="{{ visible3 }}" show-cancel="{{showCancel}}" mask-closable="{{ false }}">
+  <view slot="header">
+    <view class="header2">选择送达时间</view>
+    <view class="time-list">
+      <view class="day">
+        <view>今天</view>
+        <view>明天</view>
+      </view>
+      <view class="list">
+        <view>
+          <text>11:00-12:00</text>
+          <image class="checked" src="../../images/address_02.png" />
+        </view>
+        <view>
+          <text>11:00-12:00</text>
+          <image class="checked" src="../../images/address_02.png" />
+        </view>
+      </view>
+    </view>
+  </view>
+</i-action-sheet>

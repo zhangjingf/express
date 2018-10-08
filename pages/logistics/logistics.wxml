@@ -3,11 +3,11 @@
   <view class="search">
     <view class="input">
       <icon type="search" size="15"></icon>
-      <input></input>
+      <input placeholder="请输入运单号" bindinput="inputNum"></input>
     </view>
-    <view class="scan">sss</view>
+    <view class="scan" bindtap="scan"><image src="../../images/scan.png" /></view>
   </view>
-  <view class="submit"><view>查询</view></view>
+  <view class="submit"><view class="{{status}}">查询</view></view>
   <view class="history">
     <view class="title">历史记录</view>
     <view class="list" wx:for="{{logisticsHistory}}" wx:key="item.id">

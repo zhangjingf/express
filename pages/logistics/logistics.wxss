@@ -1,56 +1,86 @@
 /* pages/logistics/logistics.wxss */
 page {
-  background: #e5e5e5;
+  font-size: 26rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  background: rgba(245, 245, 245, 1);
 }
+
 .search {
   display: flex;
   align-items: center;
   padding: 24rpx 20rpx;
   background: #ffffff;
-  border-bottom: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid rgba(220, 220, 220, 1);
 }
+
 .search icon {
-  background: #e5e5e5;
+  background: rgba(245, 245, 245, 1);
 }
+
 .search .input {
   display: flex;
   align-items: center;
-  padding: 16rpx 14rpx;
-  width: 616rpx;
-  font-size: 28rpx;
-  border-radius: 8rpx;
-  background: #e5e5e5;
+  padding: 10rpx 26rpx;
+  width: 590rpx;
+  color: rgba(204, 204, 204, 1);
+  background: rgba(245, 245, 245, 1);
+  border-radius: 10rpx;
 }
+
 .search .input input {
   flex: 1;
 }
+
+.scan {
+  margin-left: 48rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.scan image {
+  width: 100%;
+  height: 100%;
+}
+
 .submit {
-  padding: 24rpx 16rpx 104rpx 16rpx;
+  padding: 24rpx 16rpx 28rpx 16rpx;
   background: #ffffff;
 }
+
 .submit view {
-  height: 70rpx;
-  font-size: 32rpx;
-  line-height: 70rpx;
+  height: 80rpx;
+  font-size: 36rpx;
+  line-height: 80rpx;
   text-align: center;
-  color: #ffffff;
-  border-radius: 8rpx;
-  background-color: #2a82e4;
+  border-radius: 10rpx;
+  color: rgba(153, 153, 153, 1);
+  background: rgba(240, 240, 240, 1);
 }
-.history .title  {
+
+.active {
+  color: rgba(255, 255, 255, 1) !important;
+  background: rgba(0, 140, 240, 1) !important;
+}
+
+.history .title {
   padding: 72rpx 0 34rpx 36rpx;
-  font-size: 26rpx;
-  border-bottom: 1rpx solid #a6a6a6;
+  color: rgba(153, 153, 153, 1);
+  border-bottom: 1rpx solid rgba(204, 204, 204, 1);
 }
+
 .history .list {
   display: flex;
   justify-content: space-between;
   padding: 24rpx 38rpx;
-  font-size: 24rpx;
-  border-bottom: 1rpx solid #a6a6a6;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(102, 102, 102, 1);
+  border-bottom: 1rpx solid rgba(204, 204, 204, 1);
 }
-.history .clear  {
+
+.history .clear {
   padding: 36rpx;
-  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
   text-align: center;
 }

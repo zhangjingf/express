@@ -1,54 +1,91 @@
 /* pages/chooseSchool/chooseSchool.wxss */
-input {
-  margin: 8rpx 20rpx 2rpx 20rpx;
-  height: 64rpx;
-  font-size: 28rpx;
-  text-align: center;
-  border-radius: 8rpx;
-  background-color: #f0efef;
+.choose-school {
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  background: #ffffff;
 }
-.blank1 {
-  height: 4rpx;
-  background-color: #f0efef;
+
+.choose-school>view {
+  padding: 0 29rpx;
 }
-.blank2 {
-  height: 10rpx;
-  background-color: #f0efef;
+
+.choose-school>view:nth-child(1) {
+  padding: 0;
+  margin: 0 29rpx;
 }
-.title {
-  padding: 26rpx 0 0 36rpx;
-  font-size: 22rpx;
-  color: #cbcbcb;
-}
-.school {
-  padding: 30rpx 36rpx;
+
+.input {
   display: flex;
+  align-items: center;
+  height: 60rpx;
+  font-size: 26rpx;
+  color: rgba(204, 204, 204, 1);
+  background: rgba(245, 245, 245, 1);
+  border-radius: 5rpx;
+}
+
+.search {
+  margin-left: 237rpx;
+  width: 31rpx;
+  height: 31rpx;
+}
+
+.title {
+  padding-top: 26rpx !important;
+  font-size: 26rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.school {
+  padding-top: 30rpx !important;
+  padding-bottom: 20rpx !important;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  font-size: 36rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 1);
 }
+
 .location {
-  color: #2a82e4;
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: rgba(0, 140, 240, 1);
 }
+
+.location image {
+  margin-right: 16rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.blank {
+  height: 20rpx;
+  background: rgba(245, 245, 245, 1);
+}
+
 .near-school {
-  padding: 0 36rpx 12rpx 36rpx;
+  padding: 0 36rpx 12rpx 0rpx;
 }
+
 .near-school view {
   padding: 30rpx 0 28rpx 0;
-  font-size: 28rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 1);
   border-bottom: 1rpx solid #f0efef;
 }
+
 .history .item {
-  padding: 26rpx 36rpx 12rpx 36rpx;
+  padding: 26rpx 36rpx 12rpx 0rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 22rpx;
+  font-size: 26rpx;
+  color: rgba(102, 102, 102, 1);
 }
+
 .history .left view:nth-child(1) {
-  font-size: 28rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 1);
   line-height: 40rpx;
-}
-.history .left view:nth-child(3) {
-  line-height: 34rpx;
-  color: #505050;
 }

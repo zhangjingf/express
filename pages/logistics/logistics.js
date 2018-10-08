@@ -1,23 +1,28 @@
 // pages/logistics/logistics.js
 Page({
   data: {
-    logisticsHistory: [{id: 1, name: '4444444'}]
+    logisticsHistory: [{
+      id: 1,
+      name: '4444444'
+    }],
+    status: ''
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '物流查询',
-    })
-  },
-  onReady: function () {
-  
-  },
-  onShow: function () {
-  
-  },
-  onHide: function () {
-  
+
   },
   clear: function () {
-    
+
+  },
+  inputNum: function (e) {
+    this.setData({
+      status: e.detail.value.length > 0 ? 'active' : ''
+    })
+  },
+  scan: function () {
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+      }
+    })
   }
 })

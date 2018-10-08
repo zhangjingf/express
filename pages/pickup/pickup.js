@@ -13,10 +13,16 @@ Page({
     checkedExpressName: '',
     checkedExpressId: null,
     pkgList: null,
-    checkedPkgId: null
+    checkedPkgId: null,
+    todayList: null,
+    tomorrowList: null,
+    defaultDate: null,
+    checkedDate: ''
   },
   onLoad: function (options) {
     var self = this
+    var now = new Date().getHours()
+    var todayArr = []
     // wx.showModal({
     //   title: '取件公告',
     //   content: '3124343',
@@ -39,6 +45,21 @@ Page({
         self.setData({
           expressList: res.data
         })
+      }
+    })
+    pickup.getSchoolDate({schoolId: 4}, function(res) {
+      if(res.errno == 0) {
+        if (res.data.length > 0) {
+          for (let index in res.data) {
+            if(res.data[index].startTime.split(":")[0] < now && res.data[index].endTime.split(":")[0] > now) {
+              todayArr.push(res.data[index])
+            }
+          }
+          self.setData({
+            tomorrowList: res.data,
+            todayList: todayArr
+          })
+        }
       }
     })
   },
@@ -102,6 +123,15 @@ Page({
   checkExpress: function () {
     this.setData({
       visible2: true
+    })
+  },
+  bookingDate: function (e) {
+    var id = e.target.dateset.id;
+    console.log(id)
+  },
+  chooseDate: function () {
+    this.setData({
+      visible3: true
     })
   }
 })

@@ -45,10 +45,10 @@
   <view class="add" bindtap='add'>
     <view>添加快递</view>
   </view>
-  <view class="time">
+  <view class="time" bindtap="chooseDate">
     <view>期望到达时间</view>
     <view class="date">
-      今天12:00-13:00
+      {{checkedDate}}
       <i-icon class="arrow" type="enter" size="20" />
     </view>
   </view>
@@ -98,18 +98,16 @@
     <view class="header2">选择送达时间</view>
     <view class="time-list">
       <view class="day">
-        <view>今天</view>
-        <view>明天</view>
+        <view wx:if="{{todayList.length > 0}}">今天</view>
+        <view wx:if="{{tomorrowList.length > 0}}">明天</view>
       </view>
       <view class="list">
-        <view>
-          <text>11:00-12:00</text>
-          <image class="checked" src="../../images/address_02.png" />
-        </view>
-        <view>
-          <text>11:00-12:00</text>
-          <image class="checked" src="../../images/address_02.png" />
-        </view>
+        <block wx:for="{{defaultDate}}" wx:key="{{item.id}}">
+          <view bindtap="bookingDate" data-id="{{item.id}}">
+            <text>{{item.startTime}}-{{item.endTime}}</text>
+            <image wx:if="{{item.checked}}" class="checked" src="../../images/address_02.png" />
+          </view>
+        </block>
       </view>
     </view>
   </view>

@@ -49,7 +49,7 @@ App({
               }
               if (res.userInfo) {
                 login.wxBindLogin(param, function (res) {
-                  if (res.errno == 0) {
+                  if (res.errno == 0 && !token) {
                     wx.setStorage({
                       key: "token",
                       data: res.data.token

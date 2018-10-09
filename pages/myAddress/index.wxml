@@ -1,7 +1,7 @@
 <view class="my-address">
-  <view wx:for="{{addressInfo}}" wx:key="item.id" bindtap="check" data-id="{{item.id}}">
+  <view wx:for="{{addressList}}" wx:key="item.id" bindtap="check" data-id="{{item.id}}">
     <view class="left">
-      <view>{{item.name}} {{item.phone}}</view>
+      <view>{{item.receiverName}} {{item.receiverPhone}}</view>
       <view>{{item.address}}</view>
     </view>
     <view class="rihgt">
@@ -11,4 +11,4 @@
     </view>
   </view>
 </view>
-<view class="add"><view>新建地址</view></view>
+<view class="add" bindtap="goEdit"><view>新建地址</view></view>

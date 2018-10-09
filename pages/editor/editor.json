@@ -3,5 +3,6 @@
   "usingComponents": {
     "i-modal": "/components/modal/index",
     "i-icon": "/components/icon/index"
-  }
+  },
+  "navigationBarTitleText": "编辑收件人"
 }

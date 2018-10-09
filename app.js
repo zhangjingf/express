@@ -47,9 +47,9 @@ App({
                   rawData: JSON.stringify(JSON.parse(res.rawData))
                 }
               }
-              if (res.userInfo) {
+              if (res.userInfo && !token) {
                 login.wxBindLogin(param, function (res) {
-                  if (res.errno == 0 && !token) {
+                  if (res.errno == 0) {
                     wx.setStorage({
                       key: "token",
                       data: res.data.token

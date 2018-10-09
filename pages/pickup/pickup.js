@@ -59,6 +59,9 @@ Page({
             tomorrowList: res.data,
             todayList: todayArr
           })
+          self.setData({
+            defaultDate: todayArr.length > 0 ? todayArr : res.data
+          })
         }
       }
     })
@@ -126,12 +129,26 @@ Page({
     })
   },
   bookingDate: function (e) {
-    var id = e.target.dateset.id;
-    console.log(id)
+    var id = e.target.dataset.id;
+    var dateArr = this.data.defaultDate;
+    for (let item of dateArr) {
+      if (item.id == id) {
+        item.checked = true
+      } else {
+        item.checked = false
+      }
+    }
+    this.setData({
+      defaultDate: dateArr
+    })
   },
   chooseDate: function () {
     this.setData({
       visible3: true
     })
+  },
+  toggleDay: function(e) {
+    var type = e.target.dataset.type;
+    console.log(type)
   }
 })

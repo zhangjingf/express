@@ -1,33 +1,33 @@
 // pages/myAddress/index.js
+import address from "../../services/myAddress";
 Page({
   data: {
-    addressInfo: [{
-      id: 11,
-      name: 'zahn',
-      phone: 111111111,
-      address: 'wfewfefrefre',
-      checked: false
-    }],
+    addressList: null,
     color: 'blue'
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '我的地址簿',
+    var self = this;
+    address.getAddressList({}, function(res) {
+      if (res.errno == 0) {
+        if (res.data.length > 0) {
+          res.data[0].checked = true;
+        }
+        self.setData({
+          addressList: res.data
+        })
+      }
     })
-  },
-  onReady: function () {
-
   },
   check: function (e) {
     var id = e.currentTarget.dataset.id;
-    var data = this.data.addressInfo;
+    var data = this.data.addressList;
     for (let index in data) {
        if (data[index].id == id) {
         data[index].checked = !data[index].checked;
       }
     }
     this.setData({
-      addressInfo: data
+      addressList: data
     });
   },
   goEdit: function () {

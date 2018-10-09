@@ -1,22 +1,52 @@
+import login from "../../services/login";
+const app = getApp();
 Page({
   data: {
-    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
-    var that = this;
-    // 查看是否授权
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
-              //从数据库获取用户信息
-              that.queryUsreInfo();
-              //用户已经授权过
-              wx.redirectTo({
-                url: '../main/main',
-              })
+              app.globalData.userInfo = res.userInfo
+              var param = {
+                code: app.globalData.code,
+                userInfo: {
+                  userInfo: {
+                    country: res.userInfo.country,
+                    gender: res.userInfo.gender,
+                    province: res.userInfo.province,
+                    city: res.userInfo.city,
+                    avatarUrl: res.userInfo.avatarUrl,
+                    nickName: res.userInfo.nickName,
+                    language: res.userInfo.language
+                  },
+                  signature: res.signature,
+                  errMsg: res.errMsg,
+                  encryptedData: res.encryptedData,
+                  iv: res.iv,
+                  rawData: JSON.stringify(JSON.parse(res.rawData))
+                }
+              }
+              if (res.userInfo) {
+                login.wxBindLogin(param, function (res) {
+                  if (res.errno == 0) {
+                    wx.setStorage({
+                      key: "token",
+                      data: res.data.token
+                    })
+                    wx.setStorage({
+                      key: 'userId',
+                      data: res.data.userId
+                    })
+                    wx.redirectTo({
+                      url: '../main/main',
+                    })
+                  }
+                })
+              }
             }
           });
         }
@@ -27,7 +57,7 @@ Page({
     var res = e.detail
     if (res) {
       var param = {
-        code: this.globalData.code,
+        code: app.globalData.code,
         userInfo: {
           userInfo: {
             country: res.userInfo.country,
@@ -45,7 +75,7 @@ Page({
           rawData: JSON.stringify(JSON.parse(res.rawData))
         }
       }
-      if (res.userInfo && !token) {
+      if (res.userInfo) {
         login.wxBindLogin(param, function (res) {
           if (res.errno == 0) {
             wx.setStorage({

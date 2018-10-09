@@ -1,4 +1,5 @@
 // pages/editor/editor.js
+import common from "../../services/common";
 Page({
   data: {
     visible1: false,
@@ -7,9 +8,14 @@ Page({
     phone: ''
   },
   onLoad: function (options) {
-   wx.setNavigationBarTitle({
-     title: '编辑收件人',
-   })
+  //  wx.setNavigationBarTitle({
+  //    title: '',
+  //  })
+    common.getRegion({}, function(res) {
+      if (res.errno == 0) {
+        console.log(res)
+      }
+    })
   },
   onReady: function () {
   },

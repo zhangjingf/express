@@ -11,9 +11,7 @@ Page({
     interval: 5000,
     duration: 1000,
     checkedStatus: '',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    topHeaderText: '请选择学校'
   },
   onLoad: function () {
     var self = this
@@ -38,9 +36,6 @@ Page({
         })
       }
     })
-  },
-  getUserInfo: function (e) {
-    console.log(e)
   },
   gosend: function () {
     wx.navigateTo({

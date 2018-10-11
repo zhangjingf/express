@@ -11,8 +11,6 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
-              //从数据库获取用户信息
-              that.queryUsreInfo();
               //用户已经授权过
               wx.redirectTo({
                 url: '../main/main',
@@ -63,7 +61,6 @@ Page({
         })
       }
     } else {
-      //用户按了拒绝按钮
       wx.showModal({
         title: '警告',
         content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',

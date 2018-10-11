@@ -98,13 +98,13 @@
     <view class="header2">选择送达时间</view>
     <view class="time-list">
       <view class="day">
-        <view wx:if="{{todayList.length > 0}}">今天</view>
-        <view wx:if="{{tomorrowList.length > 0}}">明天</view>
+        <view bindtap="toggleDay" data-type="today" wx:if="{{todayList.length > 0}}">今天</view>
+        <view bindtap="toggleDay" data-type="tomorrow" wx:if="{{tomorrowList.length > 0}}">明天</view>
       </view>
       <view class="list">
         <block wx:for="{{defaultDate}}" wx:key="{{item.id}}">
           <view bindtap="bookingDate" data-id="{{item.id}}">
-            <text>{{item.startTime}}-{{item.endTime}}</text>
+            <text data-id="{{item.id}}">{{item.startTime}}-{{item.endTime}}</text>
             <image wx:if="{{item.checked}}" class="checked" src="../../images/address_02.png" />
           </view>
         </block>

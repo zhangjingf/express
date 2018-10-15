@@ -6,7 +6,7 @@
   <view class="title">当前学校</view>
   <view class="school">
     <view>{{schoolName}}</view>
-    <view class="location">
+    <view class="location" bindtap="reLocation">
       <image src="../../images/location.png"/>
       重新定位
     </view>

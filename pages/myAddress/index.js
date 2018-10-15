@@ -6,17 +6,10 @@ Page({
     color: 'blue'
   },
   onLoad: function (options) {
-    var self = this;
-    address.getAddressList({}, function(res) {
-      if (res.errno == 0) {
-        if (res.data.length > 0) {
-          res.data[0].checked = true;
-        }
-        self.setData({
-          addressList: res.data
-        })
-      }
-    })
+    //this.getAddList();
+  },
+  onShow: function () {
+    this.getAddList();
   },
   check: function (e) {
     var id = e.currentTarget.dataset.id;
@@ -30,9 +23,23 @@ Page({
       addressList: data
     });
   },
-  goEdit: function () {
+  goEdit: function (e) {
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../editor/editor',
+      url: '../editor/editor?id=' + id,
+    })
+  },
+  getAddList: function () {
+    var self = this;
+    address.getAddressList({}, function(res) {
+      if (res.errno == 0) {
+        if (res.data.length > 0) {
+          res.data[0].checked = true;
+        }
+        self.setData({
+          addressList: res.data
+        })
+      }
     })
   }
 })

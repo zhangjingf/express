@@ -1,5 +1,5 @@
-// pages/chooseSchool/chooseSchool.js
-import sendRequest from "../../services/chooseSchool"
+import sendRequest from "../../services/chooseSchool";
+import main from "../../services/main";
 Page({
   data: {
     inputValue: '',
@@ -7,7 +7,7 @@ Page({
     nearSchool: [{id: 11, name: '湖南理工'}, {id:22, name: '湖南工理'}, {id: 33, name: '湖南'}]
   },
   onLoad: function (options) {
-    
+    console.log(options)
   },
   bindKeyInput: function (e) {
     var str = e.detail.value
@@ -22,5 +22,18 @@ Page({
   },
   remove: function (e) {
     console.log(e)
+  },
+  reLocation: function () {
+    wx.getLocation({
+      success: function (res) {
+        let param = {
+          lngLong: res.longitude,
+          latLong: res.latitude
+        }
+        main.wxBindPosition(param, function (res) {
+          console.log(res)
+        })
+      }
+    })
   }
 })

@@ -14,15 +14,70 @@ page {
 .editor>view {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding-right: 32rpx;
   font-size: 26rpx;
   line-height: 100rpx;
   color: rgba(78, 78, 78, 1);
   border-bottom: 1rpx solid rgba(220, 220, 220, 1);
 }
+.sex {
+  justify-content: flex-start !important;
+}
+.sex>view {
+  display: flex;
+  align-items: center;
+}
+.correct {
+  position: relative;
+  margin-right: 10rpx;
+  width:30rpx;
+  height:30rpx;
+  background:rgba(204,204,204,1);
+  border-radius:15rpx;
+}
+.correct image {
+  position: absolute;
+  left: 8rpx;
+  top: 10rpx;
+  width: 14rpx;
+  height: 10rpx;
+}
+.man {
+  margin-left: 162rpx;
+}
+.sex_active {
+  background:rgba(0,140,240,1) !important;
+}
+picker {
+  flex: 1;
+}
+.picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picker text {
+  position: relative;
+  top: -11rpx;
+  padding-right: 5rpx;
+  font-size: 26rpx;
+  line-height: 26rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(78, 78, 78, 1);
+}
+
+.arrow {
+  width: 20rpx;
+  height: 12rpx;
+  display: inline-block;
+}
 
 input {
   flex: 1;
-  padding-left: 20rpx;
 }
 
 .address {
@@ -70,4 +125,7 @@ i-icon {
   border-radius: 10rpx;
   color: red;
   background: #ffffff;
+}
+::placeholder {
+  color:rgba(78,78,78,1);
 }

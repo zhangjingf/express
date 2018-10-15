@@ -1,9 +1,9 @@
 const {ajax} = require('../utils/request').default;
 const {sendLink} = require('../host').default
-class Common {
-    getRegion(data, callback) {
+class Eidtor {
+    getAdrressDetail(data, callback) {
         ajax({
-            url: sendLink() + '/api/region/list',
+            url: sendLink() + '/api/address/detail',
             type: 'POST',
             data: data,
             success: function (ret) {
@@ -14,9 +14,9 @@ class Common {
             }
         })
     }
-    getCityList(data, callback) {
+    save(data, callback) {
         ajax({
-            url: sendLink() + 'api/region/cityList',
+            url: sendLink() + '/api/address/save',
             type: 'POST',
             data: data,
             success: function (ret) {
@@ -27,9 +27,9 @@ class Common {
             }
         })
     }
-    getSchoolList(data, callback) {
+    delete(data, callback) {
         ajax({
-            url: sendLink() + 'api/region/schoolList',
+            url: sendLink() + '/api/address/save',
             type: 'POST',
             data: data,
             success: function (ret) {
@@ -42,4 +42,4 @@ class Common {
     }
 }
 
-export default new Common
+export default new Eidtor

@@ -80,7 +80,7 @@
     </view>
   </block>
 </i-modal>
-<i-action-sheet visible="{{ visible2 }}" show-cancel="{{showCancel}}" mask-closable="{{ false }}">
+<i-action-sheet visible="{{ visible2 }}" bind:cancel="maskFlag2" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header">选择快递点</view>
     <view class="address-list">
@@ -93,13 +93,15 @@
     </view>
   </view>
 </i-action-sheet>
-<i-action-sheet visible="{{ visible3 }}" show-cancel="{{showCancel}}" mask-closable="{{ false }}">
+<i-action-sheet visible="{{ visible3 }}" bind:cancel="maskFlag3" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header2">选择送达时间</view>
     <view class="time-list">
       <view class="day">
-        <view bindtap="toggleDay" data-type="today" wx:if="{{todayList.length > 0}}">今天</view>
-        <view bindtap="toggleDay" data-type="tomorrow" wx:if="{{tomorrowList.length > 0}}">明天</view>
+        <view class="active" bindtap="toggleDay" data-type="today" wx:if="{{todayList.length > 0 && type == 'today'}}">今天</view>
+        <view bindtap="toggleDay" data-type="today" wx:if="{{todayList.length > 0 && type != 'today'}}">今天</view>
+        <view class="active" bindtap="toggleDay" data-type="tomorrow" wx:if="{{tomorrowList.length > 0 && type == 'tomorrow'}}">明天</view>
+        <view bindtap="toggleDay" data-type="tomorrow" wx:if="{{tomorrowList.length > 0 && type != 'tomorrow'}}">明天</view>
       </view>
       <view class="list">
         <block wx:for="{{defaultDate}}" wx:key="{{item.id}}">

@@ -7,7 +7,7 @@
     <view class="rihgt">
       <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png"/>
       <view class="line"></view>
-      <image bindtap="goEdit" class="edit" src="../../images/address_01.png"/>
+      <image data-id="{{item.id}}" bindtap="goEdit" class="edit" src="../../images/address_01.png"/>
     </view>
   </view>
 </view>

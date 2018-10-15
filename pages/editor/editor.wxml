@@ -1,27 +1,71 @@
 <view class="editor">
-  <view><text>姓名</text><input bindtap="name"></input></view>
-  <view><text>电话</text><input bindtap="phone"></input></view>
-  <view class="address">
+  <view>
+    <input bindtap="name" placeholder="姓名" value="{{content.receiverName}}"></input>
+  </view>
+  <view class="sex" wx:if="type== 'default'">
+    <block wx:if="context.sex == 'female'">
+      <view data-sex="female" bindtap="sexChoose">
+        <view class="correct sex_active">
+          <image src="../../images/cancel.png"></image>
+        </view>
+        <text>女生</text>
+      </view>
+      <view class="man" data-sex="male"  bindtap="sexChoose">
+          <view class="correct">
+            <image src="../../images/cancel.png"></image>
+          </view>
+        <text>男生</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view data-sex="male" bindtap="sexChoose">
+        <view class="correct">
+          <image src="../../images/cancel.png"></image>
+        </view>
+        <text>女生</text>
+      </view>
+      <view class="man" data-sex="male"  bindtap="sexChoose">
+          <view class="correct sex_active">
+            <image src="../../images/cancel.png"></image>
+          </view>
+        <text>男生</text>
+      </view>
+    </block>
+  </view>
+  <view>
+    <input bindtap="phone" placeholder="电话" value="{{content.receiverPhone}}"></input>
+  </view>
+  <view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        <input type="text" placeholder="选择省市区"></input>
+        <image class="arrow" src="../../images/arrow_down.png"></image>
+      </view>
+    </picker>
+  </view>
+  <view><input type="text" placeholder="详细地址" bindtap="detail" value="{{content.fullAddress}}"></input ></view>
+  <view wx:if="type == 'default'" class="address">
     <view>111111</view>
     <view>222222222</view>
   </view>
-  <view class="area" bindtap="chooseArea">
-    <view>所在区域</view>
-    <view>{{areaVal}}</view>
+  <view wx:if="type == 'default'" class="area" bindtap="chooseArea">
+    <input type="text" placeholder="所在区域" value="{{areaVal}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
-  <view><text>宿舍号、门牌号</text><input></input></view>
+  <view wx:if="type == 'default'"><input placeholder="宿舍号、门牌号"></input></view>
 </view>
-<view class="delete" bindtap="delete"><view>删除</view></view>
-<view class="save" bindtap="save"><view>保存</view></view>
+<view wx:if="type == 'default'" class="delete" bindtap="delete"><view>删除</view></view>
+<view class="save" bindtap="save">
+  <view>保存</view>
+</view>
 <i-modal title="标题" visible="{{ visible1 }}" bind:ok="handleClose1" bind:cancel="handleClose1">
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
-    <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
+  <view>一些文本</view>
 </i-modal>

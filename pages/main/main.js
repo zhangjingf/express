@@ -32,6 +32,18 @@ Page({
           latLong: res.latitude
         }
         main.wxBindPosition(param, function (res) {
+          if (res.errno == 0) {
+            self.setData({
+              topHeaderText: res.data.schoolName
+            })
+            wx.setStorage({
+              key: 'schoolId',
+              data: res.data.id,
+              success: function () {
+                console.warn('学校id存储成功')
+              }
+            })
+          }
           console.log(res)
         })
       }

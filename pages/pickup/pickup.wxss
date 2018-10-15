@@ -291,6 +291,7 @@
 
 .time-list {
   display: flex;
+  background:rgba(245,245,245,1);
 }
 
 .day {
@@ -305,6 +306,7 @@
 .list {
   padding: 0 29rpx;
   flex: 1;
+  background: #ffffff;
 }
 
 .list>view,
@@ -328,4 +330,7 @@
   width: 29rpx;
   height: 29rpx;
   border-radius: 50%;
+}
+.active {
+  background: #ffffff;
 }

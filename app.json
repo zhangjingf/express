@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/editor/editor",
     "pages/main/main",
+    "pages/editor/editor",
     "pages/logistics/logistics",
     "pages/login/index",
     "pages/order/index",

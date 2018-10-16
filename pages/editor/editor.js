@@ -5,10 +5,11 @@ Page({
   data: {
     visible1: false,
     areaVal: '',
-    content: {sex: 'male'},
+    content: {sex: 0},
     multiIndex: [0, 0, 0],
     multiArray: [],
-    type: 'default'
+    type: 'default',
+    test: false
   },
   onLoad: function (options) {
     const self = this;
@@ -107,6 +108,31 @@ Page({
     common.getSchoolList({cityId: val}, function (res) {
       if (res.errno == 0) {
         console.log(res)
+      }
+    })
+  },
+  sexChoose: function (e) {
+    var sex = e.target.dataset.sex || ''
+    var content = this.data.content
+    content.sex = sex == 'male' ? 0 : 1
+    this.setData({
+      content: content
+    })
+  },
+  delete: function () {
+    let id = this.data.content.id
+    editor.delete({id: id}, function (res) {
+      if (res.errno == 0) {
+        wx.showToast({
+          title: '删除成功'
+        })
+        wx.navigateBack({
+          delta: 1
+        })
+      } else {
+        wx.showToast({
+          title: res.errmsg
+        })
       }
     })
   }

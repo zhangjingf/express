@@ -2,40 +2,40 @@
   <view>
     <input bindtap="name" placeholder="姓名" value="{{content.receiverName}}"></input>
   </view>
-  <view class="sex" wx:if="type== 'default'">
-    <block wx:if="context.sex == 'female'">
+  <view class="sex" wx:if="{{type == 'default'}}">
+    <block wx:if="{{content.sex}}">
       <view data-sex="female" bindtap="sexChoose">
-        <view class="correct sex_active">
-          <image src="../../images/cancel.png"></image>
+        <view class="correct sex_active" data-sex="female">
+          <image data-sex="female" src="../../images/cancel.png"></image>
         </view>
-        <text>女生</text>
+        <text data-sex="female">女生</text>
       </view>
-      <view class="man" data-sex="male"  bindtap="sexChoose">
-          <view class="correct">
-            <image src="../../images/cancel.png"></image>
-          </view>
-        <text>男生</text>
+      <view class="man" bindtap="sexChoose" data-sex="male">
+        <view class="correct" data-sex="male">
+          <image data-sex="male" src="../../images/cancel.png"></image>
+        </view>
+        <text data-sex="male">男生</text>
       </view>
     </block>
     <block wx:else>
-      <view data-sex="male" bindtap="sexChoose">
-        <view class="correct">
-          <image src="../../images/cancel.png"></image>
+      <view bindtap="sexChoose" data-sex="female">
+        <view class="correct" data-sex="female">
+          <image data-sex="female" src="../../images/cancel.png"></image>
         </view>
-        <text>女生</text>
+        <text data-sex="female">女生</text>
       </view>
-      <view class="man" data-sex="male"  bindtap="sexChoose">
-          <view class="correct sex_active">
-            <image src="../../images/cancel.png"></image>
-          </view>
-        <text>男生</text>
+      <view class="man" bindtap="sexChoose" data-sex="male">
+        <view class="correct sex_active" data-sex="male">
+          <image data-sex="male" src="../../images/cancel.png"></image>
+        </view>
+        <text data-sex="male">男生</text>
       </view>
     </block>
   </view>
   <view>
     <input bindtap="phone" placeholder="电话" value="{{content.receiverPhone}}"></input>
   </view>
-  <view>
+  <view wx:if="{{type == 'receive'}}">
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
       <view class="picker">
         <input type="text" placeholder="选择省市区"></input>
@@ -43,7 +43,7 @@
       </view>
     </picker>
   </view>
-  <view><input type="text" placeholder="详细地址" bindtap="detail" value="{{content.fullAddress}}"></input ></view>
+  <view wx:if="{{type == 'receive'}}"><input type="text" placeholder="详细地址" bindtap="detail" value="{{content.fullAddress}}"></input ></view>
   <view wx:if="type == 'default'" class="address">
     <view>111111</view>
     <view>222222222</view>
@@ -52,20 +52,9 @@
     <input type="text" placeholder="所在区域" value="{{areaVal}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
-  <view wx:if="type == 'default'"><input placeholder="宿舍号、门牌号"></input></view>
+  <view wx:if="{{type == 'default'}}"><input placeholder="宿舍号、门牌号"></input></view>
 </view>
-<view wx:if="type == 'default'" class="delete" bindtap="delete"><view>删除</view></view>
+<view wx:if="{{type == 'default'}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">
   <view>保存</view>
 </view>
-<i-modal title="标题" visible="{{ visible1 }}" bind:ok="handleClose1" bind:cancel="handleClose1">
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-  <view>一些文本</view>
-</i-modal>

@@ -143,15 +143,23 @@ Page({
   bookingDate: function (e) {
     var id = e.target.dataset.id;
     var dateArr = this.data.defaultDate;
+    var choosedDate = '';
     for (let item of dateArr) {
       if (item.id == id) {
-        item.checked = true
+        item.checked = true;
+        choosedDate = item.startTime + '-' + item.endTime;
       } else {
-        item.checked = false
+        item.checked = false;
       }
     }
     this.setData({
+      checkedDate: this.data.type == 'today' ? ('今天' + choosedDate) : ('明天' + choosedDate)
+    })
+    this.setData({
       defaultDate: dateArr
+    })
+    this.setData({
+      visible3: false
     })
   },
   chooseDate: function () {

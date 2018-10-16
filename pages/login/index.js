@@ -5,12 +5,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
+    const self = this;
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: function (res) {
-              this.login(res);
+              self.login(res);
             }
           });
         }
@@ -18,9 +19,10 @@ Page({
     })
   },
   bindGetUserInfo: function (e) {
+    const self = this;
     var res = e.detail;
     if (res) {
-      this.login(res);
+      self.login(res);
     } else {
       wx.showModal({
         title: '警告',

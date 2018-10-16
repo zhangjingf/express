@@ -4,7 +4,7 @@ class Eidtor {
     getAdrressDetail(data, callback) {
         ajax({
             url: sendLink() + '/api/address/detail',
-            type: 'POST',
+            type: 'GET',
             data: data,
             success: function (ret) {
                 typeof callback == 'function' && callback.call(this, ret)
@@ -29,7 +29,7 @@ class Eidtor {
     }
     delete(data, callback) {
         ajax({
-            url: sendLink() + '/api/address/save',
+            url: sendLink() + '/api/address/delete',
             type: 'POST',
             data: data,
             success: function (ret) {

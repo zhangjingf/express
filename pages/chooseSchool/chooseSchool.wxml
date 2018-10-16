@@ -15,7 +15,7 @@
   <view class="title">附近学校</view>
   <view class="near-school">
     <view wx:for="{{nearSchool}}" wx:key="{{item.id}}">
-      {{item.name}}
+      {{item.	schoolName}}
     </view>
   </view>
   <view class="blank"></view>

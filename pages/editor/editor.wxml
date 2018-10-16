@@ -45,14 +45,14 @@
   </view>
   <view wx:if="{{type == 'receive'}}"><input type="text" placeholder="详细地址" bindtap="detail" value="{{content.fullAddress}}"></input ></view>
   <view wx:if="type == 'default'" class="address">
-    <view>111111</view>
-    <view>222222222</view>
+    <view>{{area}}</view>
+    <view>{{schoolName}}</view>
   </view>
   <view wx:if="type == 'default'" class="area" bindtap="chooseArea">
     <input type="text" placeholder="所在区域" value="{{areaVal}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
-  <view wx:if="{{type == 'default'}}"><input placeholder="宿舍号、门牌号"></input></view>
+  <view wx:if="{{type == 'default'}}"><input placeholder="宿舍号、门牌号" value="{{content.address}}"></input></view>
 </view>
 <view wx:if="{{type == 'default'}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">

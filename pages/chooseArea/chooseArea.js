@@ -1,34 +1,18 @@
 // pages/chooseArea/chooseArea.js
+import chooseArea from '../../services/chooseArea'
 Page({
   data: {
-    areaList: [{
-        id: 11,
-        name: 'USA',
-        value: '美国'
-      },
-      {
-        id: 22,
-        name: 'CHN',
-        value: '中国'
-      }
-    ],
+    areaList: [],
     position: 'right',
     color: '#008CF0',
     current: null
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '选择区域',
-    })
+    this.getHostelList()
   },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
+  search: function (e) {
+    var val = e.detail.value;
+    this.getHostelList(val);
   },
   handle: function (e) {
     var id = e.currentTarget.dataset.id;
@@ -43,10 +27,36 @@ Page({
         this.setData({
           current: data[index]
         })
+        wx.setStorage({
+          key: 'hostelName',
+          data: data[index].hostelName
+        })
+        wx.setStorage({
+          key: 'hostelId',
+          data: data[index].id
+        })
+        wx.navigateBack({
+          delta: 1
+        })
       }
     }
     this.setData({
       areaList: data
     });
+  },
+  getHostelList: function (val) {
+    let hostelName = val || '';
+    const self = this;
+    let id = wx.getStorageSync('schoolId');
+    chooseArea.getHostel({
+          schoolId: id,
+          hostelName: hostelName
+        }, function (res) {
+      if (res.errno == 0) {
+        self.setData({
+          areaList: res.data
+        })
+      }
+    })
   }
 })

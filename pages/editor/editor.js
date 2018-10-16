@@ -9,11 +9,17 @@ Page({
     multiIndex: [0, 0, 0],
     multiArray: [],
     type: 'default',
-    test: false
+    test: false,
+    schoolName: '',
+    area: ''
   },
   onLoad: function (options) {
     const self = this;
     console.log(options);
+    self.setData({
+      schoolName: wx.getStorageSync('schoolName'),
+      area: wx.getStorageSync('proviceName') + wx.getStorageSync('cityName')
+    })
     if (options.type === 'receive') {
       wx.setNavigationBarTitle({
         title: '编辑收件人',
@@ -50,7 +56,14 @@ Page({
     })
   },
   onReady: function () {},
-  onShow: function () {},
+  onShow: function () {
+    var hostelName = wx.getStorageSync('hostelName') || '';
+    var hostelId = wx.getStorageSync('hostelId') || '';
+    this.setData({
+      areaVal: hostelName,
+      hostelId: hostelId
+    })
+  },
   handleClose1: function () {
     this.setData({
       visible1: false

@@ -3,20 +3,25 @@ import main from "../../services/main";
 Page({
   data: {
     inputValue: '',
-    schoolName: '湖南理工学院',
-    nearSchool: [{id: 11, name: '湖南理工'}, {id:22, name: '湖南工理'}, {id: 33, name: '湖南'}]
+    schoolName: '',
+    nearSchool: []
   },
   onLoad: function (options) {
-    console.log(options)
+    this.setData({
+      schoolName: wx.getStorageSync('schoolName')
+    })
   },
   bindKeyInput: function (e) {
+    const self = this;
     var str = e.detail.value
     this.setData({
       inputValue: str
     })
     sendRequest.getSchool({schoolName: str}, function (res) {
       if (res.errno == 0) {
-        console.log(res)
+        self.setData({
+          nearSchool: res.data
+        })
       }
     })
   },
@@ -24,6 +29,7 @@ Page({
     console.log(e)
   },
   reLocation: function () {
+    const self = this;
     wx.getLocation({
       success: function (res) {
         let param = {
@@ -31,7 +37,15 @@ Page({
           latLong: res.latitude
         }
         main.wxBindPosition(param, function (res) {
-          console.log(res)
+          if (res.errno == 0) {
+            self.setData({
+              schoolName: res.data.schoolName
+            })
+            wx.setStorage({
+              key: 'schoolId',
+              data: res.data.id
+            })
+          }
         })
       }
     })

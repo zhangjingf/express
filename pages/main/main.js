@@ -43,6 +43,27 @@ Page({
                 console.warn('学校id存储成功')
               }
             })
+            wx.setStorage({
+              key: 'schoolName',
+              data: res.data.schoolName,
+              success: function() {
+                console.warn('学校存储成功')
+              }
+            })
+            wx.setStorage({
+              key: 'proviceName',
+              data: res.data.proviceName,
+              success: function () {
+                console.warn('省份存储成功')
+              }
+            })
+            wx.setStorage({
+              key: 'cityName',
+              data: res.data.cityName,
+              success: function() {
+                console.warn('城市存储成功')
+              }
+            })
           }
           console.log(res)
         })

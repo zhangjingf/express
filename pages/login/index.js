@@ -69,7 +69,7 @@ Page({
             key: 'userId',
             data: res.data.userId
           })
-          wx.redirectTo({
+          wx.reLaunch({
             url: '../main/main',
           })
         }

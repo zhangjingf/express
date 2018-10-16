@@ -1,13 +1,13 @@
 <view class="choose-area">
   <view>
     <image class="search" src="../../images/serach.png"/>
-    <input placeholder='输入区域名称'></input>
+    <input placeholder='输入区域名称' bindinput="search"></input>
   </view>
 </view>
-<view class="tips">未有区域，暂不服务，造成不便，敬请谅解</view>
-<view class="area" wx:for="{{areaList}}" wx:key="{{item.name}}" data-id="{{item.id}}" bindtap="handle">
+<view class="tips" wx:if="{{areaList.length == 0}}">未有区域，暂不服务，造成不便，敬请谅解</view>
+<view class="area" wx:for="{{areaList}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="handle">
   <view>
-    <view>{{item.name}}</view>
+    <view>{{item.hostelName}}</view>
     <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png"/>
   </view>
 </view>

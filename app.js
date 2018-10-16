@@ -64,7 +64,7 @@ App({
             }
           })
         } else {
-          wx.redirectTo({
+          wx.reLaunch({
             url: '../login/index',
           })
         }

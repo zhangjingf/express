@@ -1,9 +1,9 @@
 <view class="editor">
   <view>
-    <input bindtap="name" placeholder="姓名" value="{{content.receiverName}}"></input>
+    <input bindinput="name" placeholder="姓名" value="{{content.receiverName}}"></input>
   </view>
   <view class="sex" wx:if="{{type == 'default'}}">
-    <block wx:if="{{content.sex}}">
+    <block wx:if="{{content.gender == 0}}">
       <view data-sex="female" bindtap="sexChoose">
         <view class="correct sex_active" data-sex="female">
           <image data-sex="female" src="../../images/cancel.png"></image>
@@ -33,22 +33,24 @@
     </block>
   </view>
   <view>
-    <input bindtap="phone" placeholder="电话" value="{{content.receiverPhone}}"></input>
+    <input bindinput="phone" placeholder="电话" value="{{content.receiverPhone}}"></input>
   </view>
   <view wx:if="{{type == 'receive'}}">
-    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
       <view class="picker">
-        <input type="text" placeholder="选择省市区"></input>
+        <input type="text" placeholder="选择省市区" value="{{pickerAddress}}"></input>
         <image class="arrow" src="../../images/arrow_down.png"></image>
       </view>
     </picker>
   </view>
-  <view wx:if="{{type == 'receive'}}"><input type="text" placeholder="详细地址" bindtap="detail" value="{{content.fullAddress}}"></input ></view>
-  <view wx:if="type == 'default'" class="address">
+  <view wx:if="{{type == 'receive'}}">
+    <input type="text" placeholder="详细地址" bindinput="detail" value="{{content.fullAddress}}"></input >
+  </view>
+  <view wx:if="{{type == 'default'}}" class="address">
     <view>{{area}}</view>
     <view>{{schoolName}}</view>
   </view>
-  <view wx:if="type == 'default'" class="area" bindtap="chooseArea">
+  <view wx:if="{{type == 'default'}}" class="area" bindtap="chooseArea">
     <input type="text" placeholder="所在区域" value="{{areaVal}}"></input>
     <i-icon type="enter" size="20"/>
   </view>

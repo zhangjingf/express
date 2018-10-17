@@ -1,5 +1,6 @@
 // pages/pickup/pickup.js
-import pickup from "../../services/pickup"
+import pickup from "../../services/pickup";
+import address from "../../services/myAddress";
 Page({
   data: {
     orderNum: [1],
@@ -19,7 +20,8 @@ Page({
     defaultDate: null,
     checkedDate: '',
     type: '',
-    maskVisible: true
+    maskVisible: true,
+    addressInfo: ''
   },
   onLoad: function (options) {
     var self = this
@@ -76,9 +78,31 @@ Page({
       }
     })
   },
-  onReady: function () {},
+  onShow: function () {
+    const self = this;
+    address.getAddressList({}, function(res) {
+      if (res.errno == 0) {
+        if(res.data.length > 0) {
+          for (let index in res.data) {
+            if (res.data[index].isDefault == 1) {
+              self.setData({
+                addressInfo: res.data
+              })
+            }
+          }
+        }
+      }
+    })
+  },
   goAddress: function () {
-
+    wx.navigateTo({
+      url: '../myAddress/index',
+    })
+  },
+  receiveInfo: function () {
+    wx.navigateTo({
+      url: '../editor/editor?type=receive',
+    })
   },
   add: function () {
     let orderNumArr = this.data.orderNum;

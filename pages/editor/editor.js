@@ -5,17 +5,19 @@ Page({
   data: {
     visible1: false,
     areaVal: '',
-    content: {sex: 0},
+    content: null,
     multiIndex: [0, 0, 0],
     multiArray: [],
     type: 'default',
     test: false,
     schoolName: '',
-    area: ''
+    area: '',
+    pickerAddress: '',
+    name: '',
+    phone: '',
   },
   onLoad: function (options) {
     const self = this;
-    console.log(options);
     self.setData({
       schoolName: wx.getStorageSync('schoolName'),
       area: wx.getStorageSync('proviceName') + wx.getStorageSync('cityName')
@@ -34,6 +36,13 @@ Page({
       self.setData({
         type: 'send'
       })
+    } else if (options.type === 'new') {
+      wx.setNavigationBarTitle({
+        title: '编辑地址薄'
+      })
+      self.setData({
+        type: 'new'
+      })
     }
     if (options.id) {
       editor.getAdrressDetail({
@@ -48,14 +57,13 @@ Page({
     }
     common.getRegion({}, function (res) {
       if (res.errno == 0) {
-        console.log(res)
         self.setData({
           multiArray: [res.data]
         })
+        self.getCity(res.data[0].id)
       }
     })
   },
-  onReady: function () {},
   onShow: function () {
     var hostelName = wx.getStorageSync('hostelName') || '';
     var hostelId = wx.getStorageSync('hostelId') || '';
@@ -70,7 +78,21 @@ Page({
     });
   },
   save: function () {
-    editor.save(this.data.content, function (res) {
+    const base = this.data;
+    if(base.type == 'receive') {
+      let param = {
+        receiverName: base.name,
+        receiverPhone: base.phone,
+        cityId: base.multiArray[1][base.multiIndex[1]].id,
+        schoolId: base.multiArray[2][base.multiArray[2]].id,
+      }
+    }
+    Object.keys(param).forEach(function(index) {
+      // if (!param[index]) {
+
+      // }
+    })
+    editor.save(param, function (res) {
       if (res.errno == 0) {
         wx.showToast({
           title: '修改成功'
@@ -105,29 +127,54 @@ Page({
     console.log('address')
   },
   bindMultiPickerChange: function (e) {
-    console.log(e)
+    let multiArray = this.data.multiArray;
+    let indexArr = e.detail.value;
+    let address = multiArray[0][indexArr[0]].name + multiArray[1][indexArr[1]].name + multiArray[2][indexArr[2]].name;
+    this.setData({
+      pickerAddress: address,
+      multiIndex: indexArr
+    });
   },
   bindMultiPickerColumnChange: function (e) {
-    console.log(e)
+    let multiArray = this.data.multiArray;
+    var index = e.detail.column;
+    var arrIndex = e.detail.value;
+    if (index == 0) {
+      this.getCity(multiArray[index][arrIndex].id);
+    }
+    if (index == 1) {
+      this.getSchool(multiArray[index][arrIndex].id);
+    }
   },
   getCity: function (val) {
+    const self = this;
+    let multiArray = this.data.multiArray;
     common.getCityList({provinceId: val}, function (res) {
       if (res.errno == 0) {
-        console.log(res)
+        multiArray[1] = res.data;
+        self.setData({
+          multiArray: multiArray
+        })
+        self.getSchool(res.data[0].id)
       }
     })
   },
   getSchool: function (val) {
+    const self = this;
+    let multiArray = this.data.multiArray;
     common.getSchoolList({cityId: val}, function (res) {
       if (res.errno == 0) {
-        console.log(res)
+        multiArray[2] = res.data;
+        self.setData({
+          multiArray: multiArray
+        })
       }
     })
   },
   sexChoose: function (e) {
     var sex = e.target.dataset.sex || ''
     var content = this.data.content
-    content.sex = sex == 'male' ? 0 : 1
+    content.gender = sex == 'male' ? 0 : 1
     this.setData({
       content: content
     })

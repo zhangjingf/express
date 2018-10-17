@@ -26,7 +26,7 @@ Page({
   goEdit: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../editor/editor?id=' + id,
+      url: '../editor/editor?id=' + id + '&type=new',
     })
   },
   getAddList: function () {

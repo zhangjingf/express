@@ -2,8 +2,13 @@
   <view class="person-info">
     <view class="left">收</view>
     <view class="middle">
-      <view>单类 15220231231</view>
-      <view>湖北省黄石市返回否则大范围</view>
+      <block wx:if="{{addressInfo}}">
+        <view>{{addressInfo.receiverName}} {{addressInfo.receiverphone}}</view>
+        <view>{{addressInfo.fullAddress}}</view>
+      </block>
+      <block wx:else>
+        <view bindtap="receiveInfo">请编辑收件人信息</view>
+      </block>
     </view>
     <view class="right" bindtap='goAddress'>地址簿</view>
   </view>

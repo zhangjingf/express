@@ -3,7 +3,7 @@ const {sendLink} = require('../host').default
 class Common {
     getRegion(data, callback) {
         ajax({
-            url: sendLink() + '/api/region/list',
+            url: sendLink() + '/api/region/provinceList',
             type: 'POST',
             data: data,
             success: function (ret) {
@@ -16,8 +16,8 @@ class Common {
     }
     getCityList(data, callback) {
         ajax({
-            url: sendLink() + 'api/region/cityList',
-            type: 'POST',
+            url: sendLink() + '/api/region/cityList',
+            type: 'GET',
             data: data,
             success: function (ret) {
                 typeof callback == 'function' && callback.call(this, ret)
@@ -29,7 +29,7 @@ class Common {
     }
     getSchoolList(data, callback) {
         ajax({
-            url: sendLink() + 'api/region/schoolList',
+            url: sendLink() + '/api/region/schoolList',
             type: 'POST',
             data: data,
             success: function (ret) {

@@ -181,6 +181,7 @@ Page({
   },
   delete: function () {
     let id = this.data.content.id
+    console.log(id)
     editor.delete({id: id}, function (res) {
       if (res.errno == 0) {
         wx.showToast({

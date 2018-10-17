@@ -11,4 +11,4 @@
     </view>
   </view>
 </view>
-<view class="add" bindtap="goEdit"><view>新建地址</view></view>
+<view class="add" bindtap="goEditNew"><view>新建地址</view></view>

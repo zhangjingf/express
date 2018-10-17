@@ -30,7 +30,7 @@ class Eidtor {
     delete(data, callback) {
         ajax({
             url: sendLink() + '/api/address/delete',
-            type: 'POST',
+            type: 'GET',
             data: data,
             success: function (ret) {
                 typeof callback == 'function' && callback.call(this, ret)

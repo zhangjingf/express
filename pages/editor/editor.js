@@ -5,7 +5,6 @@ Page({
   data: {
     visible1: false,
     areaVal: '',
-    content: null,
     multiIndex: [0, 0, 0],
     multiArray: [],
     type: 'default',
@@ -15,6 +14,7 @@ Page({
     pickerAddress: '',
     name: '',
     phone: '',
+    gender: 1
   },
   onLoad: function (options) {
     const self = this;
@@ -79,20 +79,29 @@ Page({
   },
   save: function () {
     const base = this.data;
+    let param = null;
     if(base.type == 'receive') {
-      let param = {
+      param = {
         receiverName: base.name,
         receiverPhone: base.phone,
         cityId: base.multiArray[1][base.multiIndex[1]].id,
-        schoolId: base.multiArray[2][base.multiArray[2]].id,
+        schoolId: base.multiArray[2][base.multiIndex[2]].id,
+        hostelId: base.hostelId,
+        address: base.address,
+        fullAddress: base.pickerAddress + base.hostelName + base.address,
+        isDefault: 1,
+        gender: base.gender
       }
+      Object.keys(param).forEach(function(index) {
+        if (!param[index] && index != 'gender') {
+          wx.showToast({
+            title: '请填写全部表单项'
+          });
+          return;
+        }
+      })
     }
-    Object.keys(param).forEach(function(index) {
-      // if (!param[index]) {
-
-      // }
-    })
-    editor.save(param, function (res) {
+    editor.save({param}, function (res) {
       if (res.errno == 0) {
         wx.showToast({
           title: '修改成功'
@@ -113,7 +122,7 @@ Page({
       phone: e.detail.value
     })
   },
-  detail: function (e) {
+  address: function (e) {
     this.setData({
       address: e.detail.value
     })
@@ -122,9 +131,6 @@ Page({
     wx.navigateTo({
       url: '../chooseArea/chooseArea',
     })
-  },
-  address: function () {
-    console.log('address')
   },
   bindMultiPickerChange: function (e) {
     let multiArray = this.data.multiArray;
@@ -172,16 +178,13 @@ Page({
     })
   },
   sexChoose: function (e) {
-    var sex = e.target.dataset.sex || ''
-    var content = this.data.content
-    content.gender = sex == 'male' ? 0 : 1
+    var sex = e.target.dataset.sex || '';
     this.setData({
-      content: content
+      gender: sex == 'male' ? 0 : 1
     })
   },
   delete: function () {
-    let id = this.data.content.id
-    console.log(id)
+    let id = this.data.content.id;
     editor.delete({id: id}, function (res) {
       if (res.errno == 0) {
         wx.showToast({

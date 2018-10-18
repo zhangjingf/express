@@ -11,8 +11,8 @@ Page({
     this.getHostelList()
   },
   search: function (e) {
-    var val = e.detail.value;
-    this.getHostelList(val);
+    //var val = e.detail.value;
+    //this.getHostelList(val);
   },
   handle: function (e) {
     var id = e.currentTarget.dataset.id;

@@ -17,7 +17,7 @@ class Eidtor {
     save(data, callback) {
         ajax({
             url: sendLink() + '/api/address/save',
-            type: 'POST',
+            type: 'GET',
             data: data,
             success: function (ret) {
                 typeof callback == 'function' && callback.call(this, ret)

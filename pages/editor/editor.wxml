@@ -1,9 +1,9 @@
 <view class="editor">
   <view>
-    <input bindinput="name" placeholder="姓名" value="{{content.receiverName}}"></input>
+    <input bindinput="name" placeholder="姓名" value="{{receiverName}}"></input>
   </view>
-  <view class="sex" wx:if="{{type == 'default'}}">
-    <block wx:if="{{content.gender == 0}}">
+  <view class="sex">
+    <block wx:if="{{gender == 1}}">
       <view data-sex="female" bindtap="sexChoose">
         <view class="correct sex_active" data-sex="female">
           <image data-sex="female" src="../../images/cancel.png"></image>
@@ -33,7 +33,7 @@
     </block>
   </view>
   <view>
-    <input bindinput="phone" placeholder="电话" value="{{content.receiverPhone}}"></input>
+    <input bindinput="phone" placeholder="电话" value="{{receiverPhone}}"></input>
   </view>
   <view wx:if="{{type == 'receive'}}">
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
@@ -43,18 +43,18 @@
       </view>
     </picker>
   </view>
-  <view wx:if="{{type == 'receive'}}">
+  <!-- <view wx:if="{{type == 'receive'}}">
     <input type="text" placeholder="详细地址" bindinput="detail" value="{{content.fullAddress}}"></input >
-  </view>
-  <view wx:if="{{type == 'default'}}" class="address">
+  </view> -->
+  <!-- <view wx:if="{{type == 'default'}}" class="address">
     <view>{{area}}</view>
     <view>{{schoolName}}</view>
-  </view>
-  <view wx:if="{{type == 'default'}}" class="area" bindtap="chooseArea">
+  </view> -->
+  <view class="area" bindtap="chooseArea">
     <input type="text" placeholder="所在区域" value="{{areaVal}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
-  <view wx:if="{{type == 'default'}}"><input placeholder="宿舍号、门牌号" value="{{content.address}}"></input></view>
+  <view><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>
 </view>
 <view wx:if="{{type == 'default'}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">

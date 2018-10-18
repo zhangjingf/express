@@ -3,10 +3,18 @@ import address from "../../services/myAddress";
 Page({
   data: {
     addressList: null,
-    color: 'blue'
+    color: 'blue',
+    type: ''
   },
   onLoad: function (options) {
-    //this.getAddList();
+    if (options.type == 'receive') {
+      wx.setNavigationBarTitle({
+        title: '收件人列表',
+      })
+      this.setData({
+        type: options.type
+      })
+    }
   },
   onShow: function () {
     this.getAddList();
@@ -31,7 +39,7 @@ Page({
   },
   goEditNew: function () {
     wx.navigateTo({
-      url: '../editor/editor?type=new',
+      url: '../editor/editor?type=' + this.data.type,
     })
   },
   getAddList: function () {

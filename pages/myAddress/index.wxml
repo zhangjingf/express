@@ -11,4 +11,9 @@
     </view>
   </view>
 </view>
-<view class="add" bindtap="goEditNew"><view>新建地址</view></view>
+<block wx:if="{{type == 'receive'}}">
+  <view class="add" bindtap="goEditNew"><view>新建收件人</view></view>
+</block>
+<block wx:else>
+  <view class="add" bindtap="goEditNew"><view>新建地址</view></view>
+</block>

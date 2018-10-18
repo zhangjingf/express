@@ -96,12 +96,7 @@ Page({
   },
   goAddress: function () {
     wx.navigateTo({
-      url: '../myAddress/index',
-    })
-  },
-  receiveInfo: function () {
-    wx.navigateTo({
-      url: '../editor/editor?type=receive',
+      url: '../myAddress/index?type=receive',
     })
   },
   add: function () {

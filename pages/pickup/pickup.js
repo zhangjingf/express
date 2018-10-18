@@ -86,7 +86,7 @@ Page({
           for (let index in res.data) {
             if (res.data[index].isDefault == 1) {
               self.setData({
-                addressInfo: res.data
+                addressInfo: res.data[index]
               })
             }
           }

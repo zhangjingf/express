@@ -35,7 +35,7 @@
   <view>
     <input bindinput="phone" placeholder="电话" value="{{receiverPhone}}"></input>
   </view>
-  <view wx:if="{{type == 'receive'}}">
+  <view>
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
       <view class="picker">
         <input type="text" placeholder="选择省市区" value="{{pickerAddress}}"></input>
@@ -51,12 +51,12 @@
     <view>{{schoolName}}</view>
   </view> -->
   <view class="area" bindtap="chooseArea">
-    <input type="text" placeholder="所在区域" value="{{areaVal}}"></input>
+    <input type="text" placeholder="所在区域" value="{{hostelName}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
   <view><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>
 </view>
-<view wx:if="{{type == 'default'}}" class="delete" bindtap="delete"><view>删除</view></view>
+<view wx:if="{{id}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">
   <view>保存</view>
 </view>

@@ -50,7 +50,7 @@ page {
 }
 
 .add {
-  position: absolute;
+  position: fixed;
   width: 750rpx;
   bottom: 0;
   height: 140rpx;

@@ -3,18 +3,23 @@ import common from "../../services/common";
 import editor from "../../services/editor";
 Page({
   data: {
-    visible1: false,
     areaVal: '',
     multiIndex: [0, 0, 0],
     multiArray: [],
     type: 'default',
-    test: false,
     schoolName: '',
     area: '',
     pickerAddress: '',
-    name: '',
-    phone: '',
-    gender: 1
+    receiverName: '',
+    receiverPhone: '',
+    gender: 1,
+    id: '',
+    cityId: '',
+    hostelId: '',
+    schoolId: '',
+    fullAddress: '',
+    hostelName: '',
+    isDefault: 1,
   },
   onLoad: function (options) {
     const self = this;
@@ -50,7 +55,16 @@ Page({
       }, function (res) {
         if (res.errno == 0 && res.data) {
           self.setData({
-            content: res.data
+            cityId: res.data.cityId,
+            schoolId: res.data.schoolId,
+            hostelId: res.data.hostelId,
+            receiverName: res.data.receiverName,
+            receiverPhone: res.data.receiverPhone,
+            gender: res.data.gender,
+            address: res.data.address,
+            pickerAddress: res.data.fullAddress.replace(res.data.address, '').replace(res.data.hostelName, ''),
+            hostelName: res.data.hostelName,
+            isDefault: res.data.isDefault
           })
         }
       })
@@ -68,58 +82,56 @@ Page({
     var hostelName = wx.getStorageSync('hostelName') || '';
     var hostelId = wx.getStorageSync('hostelId') || '';
     this.setData({
-      areaVal: hostelName,
+      hostelName: hostelName,
       hostelId: hostelId
     })
   },
-  handleClose1: function () {
-    this.setData({
-      visible1: false
-    });
-  },
   save: function () {
     const base = this.data;
-    let param = null;
-    if(base.type == 'receive') {
-      param = {
-        receiverName: base.name,
-        receiverPhone: base.phone,
-        cityId: base.multiArray[1][base.multiIndex[1]].id,
-        schoolId: base.multiArray[2][base.multiIndex[2]].id,
-        hostelId: base.hostelId,
-        address: base.address,
-        fullAddress: base.pickerAddress + base.hostelName + base.address,
-        isDefault: 1,
-        gender: base.gender
-      }
-      Object.keys(param).forEach(function(index) {
-        if (!param[index] && index != 'gender') {
-          wx.showToast({
-            title: '请填写全部表单项'
-          });
-          return;
-        }
-      })
+    let arrFlag = [];
+    let param = {
+      receiverName: base.receiverName,
+      receiverPhone: base.receiverPhone,
+      cityId: base.cityId,
+      schoolId: base.schoolId,
+      hostelId: base.hostelId,
+      address: base.address,
+      fullAddress: base.pickerAddress + base.hostelName + base.address,
+      isDefault: base.isDefault,
+      gender: base.gender
     }
-    editor.save({param}, function (res) {
+    Object.keys(param).forEach(function(index) {
+      if (index != 'gender' || index != 'isDefault') {
+        arrFlag.push(Boolean(param[index]));
+      }
+    })
+    if (arrFlag.indexOf(false)>=0) {
+       wx.showToast({
+         title: '请填写全部表单项'
+       });
+       return;
+    }
+    editor.save(param, function (res) {
       if (res.errno == 0) {
         wx.showToast({
-          title: '修改成功'
-        })
-        wx.navigateBack({
-          delta: 1
+          title: '修改成功',
+          success: function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
         })
       }
     })
   },
   name: function (e) {
     this.setData({
-      name: e.detail.value
+      receiverName: e.detail.value
     })
   },
   phone: function (e) {
     this.setData({
-      phone: e.detail.value
+      receiverPhone: e.detail.value
     })
   },
   address: function (e) {
@@ -138,7 +150,9 @@ Page({
     let address = multiArray[0][indexArr[0]].name + multiArray[1][indexArr[1]].name + multiArray[2][indexArr[2]].name;
     this.setData({
       pickerAddress: address,
-      multiIndex: indexArr
+      multiIndex: indexArr,
+      cityId: multiArray[1][indexArr[1]].id,
+      schoolId: multiArray[2][indexArr[2]].id
     });
   },
   bindMultiPickerColumnChange: function (e) {

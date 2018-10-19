@@ -64,7 +64,8 @@ Page({
             address: res.data.address,
             pickerAddress: res.data.fullAddress.replace(res.data.address, '').replace(res.data.hostelName, ''),
             hostelName: res.data.hostelName,
-            isDefault: res.data.isDefault
+            isDefault: res.data.isDefault,
+            id: res.data.id
           })
         }
       })
@@ -198,7 +199,7 @@ Page({
     })
   },
   delete: function () {
-    let id = this.data.content.id;
+    let id = this.data.id;
     editor.delete({id: id}, function (res) {
       if (res.errno == 0) {
         wx.showToast({

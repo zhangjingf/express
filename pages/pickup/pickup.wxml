@@ -13,20 +13,20 @@
     <view class="right" bindtap='goAddress'>地址簿</view>
   </view>
   <view class="write">请填写相关快递信息</view>
-  <view class="express-info" wx:for="{{orderNum}}" wx:key="{{item.index}}">
+  <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}">
     <view>
       <view class="label">取货码</view>
       <input placeholder='可粘贴短信至此'></input>
     </view>
-    <view bindtap="checkExpress">
-      <view class="label">快递点</view>
-      <view>{{checkedExpressName}}</view>
+    <view bindtap="checkExpress" data-index="{{item.index}}">
+      <view class="label" data-index="{{item.index}}">快递点</view>
+      <view data-index="{{item.index}}">{{item.expressName}}</view>
     </view>
     <view class="special">
       <view class="label">包裹规格</view>
-      <view class="range" bindtap="chooseRange">
-        <block wx:for="{{pkgList}}" wx:key="{{item.id}}">
-          <text data-id="{{item.id}}" class="{{item.checked}}">{{item.pkgName}}</text>
+      <view class="range" bindtap="chooseRange" data-index="{{item.index}}">
+        <block wx:for="{{pkgList[item.index-1]}}"  wx:for-item="itemtwo" wx:key="{{itemtwo.id}}" >
+          <text data-index="{{item.index}}" data-id="{{itemtwo.id}}" class="{{itemtwo.checked}}">{{itemtwo.pkgName}}</text>
         </block>
       </view>
       <view class="help" bindtap="handleVisible">?</view>
@@ -37,19 +37,14 @@
     </view>
     <view class="coupon">
       <view class="label">优惠</view>
-      <view>
-        无
-        <i-icon type="enter" size="20" />
-      </view>
+      <view>无<i-icon type="enter" size="20" /></view>
     </view>
-    <view class="price">当前为{{item}}件，价格为2元</view>
-    <view class="delete" wx:if="{{item > 1}}">
-      <view>删除</view>
+    <view class="price">当前为{{item.index}}件，价格为{{item.price}}元</view>
+    <view class="delete" bindtap="delete" data-index="{{item.index}}" wx:if="{{item.index > 1}}">
+      <view data-index="{{item.index}}">删除</view>
     </view>
   </view>
-  <view class="add" bindtap='add'>
-    <view>添加快递</view>
-  </view>
+  <view class="add" bindtap='add'><view>添加快递</view></view>
   <view class="time" bindtap="chooseDate">
     <view>期望到达时间</view>
     <view class="date">
@@ -61,18 +56,12 @@
     <view class="cancel" bindtap="cancel">
       <image wx:if="{{cancel}}" src="../../images/cancel.png" />
     </view>
-    我已阅读并同意
-    <view class="date">《取件协议》</view>
+    我已阅读并同意<view class="date">《取件协议》</view>
   </view>
   <view class="money">
-    共{{orderNum.length}}件包裹，合计
-    <view>¥5</view>
-    ,
-    <view class="discount">共优惠¥2元</view>
+    共{{orderInfo.length}}件包裹，合计<view>¥{{totalPrice}}</view>，<view class="discount">共优惠¥元</view>
   </view>
-  <view class="confrim">
-    <view>确认支付</view>
-  </view>
+  <view class="confrim"><view>确认支付</view></view>
 </view>
 <i-modal title="包裹规格说明" visible="{{ visible }}" bind:ok="handleVisible" show-cancel="{{showCancel}}">
   <block wx:for="{{pkgList}}" wx:key="{{item.id}}">

@@ -3,7 +3,7 @@ import pickup from "../../services/pickup";
 import address from "../../services/myAddress";
 Page({
   data: {
-    orderNum: [1],
+    orderInfo: [{index: 1 }],
     agree: true,
     cancel: true,
     visible: false,
@@ -11,17 +11,17 @@ Page({
     visible2: false,
     visible3: false,
     expressList: null,
-    checkedExpressName: '',
-    checkedExpressId: null,
+    expressIndex: null,
     pkgList: null,
-    checkedPkgId: null,
     todayList: null,
     tomorrowList: null,
     defaultDate: null,
     checkedDate: '',
     type: '',
     maskVisible: true,
-    addressInfo: ''
+    addressInfo: '',
+    basePkgList: '',
+    totalPrice: 0
   },
   onLoad: function (options) {
     var self = this
@@ -43,7 +43,8 @@ Page({
     }, function (res) {
       if (res.errno == 0) {
         self.setData({
-          pkgList: res.data
+          pkgList: [res.data],
+          basePkgList: JSON.parse(JSON.stringify(res.data))
         })
       }
     })
@@ -100,23 +101,45 @@ Page({
     })
   },
   add: function () {
-    let orderNumArr = this.data.orderNum;
-    orderNumArr.push(orderNumArr[orderNumArr.length -1] +1);
+    const baseData = this.data.basePkgList;
+    let orderNumArr = this.data.orderInfo;
+    let pkgArr = this.data.pkgList;
+    pkgArr.push(this.data.basePkgList);
+    orderNumArr.push({index: (orderNumArr.length+1)});
     this.setData({
-      orderNum: orderNumArr
+      orderInfo: orderNumArr,
+      pkgList: pkgArr,
+      basePkgList: JSON.parse(JSON.stringify(baseData))
+    })
+  },
+  delete: function (e) {
+    let index = e.target.dataset.index;
+    let orderArr = this.data.orderInfo;
+    for (let i in orderArr) {
+      if (orderArr[i].index == index) {
+        orderArr.splice(i, 1);
+      }
+    }
+    this.setData({
+      orderInfo: orderArr
     })
   },
   chooseRange: function (e) {
     let id = e.target.dataset.id;
+    let index = e.target.dataset.index;
     let pkgArr = this.data.pkgList;
-    for (let item of pkgArr) {
+    let orderArr = this.data.orderInfo;
+    let pkgArrDeal = pkgArr[index -1];
+    for (let item of pkgArrDeal) {
       if (item.id == id) {
-        item.checked = 'checked'
+        item.checked = 'checked';
+        orderArr[index-1].pkgId = id;
         this.setData({
-          checkedPkgId: id
+          orderInfo: orderArr
         })
+        this.checkFullfill(orderArr[index-1]);
       } else {
-        item.checked = ''
+        item.checked = '';
       }
     }
     this.setData({
@@ -134,17 +157,21 @@ Page({
     })
   },
   chooseExpress: function (e) {
-    var id = e.target.dataset.id
-    var expressArr = this.data.expressList
+    let id = e.target.dataset.id;
+    let expressArr = this.data.expressList;
+    let index = this.data.expressIndex;
+    let orderArr = this.data.orderInfo;
     for (let item of expressArr) {
       if (item.id == id) {
-        item.checked = true
+        item.checked = true;
+        orderArr[index-1].expressName = item.expressName;
+        orderArr[index-1].expressId = id;
         this.setData({
-          checkedExpressName: item.expressName,
-          checkedExpressId: id
+          orderInfo: orderArr
         })
+        this.checkFullfill(orderArr[index-1]);
       } else {
-        item.checked = false
+        item.checked = false;
       }
     }
     this.setData({
@@ -154,9 +181,35 @@ Page({
       visible2: false
     })
   },
-  checkExpress: function () {
+  estimatedPrice: function (val) {
+    console.log(val)
+    let param = {
+      addressId: this.data.addressInfo.id,
+      schoolId: this.data.addressInfo.schoolId,
+      expressId: val.expressId,
+      pkgId: val.pkgId
+    };
+    let orderArr = this.data.orderInfo;
+    let sum = 0;
+    pickup.getEstimatedPriceOne(param, function(res) {
+      if (res.errno == 0) {
+        orderInfo[val.index].price = res.data.price;
+      }
+    })
+    for (let i in orderArr) {
+      if (orderArr[i].price) {
+        sum += orderArr[i].price;
+      }
+    }
     this.setData({
-      visible2: true
+      orderInfo: orderArr,
+      totalPrice: sum
+    });
+  },
+  checkExpress: function (e) {
+    this.setData({
+      visible2: true,
+      expressIndex: e.target.dataset.index
     })
   },
   bookingDate: function (e) {
@@ -193,7 +246,6 @@ Page({
       defaultDate: type == 'today' ? this.data.todayList : this.data.tomorrowList
     })
   },
-  estimatedPrice: function () {},
   maskFlag2: function () {
     this.setData({
       visible2: false
@@ -203,5 +255,10 @@ Page({
     this.setData({
       visible3: false
     })
+  },
+  checkFullfill: function (val) {
+    if (val.expressId && val.pkgId) {
+      this.estimatedPrice(val)
+    }
   }
 })

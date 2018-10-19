@@ -46,14 +46,15 @@
 
 .write {
   padding-left: 29rpx;
+  padding-top: 20rpx;
   font-size: 22rpx;
-  line-height: 61rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
 }
 
 .express-info {
+  margin-top: 20rpx;
   padding: 0 30rpx;
   background: #ffffff;
 }

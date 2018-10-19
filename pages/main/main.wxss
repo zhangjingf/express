@@ -58,6 +58,10 @@ image {
   display: inline-block;
 }
 
+.arrow image:nth-child(2) {
+  margin-left: -5rpx;
+}
+
 .content {
   flex: 1;
   padding-left: 20rpx;

@@ -183,6 +183,7 @@ Page({
   },
   estimatedPrice: function (val) {
     console.log(val)
+    const self = this;
     let param = {
       addressId: this.data.addressInfo.id,
       schoolId: this.data.addressInfo.schoolId,
@@ -193,18 +194,18 @@ Page({
     let sum = 0;
     pickup.getEstimatedPriceOne(param, function(res) {
       if (res.errno == 0) {
-        orderInfo[val.index].price = res.data.price;
+        orderArr[val.index-1].price = res.data.price;
+        for (let i in orderArr) {
+          if (orderArr[i].price) {
+            sum += orderArr[i].price;
+          }
+        }
+        self.setData({
+          orderInfo: orderArr,
+          totalPrice: sum
+        });
       }
     })
-    for (let i in orderArr) {
-      if (orderArr[i].price) {
-        sum += orderArr[i].price;
-      }
-    }
-    this.setData({
-      orderInfo: orderArr,
-      totalPrice: sum
-    });
   },
   checkExpress: function (e) {
     this.setData({

@@ -13,7 +13,7 @@
     <view class="right" bindtap='goAddress'>地址簿</view>
   </view>
   <view class="write">请填写相关快递信息</view>
-  <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}">
+  <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}" wx:for-index="idx">
     <view>
       <view class="label">取货码</view>
       <input placeholder='可粘贴短信至此'></input>
@@ -25,7 +25,7 @@
     <view class="special">
       <view class="label">包裹规格</view>
       <view class="range" bindtap="chooseRange" data-index="{{item.index}}">
-        <block wx:for="{{pkgList[item.index-1]}}"  wx:for-item="itemtwo" wx:key="{{itemtwo.id}}" >
+        <block wx:for="{{item.pkgList}}"  wx:for-item="itemtwo" wx:key="{{itemtwo.id}}" >
           <text data-index="{{item.index}}" data-id="{{itemtwo.id}}" class="{{itemtwo.checked}}">{{itemtwo.pkgName}}</text>
         </block>
       </view>
@@ -64,7 +64,7 @@
   <view class="confrim"><view>确认支付</view></view>
 </view>
 <i-modal title="包裹规格说明" visible="{{ visible }}" bind:ok="handleVisible" show-cancel="{{showCancel}}">
-  <block wx:for="{{pkgList}}" wx:key="{{item.id}}">
+  <block wx:for="{{baskPkgList}}" wx:key="{{item.id}}">
     <view class="explain">
       <view>{{item.pkgName}}</view>
       <view>

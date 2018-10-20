@@ -24,9 +24,9 @@ Page({
     totalPrice: 0
   },
   onLoad: function (options) {
-    var self = this
-    var now = new Date().getHours()
-    var todayArr = []
+    var self = this;
+    var now = new Date().getHours();
+    var todayArr = [];
     var schoolId =  wx.getStorageSync('schoolId') || '';
     pickup.getSchoolPkg({
       schoolId: schoolId
@@ -56,7 +56,7 @@ Page({
         if (res.data.length > 0) {
           for (let index in res.data) {
             if (res.data[index].startTime.split(":")[0] < now && res.data[index].endTime.split(":")[0] > now) {
-              todayArr.push(res.data[index])
+              todayArr.push(res.data[index]);
             }
           }
           self.setData({
@@ -90,7 +90,7 @@ Page({
   goAddress: function () {
     wx.navigateTo({
       url: '../myAddress/index?type=receive',
-    })
+    });
   },
   add: function () {
     let baseData = this.data.basePkgList;
@@ -102,7 +102,7 @@ Page({
     this.setData({
       orderInfo: orderNumArr,
       basePkgList: JSON.parse(JSON.stringify(baseData))
-    })
+    });
   },
   delete: function (e) {
     let index = e.target.dataset.index;
@@ -121,7 +121,7 @@ Page({
     this.setData({
       orderInfo: orderArr,
       totalPrice: sum
-    })
+    });
   },
   chooseRange: function (e) {
     let id = e.target.dataset.id;
@@ -133,6 +133,7 @@ Page({
           if (orderArr[i].pkgList[y].id == id) {
             orderArr[i].pkgList[y].checked = 'checked';
             orderArr[i].pkgId = id;
+            orderArr[i].pkgSize = orderArr[i].pkgList[y].pkgCode;
             this.checkFullfill(orderArr[i]);
           } else {
             orderArr[i].pkgList[y].checked = '';
@@ -178,10 +179,10 @@ Page({
     }
     this.setData({
       expressList: expressArr
-    })
+    });
     this.setData({
       visible2: false
-    })
+    });
   },
   estimatedPrice: function (val) {
     const self = this;
@@ -270,7 +271,84 @@ Page({
       this.estimatedPrice(val)
     }
   },
-  order: function () {},
+  expressKey: function (e) {
+    const orderArr = this.data.orderInfo;
+    let index = e.target.dataset.index;
+    let key = e.detail.value;
+    for (let i in orderArr) {
+      if (orderArr[i].index == index) {
+        orderArr[i].expressKey = key;
+      }
+    }
+    this.setData({
+      orderInfo: orderArr
+    });
+  },
+  remark: function (e) {
+    const orderArr = this.data.orderInfo;
+    let index = e.target.dataset.index;
+    let remark = e.detail.value;
+    for(let i in orderArr) {
+      if (orderArr[i].index == index) {
+        orderArr[i].remark = remark;
+      }
+    }
+    this.setData({
+      orderInfo: orderArr
+    });
+  },
+  checkOrder: function () {
+    let orderArr = this.data.orderInfo;
+    let serviceTime = this.data.checkedDate;
+    if (!serviceTime) {
+      wx.showToast({
+        title: '请选择时间'
+      });
+      return;
+    }
+    let validArr = [];
+    for (let i in orderArr) {
+      if (orderArr[i].expressKey && orderArr[i].pkgSize && orderArr[i].expressId && orderArr[i].price) {
+        validArr.push(true);
+      } else {
+        validArr.push(false);
+      }
+    }
+    if (validArr.indexOf(false) >= 0) {
+      wx.showToast({
+        title: '请填写完成信息'
+      });
+    } else {
+      this.createOrder();
+    }
+  },
+  createOrder: function () {
+    let orderArr = this.data.orderInfo;
+    let orderDetail = []
+    for (let i in orderArr) {
+      orderDetail.push({
+        orderSeq: orderArr[i].index,
+        expressKey: orderArr[i].expressKey,
+        pkgSize: orderArr[i].pkgSize,
+        expressOrgId: orderArr[i].expressId,
+        servicePrice: orderArr[i].price,
+        remark: orderArr[i].remark || ''
+      })
+    }
+    let param = {
+      userLng: wx.getStorageSync('lng'),
+      userLat: wx.getStorageSync('lat'),
+      receiverId: this.data.addressInfo.id,
+      serviceDay: this.data.type == 'today' ? 0 : 1,
+      serviceTime: this.data.checkedDate,
+      orderDetails: orderDetail
+    }
+    pickup.createReceiverOrder(param, function(res) {
+      if (res.code == 0) {
+        console.log(res.data)
+      }
+    })
+  },
   pay: function () {
     wx.requestPayment({
       timeStamp: '', //时间戳

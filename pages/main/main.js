@@ -14,10 +14,10 @@ Page({
     topHeaderText: '请选择学校'
   },
   onLoad: function () {
-    var self = this
+    var self = this;
     this.setData({
       checkedStatus: 'main'
-    })
+    });
     main.wxBindImg({}, function(res) {
       if (res.errno == 0) {
         self.setData({
@@ -40,32 +40,45 @@ Page({
               key: 'schoolId',
               data: res.data.id,
               success: function () {
-                console.warn('学校id存储成功')
+                console.warn('学校id存储成功');
               }
-            })
+            });
             wx.setStorage({
               key: 'schoolName',
               data: res.data.schoolName,
               success: function() {
-                console.warn('学校存储成功')
+                console.warn('学校存储成功');
               }
-            })
+            });
             wx.setStorage({
               key: 'proviceName',
               data: res.data.proviceName,
               success: function () {
-                console.warn('省份存储成功')
+                console.warn('省份存储成功');
               }
-            })
+            });
             wx.setStorage({
               key: 'cityName',
               data: res.data.cityName,
               success: function() {
-                console.warn('城市存储成功')
+                console.warn('城市存储成功');
               }
-            })
+            });
+            wx.setStorage({
+              key: 'lng',
+              data: param.lngLong,
+              success: function () {
+                console.warn('lng存储成功');
+              }
+            });
+            wx.setStorage({
+              key: 'lat',
+              data: param.latLong,
+              success: function() {
+                console.warn('lat存储成功');
+              }
+            });
           }
-          console.log(res)
         })
       }
     })
@@ -78,16 +91,16 @@ Page({
   gopickup: function () {
     wx.navigateTo({
       url: '../pickup/pickup'
-    })
+    });
   },
   gologistics: function () {
     wx.navigateTo({
       url: '../logistics/logistics'
-    })
+    });
   },
   goSchool: function () {
     wx.navigateTo({
       url: '../chooseSchool/chooseSchool'
-    })
+    });
   }
 })

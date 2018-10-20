@@ -11,4 +11,4 @@ Page({
   onReady: function () {
 
   }
-}) 
+})

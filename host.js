@@ -1,6 +1,6 @@
 
   export default {
     sendLink() {
-      return 'https://dev-zm1.s1.natapp.cc'
+      return 'https://daidaiit.com/dai-web'
     }
   }

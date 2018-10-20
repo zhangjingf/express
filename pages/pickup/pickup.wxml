@@ -16,7 +16,7 @@
   <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}" wx:for-index="idx">
     <view>
       <view class="label">取货码</view>
-      <input placeholder='可粘贴短信至此' data-index="{{item.index}}"></input>
+      <input placeholder='可粘贴短信至此' data-index="{{item.index}}" bindinput="expressKey"></input>
     </view>
     <view bindtap="checkExpress" data-index="{{item.index}}">
       <view class="label" data-index="{{item.index}}">快递点</view>
@@ -33,7 +33,7 @@
     </view>
     <view>
       <view class="label">备注</view>
-      <input placeholder='快递单上名字电话不同请备注' data-index="{{item.index}}"></input>
+      <input placeholder='快递单上名字电话不同请备注' data-index="{{item.index}}" bindinput="remark"></input>
     </view>
     <view class="coupon">
       <view class="label">优惠</view>
@@ -61,7 +61,7 @@
   <view class="money">
     共{{orderInfo.length}}件包裹，合计<view>¥{{totalPrice}}</view>，<view class="discount">共优惠¥元</view>
   </view>
-  <view class="confrim"><view>确认支付</view></view>
+  <view class="confrim"><view bindtap="checkOrder">确认支付</view></view>
 </view>
 <i-modal title="包裹规格说明" visible="{{ visible }}" bind:ok="handleVisible" show-cancel="{{showCancel}}">
   <block wx:for="{{baskPkgList}}" wx:key="{{item.id}}">

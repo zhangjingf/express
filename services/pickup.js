@@ -55,6 +55,19 @@ class Pickup {
             }
         })
     }
+    createReceiverOrder(data, callback) {
+        ajax({
+            url: sendLink() + '/api/userOrder/createReceiverOrder',
+            type: 'POST',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
+        })
+    }
 }
 
 export default new Pickup

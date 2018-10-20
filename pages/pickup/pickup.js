@@ -302,7 +302,8 @@ Page({
     let serviceTime = this.data.checkedDate;
     if (!serviceTime) {
       wx.showToast({
-        title: '请选择时间'
+        title: '请选择时间',
+        icon: 'none'
       });
       return;
     }
@@ -316,15 +317,17 @@ Page({
     }
     if (validArr.indexOf(false) >= 0) {
       wx.showToast({
-        title: '请填写完成信息'
+        title: '请填写完整信息',
+        icon: 'none'
       });
     } else {
       this.createOrder();
     }
   },
   createOrder: function () {
+    const self = this;
     let orderArr = this.data.orderInfo;
-    let orderDetail = []
+    let orderDetail = [];
     for (let i in orderArr) {
       orderDetail.push({
         orderSeq: orderArr[i].index,
@@ -333,19 +336,33 @@ Page({
         expressOrgId: orderArr[i].expressId,
         servicePrice: orderArr[i].price,
         remark: orderArr[i].remark || ''
-      })
+      });
     }
     let param = {
       userLng: wx.getStorageSync('lng'),
       userLat: wx.getStorageSync('lat'),
       receiverId: this.data.addressInfo.id,
       serviceDay: this.data.type == 'today' ? 0 : 1,
-      serviceTime: this.data.checkedDate,
+      serviceTime: this.data.checkedDate.replace(/[\u4e00-\u9fa5]/g, ''),
       orderDetails: orderDetail
-    }
+    };
     pickup.createReceiverOrder(param, function(res) {
+      if (res.code == 0 && res.data) {
+        self.batchPay(res.data);
+      }
+    })
+  },
+  batchPay: function (val) {
+    let param = {batchId: val.batchId.toString(), payAmount: val.orderPrice};
+    console.log(param);
+    pickup.batchPay(param, function(res) {
       if (res.code == 0) {
         console.log(res.data)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       }
     })
   },

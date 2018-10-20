@@ -269,5 +269,22 @@ Page({
     if (val.expressId && val.pkgId) {
       this.estimatedPrice(val)
     }
+  },
+  order: function () {},
+  pay: function () {
+    wx.requestPayment({
+      timeStamp: '', //时间戳
+      nonceStr: '', //随机字符串
+      package: '', //统一下单接口返回的 prepay_id 参数值
+      paySign: '', //签名
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function () {
+        wx.showToast({
+          title: '支付失败，请重新支付'
+        })
+      }
+    })
   }
 })

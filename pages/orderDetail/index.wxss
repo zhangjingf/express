@@ -69,7 +69,7 @@
 }
 .content1>view,
 .content2>view {
-  line-height: 100rpx;
+  line-height: 81rpx;
 }
 
 .content1 .label,

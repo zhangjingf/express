@@ -1,12 +1,7 @@
-/* pages/order/index.wxss */
-page>view {
+.order {
   display: flex;
   align-items: center;
   padding: 20rpx;
-}
-
-.order {
-  margin-bottom: 96rpx;
 }
 
 .part1,
@@ -26,6 +21,7 @@ page>view {
 }
 
 .part1>view:nth-child(1) {
+  height: 30rpx;
   font-size: 30rpx;
   font-family: PingFang-SC-Bold;
   font-weight: bold;
@@ -42,6 +38,7 @@ page>view {
 .part1>view:nth-child(2),
 .part2>view:nth-child(2) {
   margin-top: 17rpx;
+  height: 20rpx;
   font-size: 20rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
@@ -50,6 +47,7 @@ page>view {
 
 .part1>view:nth-child(n+3) {
   margin-top: 24rpx;
+  height: 26rpx;
   font-size: 26rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
@@ -58,6 +56,7 @@ page>view {
 
 .part2>view:nth-child(3) {
   padding: 20rpx 0;
+  height: 34rpx;
   font-size: 34rpx;
   font-family: PingFang-SC-Bold;
   font-weight: bold;

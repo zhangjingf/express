@@ -59,7 +59,8 @@
     我已阅读并同意<view class="date">《取件协议》</view>
   </view>
   <view class="money">
-    共{{orderInfo.length}}件包裹，合计<view>¥{{totalPrice}}</view>，<view class="discount">共优惠¥元</view>
+    共{{orderInfo.length}}件包裹，合计<view>¥{{totalPrice}}</view>
+    <!-- ，<view class="discount">共优惠¥元</view> -->
   </view>
   <view class="confrim"><view bindtap="checkOrder">确认支付</view></view>
 </view>

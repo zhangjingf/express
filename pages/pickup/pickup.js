@@ -353,11 +353,13 @@ Page({
     })
   },
   batchPay: function (val) {
-    let param = {batchId: val.batchId.toString(), payAmount: val.orderPrice};
-    console.log(param);
-    pickup.batchPay(param, function(res) {
-      if (res.code == 0) {
-        console.log(res.data)
+    let self = this;
+    pickup.batchPay({
+          batchId: val.batchId.toString(),
+          payAmount: val.orderPrice
+        }, function (res) {
+      if (res.code == 0 && res.data) {
+        self.pay(res.data);
       } else {
         wx.showToast({
           title: res.msg,
@@ -366,18 +368,43 @@ Page({
       }
     })
   },
-  pay: function () {
+  pay: function (val) {
+    const self = this;
     wx.requestPayment({
-      timeStamp: '', //时间戳
-      nonceStr: '', //随机字符串
-      package: '', //统一下单接口返回的 prepay_id 参数值
-      paySign: '', //签名
+      timeStamp: val.timeStamp, //时间戳
+      nonceStr: val.nonceStr, //随机字符串
+      package: val.package, //统一下单接口返回的 prepay_id 参数值
+      signType: 'MD5', //签名
+      paySign: val.paySign,
       success: function (res) {
-        console.log(res)
+        console.warn(res);
+        self.result(val);
       },
-      fail: function () {
+      fail: function (res) {
+        console.warn(res);
         wx.showToast({
-          title: '支付失败，请重新支付'
+          title: '支付失败，请重新支付',
+          icon: 'none'
+        })
+      }
+    })
+  },
+  result: function (val) {
+    pickup.payResult({
+      paymentApplyId: val.paymentApplyId
+    }, function (res) {
+      if (res.code == 0) {
+        wx.showToast({
+          title: '支付成功',
+          icon: 'none'
+        })
+        wx.reLaunch({
+          url: '../order/index',
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
         })
       }
     })

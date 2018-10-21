@@ -1,14 +1,24 @@
 // pages/orderDetail/index.js
+import order from '../../services/order';
 Page({
   data: {
-
+    detail: null
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '订单详情',
-    })
+    const self = this;
+    if(options.id) {
+      order.orderDetail({orderId: options.id}, function(res) {
+        if (res.code == 0 && res.data) {
+          self.setData({
+            detail: res.data
+          })
+        }
+      })
+    }
   },
-  onReady: function () {
-
+  call: function () {
+    wx.makePhoneCall({
+      phoneNumber: this.data.detail.receiverPhone
+    })
   }
 })

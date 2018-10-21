@@ -1,26 +1,15 @@
+import order from '../../services/order';
 Page({
   data: {
-    orderList: [{
-      id: 11,
-      name: '张金发个',
-      phone: '112312321',
-      type: '1',
-      time: '2018-09-26 16:31',
-      address: '小时多吃点说多错多',
-      bookingTime: '今天18:00-18:30',
-      status: '11',
-      expressType: '申通快递',
-      orderNum: '1111111111111',
-      money: '11'
-    }]
+    orderList: []
   },
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: '订单',
-    })
     this.setData({
       checkedStatus: 'order'
     })
+  },
+  onShow: function () {
+    this.list()
   },
   onReady: function () {
     var self = getApp()
@@ -31,7 +20,28 @@ Page({
       url: '../orderDetail/index'
     })
   },
+  list: function() {
+    const self = this;
+    let param = {
+      startIndex: 0,
+      endIndex: 10
+    }
+    order.orderList(param, function (res) {
+      if (res.code == 0 && res.data) {
+        self.setData({
+          orderList: res.data
+        })
+      }
+    })
+  },
   delete: function() {
     console.log('delete')
+  },
+  goOrderDetail: function (e) {
+    if (e.currentTarget.dataset.id) {
+      wx.navigateTo({
+        url: '../orderDetail/index?id=' + e.currentTarget.dataset.id
+      })
+    }
   }
 })

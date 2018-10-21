@@ -2,5 +2,6 @@
   "component": true,
   "usingComponents": {
     "nav": "/components/nav/nav"
-  }
+  },
+  "navigationBarTitleText": "订单"
 }

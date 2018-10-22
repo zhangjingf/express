@@ -1,7 +1,8 @@
+<view class="line"></view>
 <view class="choose-school">
   <view class="input">
     <image class="search" src="../../images/serach.png"/>
-    <input placeholder='请输入学校名称' bindinput="bindKeyInput" auto-focus></input>
+    <input placeholder='请输入学校名称' bindinput="bindKeyInput"></input>
   </view>
   <view class="title">当前学校</view>
   <view class="school">

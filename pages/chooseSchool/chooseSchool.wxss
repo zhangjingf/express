@@ -1,5 +1,6 @@
 /* pages/chooseSchool/chooseSchool.wxss */
 .choose-school {
+  padding-top: 20rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   background: #ffffff;

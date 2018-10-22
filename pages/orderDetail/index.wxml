@@ -1,4 +1,5 @@
 <!-- pages/orderDetail/index.wxml -->
+<view class="line"></view>
 <view class="detail">
   <view class="status">
     <text>等待确认</text>

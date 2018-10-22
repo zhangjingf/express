@@ -1,3 +1,4 @@
+<view class="line"></view>
 <view class="my-address">
   <view wx:for="{{addressList}}" wx:key="item.id" bindtap="check" data-id="{{item.id}}">
     <view class="left">

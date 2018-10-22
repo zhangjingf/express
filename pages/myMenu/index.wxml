@@ -1,3 +1,4 @@
+<view class="line"></view>
 <view class="person">
   <open-data type="userAvatarUrl"></open-data>
   <open-data type="userNickName"></open-data>
@@ -9,11 +10,11 @@
   <view class="content">我的地址簿</view>
   <i-icon type="enter" size="20" />
 </view>
-<view class="service" bindtap="goService">
+<view class="service">
   <view class="image">
     <image src="../../images/mine_02.png"/>
   </view>
-  <view class="content">我的客服</view>
+  <button class="content" open-type="contact" bindcontact="handleContact">我的客服</button>
   <i-icon type="enter" size="20" />
 </view>
 <view class="line"><view></view></view>

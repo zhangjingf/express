@@ -1,4 +1,5 @@
 <!-- pages/send/index.wxml -->
+<view class="line"></view>
 <view class="send">
   <view class="info">
     <view class="title blue">寄</view>

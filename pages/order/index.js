@@ -1,7 +1,10 @@
 import order from '../../services/order';
 Page({
   data: {
-    orderList: []
+    orderList: [],
+    startIndex: 0,
+    endIndex: 10,
+    loadMore: true
   },
   onLoad: function (options) {
     this.setData({
@@ -23,13 +26,17 @@ Page({
   list: function() {
     const self = this;
     let param = {
-      startIndex: 0,
-      endIndex: 10
+      startIndex: this.data.startIndex,
+      endIndex: this.data.endIndex
     }
     order.orderList(param, function (res) {
       if (res.code == 0 && res.data) {
         self.setData({
           orderList: res.data
+        })
+      } else {
+        self.setData({
+          loadMore: false
         })
       }
     })
@@ -43,5 +50,13 @@ Page({
         url: '../orderDetail/index?id=' + e.currentTarget.dataset.id
       })
     }
+  },
+  lower: function() {
+    if (!this.data.loadMore) return;
+    this.setData({
+      startIndex: this.data.endIndex,
+      endIndex: this.data.endIndex + 10
+    })
+    this.list()
   }
 })

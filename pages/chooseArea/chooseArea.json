@@ -1,6 +1,4 @@
 {
   "component": "true",
-  "navigationBarTitleText": "选择区域",
-  "usingComponents": {
-  }
+  "navigationBarTitleText": "选择区域"
 }

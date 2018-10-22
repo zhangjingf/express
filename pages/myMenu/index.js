@@ -16,9 +16,9 @@ Page({
       url: '../myAddress/index',
     })
   },
-  goService: function () {
-    console.log('goservice')
-  },
+  // goService: function () {
+  //   console.log('goservice')
+  // },
   goAdvice: function () {
     wx.navigateTo({
       url: '../myAdvice/index',

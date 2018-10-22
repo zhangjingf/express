@@ -1,3 +1,4 @@
+<view class="line"></view>
 <view class="main">
   <view class="search" bindtap="goSchool">{{topHeaderText}}</view>
   <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}"

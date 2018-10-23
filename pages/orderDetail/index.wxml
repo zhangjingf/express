@@ -2,22 +2,29 @@
 <view class="line"></view>
 <view class="detail">
   <view class="status">
-    <text>等待确认</text>
+    <text wx:if="{{detail.status == 8}}">待支付</text>
+    <text wx:if="{{detail.status == 21}}">待接单</text>
+    <text wx:if="{{detail.status == 31}}">待取件</text>
+    <text wx:if="{{detail.status == 50}}">正在配送</text>
+    <text wx:if="{{detail.status == 55}}">待确认</text>
+    <text wx:if="{{detail.status == 60}}">已送达</text>
+    <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
   <view class="tips">
     <text>订单将在24小时之后自动确认收货，如有疑问请及时</text>
-    <text>联系客服</text>
+    <button open-type="contact" bindcontact="handleContact">联系客服</button>
   </view>
-  <view class="confirm">确认送达</view>
+  <view class="confirm" wx:if="{{detail.status == 55}}">确认送达</view>
+  <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">去支付</view>
 </view>
-<view class="call">
-  <view>{{detail.receiverName}}</view>
-  <view bindtap="call"><image src="../../images/phone.png"></image></view>
+<view class="call" wx:if="{{detail.isHaveRider}}">
+  <view><image class="avatar" src="{{detail.avatar}}"></image>{{detail.	riderName}}</view>
+  <view bindtap="call"><image class="phone" src="../../images/phone.png"></image></view>
 </view>
 <view class="content1">
   <view>
     <text class="label">快递点</text>
-    <text class="text">{{detail.expressName}}</text>
+    <text class="text">{{detail.receiverAddress}}</text>
   </view>
   <view>
     <text class="label">包裹规格</text>
@@ -25,7 +32,7 @@
   </view>
   <view>
     <text class="label">取货码</text>
-    <text class="text">{{detail.expressNumber}}</text>
+    <text class="text">{{detail.expressKey}}</text>
   </view>
   <view>
     <text class="label">备注</text>
@@ -33,13 +40,16 @@
   </view>
   <view class="price">
     实付
-    <text>￥{{detail.actualPrice}}</text>
+    <text>￥{{detail.payPrice}}</text>
   </view>
 </view>
 <view class="content2">
   <view>
     <text  class="label">送达时间</text>
-    <text class="text">{{detail.serviceTime}}</text>
+    <text class="text">
+      <block wx:if="{{detail.isToday}}">今天{{detail.hopeTime}}</block>
+      <block wx:else>{{detail.hopeDay}}</block>
+    </text>
   </view>
   <view>
     <text  class="label">收货地址</text>

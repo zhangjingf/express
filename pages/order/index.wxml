@@ -1,13 +1,13 @@
 <!-- pages/order/index.wxml -->
 <view class="line"></view>
-<scroll-view scroll-y bindscrolltolower="lower">
+<scroll-view scroll-y style="height: 570px;" bindscrolltolower="lower"  bindscrolltoupper="upper" class="order-list">
   <view class="order" wx:for="{{orderList}}" wx:key="{{item.orderId}}" catchtap="goOrderDetail" data-id="{{item.orderId}}">
     <block wx:if="{{item.orderType == 0}}">
       <view class="part1">
         <view>寄快递</view>
         <view>{{item.createTime}}</view>
         <view>
-          <view class="circle1"></view>
+          <view class="circle3"></view>
           {{item.receiverName}} {{item.receiverPhone}}
         </view>
         <view>{{item.receiverAddress}}</view>
@@ -24,9 +24,7 @@
           <text wx:if="{{item.status == 50}}">正在配送</text>
           <text wx:if="{{item.status == 55}}">待确认</text>
           <text wx:if="{{item.status == 60}}">已送达</text>
-          <text wx:if="{{item.status == 70}}">用户取消</text>
-          <text wx:if="{{item.status == 70}}">用户取消</text>
-          <text wx:if="{{item.status == 99}}">系统取消</text>
+          <text wx:if="{{item.status == 71}}">已取消</text>
         </view>
         <view>
           {{item.expressName}}
@@ -34,8 +32,8 @@
         </view>
         <view>￥{{item.actualPrice}}</view>
         <view class="btns">
-          <view bindtap="delete">删除</view>
-          <view bindtap='goDetail'>查看物流</view>
+          <view class="delete" bindtap="delete">删除</view>
+          <view class="detail" bindtap='goDetail'>查看物流</view>
         </view>
       </view>
     </block>
@@ -47,10 +45,12 @@
           <view class="circle1"></view>
           {{item.expressName}}
         </view>
-        <view>取货码：{{item.expressNumber}}</view>
+        <view>取货码：{{item.expressKey}}</view>
         <view>
           <view class="circle2"></view>
-          {{item.serviceTime}}
+          <text wx:if="{{item.isToday == 0}}">明天</text>
+          <text wx:if="{{item.isToday == 1}}">今天</text>
+          {{item.hopeTime}}
         </view>
       </view>
       <view class="part2">
@@ -61,17 +61,16 @@
           <text wx:if="{{item.status == 50}}">正在配送</text>
           <text wx:if="{{item.status == 55}}">待确认</text>
           <text wx:if="{{item.status == 60}}">已送达</text>
-          <text wx:if="{{item.status == 70}}">用户取消</text>
-          <text wx:if="{{item.status == 99}}">系统取消</text>
+          <text wx:if="{{item.status == 71}}">已取消</text>
         </view>
         <view>
-          <text wx:if="{{item.status == 70}}">您取消了订单</text>
-          <text wx:if="{{item.status == 99}}">订单超时未支付</text>
+          <text wx:if="{{item.status == 71}}">{{item. cancelMsg}}</text>
         </view>
-        <view>￥{{item.actualPrice}}</view>
+        <view>￥{{item.payPrice}}</view>
         <view class="btns">
-          <view bindtap="delete">删除</view>
-          <view bindtap='goDetail'>查看物流</view>
+          <view class="delete" bindtap="delete">删除</view>
+          <view wx:if="{{item.status != 71}}" class="detail" bindtap='goDetail'>查看物流</view>
+          <view wx:if="{{item.status == 71}}" class="detail" bindtap="goPickup">重新下单</view>
         </view>
       </view>
     </block>

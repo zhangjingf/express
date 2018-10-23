@@ -5,7 +5,7 @@ const { sendLink} = require('../host').default
 class Order {
     orderList(data, callback) {
         ajax({
-            url: sendLink() + '/api/userOrder/searchOrderByUserId',
+            url: sendLink() + '/api/order/searchOrderByUserId',
             type: 'GET',
             data: data,
             success: function (ret) {
@@ -18,7 +18,7 @@ class Order {
     }
     orderDetail(data, callback) {
         ajax({
-            url: sendLink() + '/api/userOrder/searchOrderByOrderId',
+            url: sendLink() + '/api/order/detail',
             type: 'GET',
             data: data,
             success: function (ret) {

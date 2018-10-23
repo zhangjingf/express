@@ -54,7 +54,12 @@
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
 }
-.call image {
+.call .avatar {
+  width:55rpx;
+  height:55rpx;
+  border-radius:50%;
+}
+.call .phone {
   width: 28rpx;
   height: 40rpx;
 }
@@ -109,4 +114,18 @@
   font-family: PingFang-SC-Bold;
   font-weight: bold;
   color: rgba(0, 0, 0, 1);
+}
+.tips button {
+  display: inline;
+  padding: 0;
+  background: rgba(255, 255, 255, 1);
+  text-align: left;
+  font-size: 22rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(0, 140, 240, 1);
+}
+
+.tips button::after {
+  border: 0;
 }

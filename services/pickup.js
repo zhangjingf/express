@@ -81,6 +81,21 @@ class Pickup {
             }
         })
     }
+
+    singlePay(data, callback) {
+        ajax({
+            url: sendLink() + '/api/pay/singlePay',
+            type: 'POST',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
+        })
+    }
+    
     payResult(data, callback) {
         ajax({
             url: sendLink() + '/api/pay/payResultQuery',

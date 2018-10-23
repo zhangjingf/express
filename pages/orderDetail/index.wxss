@@ -54,7 +54,10 @@
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
 }
-
+.call image {
+  width: 28rpx;
+  height: 40rpx;
+}
 .content1,
 .content2 {
   margin: 20rpx;

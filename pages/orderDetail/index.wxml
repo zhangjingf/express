@@ -12,7 +12,7 @@
 </view>
 <view class="call">
   <view>{{detail.receiverName}}</view>
-  <view bindtap="call">电话</view>
+  <view bindtap="call"><image src="../../images/phone.png"></image></view>
 </view>
 <view class="content1">
   <view>

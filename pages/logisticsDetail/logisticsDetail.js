@@ -1,23 +1,32 @@
 // pages/logisticsDetail/logisticsDetail.js
+import Logistics from '../../services/logistics';
 Page({
   data: {
-    recordList: [{ id: 1, name: 'dasdasdasdasda' }, { id: 2, name: 'dasdasdasdasda' }]
+    recordList: null
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '物流详情',
     })
+    if(options.val) {
+      this.getExpress(options.val);
+    }
   },
-  onReady: function () {
-  
-  },
-  onShow: function () {
-  
-  },
-  onHide: function () {
-  
-  },
-  onUnload: function () {
-  
+  getExpress: function (val) {
+    const self = this;
+    Logistics.getExpress({
+      number: val
+    }, function (res) {
+      if (res.errno == 0 && res.data) {
+        self.setData({
+          recordList: res.data
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   }
 })

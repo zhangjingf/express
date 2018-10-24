@@ -2,12 +2,12 @@
 <view class="logistics-detail">
   <view class="detail">
      <view class="company">
-      <view>快递公司：百世快递</view>
-      <view>快递单号：1111111111111</view>
-      <view>官方电话：95320</view>
+      <view>快递公司：{{recordList.expName}}</view>
+      <view>快递单号：{{recordList.number}}</view>
+      <view>官方电话：{{recordList.expPhone}}</view>
      </view>
      <view class="record">
-        <view class="item" wx:for="{{recordList}}" wx:key="item.id"><view class="dot"></view><view>{{item.name}}</view></view>
+        <view class="item" wx:for="{{recordList.list}}" wx:key="item.id"><view class="dot"></view><view>{{item.time}}{{item.status}}</view></view>
      </view>
   </view>
 </view>

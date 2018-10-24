@@ -14,7 +14,7 @@
     <text>订单将在24小时之后自动确认收货，如有疑问请及时</text>
     <button open-type="contact" bindcontact="handleContact">联系客服</button>
   </view>
-  <view class="confirm" wx:if="{{detail.status == 55}}">确认送达</view>
+  <view class="confirm" bindtap="finish" wx:if="{{detail.status == 55}}">确认送达</view>
   <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">去支付</view>
 </view>
 <view class="call" wx:if="{{detail.isHaveRider}}">
@@ -28,7 +28,10 @@
   </view>
   <view>
     <text class="label">包裹规格</text>
-    <text class="text">{{detail.pkgSize}}</text>
+    <text class="text" wx:if="{{detail.pkgSize == 10}}">小</text>
+    <text class="text" wx:if="{{detail.pkgSize == 20}}">中</text>
+    <text class="text" wx:if="{{detail.pkgSize == 30}}">大</text>
+    <text class="text" wx:if="{{detail.pkgSize == 40}}">超大</text>
   </view>
   <view>
     <text class="label">取货码</text>

@@ -23,17 +23,17 @@
   </view>
 </view>
 <view class="same-list">
-  <view class="same">
+  <view class="same" bindtap="chooseDate">
     <text>期望上门时间</text>
     <view>
-      <view class="porotcol">123131232</view>
+      <view class="porotcol">{{checkedDate}}</view>
       <i-icon type="enter" size="20" />
     </view>
   </view>
-  <view class="same">
+  <view class="same" bindtap="chooseType">
     <text>物品类型</text>
     <view>
-      1111
+      {{pkgTypeName}}
       <i-icon type="enter" size="20" />
     </view>
   </view>
@@ -71,3 +71,44 @@
   </view>
   <view>下单</view>
 </view>
+<i-action-sheet visible="{{ visible3 }}" bind:cancel="maskFlag3" show-cancel="{{showCancel}}">
+  <view slot="header">
+    <view class="header2">选择送达时间</view>
+    <view class="time-list">
+      <view class="day">
+        <view class="active" bindtap="toggleDay" data-type="today" wx:if="{{todayList.length > 0 && type == 'today'}}">
+          今天
+        </view>
+        <view bindtap="toggleDay" data-type="today" wx:if="{{todayList.length > 0 && type != 'today'}}">
+          今天
+        </view>
+        <view class="active" bindtap="toggleDay" data-type="tomorrow" wx:if="{{tomorrowList.length > 0 && type == 'tomorrow'}}">
+          明天
+        </view>
+        <view bindtap="toggleDay" data-type="tomorrow" wx:if="{{tomorrowList.length > 0 && type != 'tomorrow'}}">
+          明天
+        </view>
+      </view>
+      <view class="list">
+        <block wx:for="{{defaultDate}}" wx:key="{{item.id}}">
+          <view bindtap="bookingDate" data-id="{{item.id}}">
+            <text data-id="{{item.id}}">{{item.startTime}}-{{item.endTime}}</text>
+            <image wx:if="{{item.checked}}" class="checked" src="../../images/address_02.png" />
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</i-action-sheet>
+<i-action-sheet visible="{{ visible4 }}" bind:cancel="maskFlag4" show-cancel="{{showCancel}}">
+  <view slot="header">
+    <view class="type">
+      <view data-id="5" bindtap="chooseTp">日用品</view>
+      <view data-id="1" bindtap="chooseTp">衣物</view>
+      <view data-id="4" bindtap="chooseTp">文件</view>
+      <view data-id="2" bindtap="chooseTp">食品</view>
+      <view data-id="3" bindtap="chooseTp">数码产品</view>
+      <view data-id="0" bindtap="chooseTp">其他</view>
+    </view>
+  </view>
+</i-action-sheet>

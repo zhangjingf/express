@@ -3,7 +3,7 @@ Page({
   data: {
     orderList: [],
     startIndex: 0,
-    endIndex: 4,
+    endIndex: 5,
     loadMore: true
   },
   onLoad: function (options) {
@@ -31,7 +31,6 @@ Page({
     }
     order.orderList(param, function (res) {
       if (res.errno == 0 && res.data) {
-        console.log(res.data)
         self.setData({
           orderList: res.data
         })
@@ -42,8 +41,14 @@ Page({
       }
     })
   },
-  delete: function() {
-    console.log('delete')
+  delete: function(e) {
+    const self = this;
+    let id = e.target.dataset.id || '';
+    order.delete({orderId: id.toString()}, function(res) {
+      if (res.errno == 0) {
+        self.list();
+      }
+    })
   },
   goOrderDetail: function (e) {
     if (e.currentTarget.dataset.id) {
@@ -61,16 +66,15 @@ Page({
     if (!this.data.loadMore) return;
     this.setData({
       startIndex: this.data.endIndex,
-      endIndex: this.data.endIndex + 4
+      endIndex: this.data.endIndex + 5
     })
     this.list();
   },
   upper: function() {
-    console.log(this.data.endIndex)
-    if (this.data.endIndex > 4) {
+    if (this.data.endIndex > 5) {
       this.setData({
-        startIndex: this.data.endIndex - 8,
-        endIndex: this.data.endIndex - 4
+        startIndex: this.data.endIndex - 10,
+        endIndex: this.data.endIndex - 5
       })
       this.list();
     }

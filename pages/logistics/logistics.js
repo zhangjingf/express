@@ -9,10 +9,12 @@ Page({
     status: ''
   },
   onLoad: function (options) {
-    this.getExpress()
   },
   clear: function () {
 
+  },
+  search: function() {
+    this.getExpress(this.data.status);
   },
   inputNum: function (e) {
     this.setData({
@@ -31,8 +33,15 @@ Page({
   },
   getExpress: function (val) {
     Logistics.getExpress({number:val}, function(res) {
-      if(res.errno == 0) {
-        console.log(res.data);
+      if(res.errno == 0 && res.data) {
+        wx.navigateTo({
+          url: '../logisticsDetail/logisticsDetail?val=' + val,
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       }
     })
   }

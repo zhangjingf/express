@@ -68,8 +68,8 @@
         </view>
         <view>￥{{item.payPrice}}</view>
         <view class="btns">
-          <view class="delete" bindtap="delete">删除</view>
-          <view wx:if="{{item.status != 71}}" class="detail" bindtap='goDetail'>查看物流</view>
+          <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
+          <!-- <view wx:if="{{item.status != 71}}" class="detail" bindtap='goDetail'>查看物流</view> -->
           <view wx:if="{{item.status == 71}}" class="detail" bindtap="goPickup">重新下单</view>
         </view>
       </view>

@@ -29,6 +29,32 @@ class Order {
             }
         })
     }
+    finished(data, callback) {
+        ajax({
+            url: sendLink() + '/api/order/sureOrderFinished',
+            type: 'GET',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
+        })
+    }
+    delete(data, callback) {
+        ajax({
+            url: sendLink() + '/api/order/delete',
+            type: 'GET',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
+        })
+    }
 }
 
 export default new Order

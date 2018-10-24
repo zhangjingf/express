@@ -8,7 +8,7 @@
     </view>
     <view class="scan" bindtap="scan"><image src="../../images/scan.png" /></view>
   </view>
-  <view class="submit"><view class="{{status}}">查询</view></view>
+  <view class="submit"><view class="{{status}}" bindtap="search">查询</view></view>
   <view class="history">
     <!-- <view class="title">历史记录</view>
     <view class="list" wx:for="{{logisticsHistory}}" wx:key="item.id">

@@ -10,10 +10,10 @@
   </view>
   <view class="submit"><view class="{{status}}">查询</view></view>
   <view class="history">
-    <view class="title">历史记录</view>
+    <!-- <view class="title">历史记录</view>
     <view class="list" wx:for="{{logisticsHistory}}" wx:key="item.id">
       <view>{{item.name}}</view><view class="delete">X</view>
     </view>
-    <view class="clear" bindtap='clear'>清除历史记录</view>
+    <view class="clear" bindtap='clear'>清除历史记录</view> -->
   </view>
 </view>

@@ -1,4 +1,5 @@
 // pages/logistics/logistics.js
+import Logistics from '../../services/logistics';
 Page({
   data: {
     logisticsHistory: [{
@@ -8,7 +9,7 @@ Page({
     status: ''
   },
   onLoad: function (options) {
-
+    this.getExpress()
   },
   clear: function () {
 
@@ -22,6 +23,16 @@ Page({
     wx.scanCode({
       success: (res) => {
         console.log(res)
+        if (res.result) {
+          this.getExpress(res.result)
+        }
+      }
+    })
+  },
+  getExpress: function (val) {
+    Logistics.getExpress({number:val}, function(res) {
+      if(res.errno == 0) {
+        console.log(res.data);
       }
     })
   }

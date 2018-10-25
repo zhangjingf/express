@@ -27,29 +27,57 @@ Page({
       schoolName: wx.getStorageSync('schoolName'),
       area: wx.getStorageSync('proviceName') + wx.getStorageSync('cityName')
     })
-    if (options.type === 'receive') {
-      wx.setNavigationBarTitle({
-        title: '编辑收件人',
-      })
-      self.setData({
-        type: 'receive'
-      })
-    } else if (options.type === 'send') {
-      wx.setNavigationBarTitle({
-        title: '编辑寄件人'
-      })
-      self.setData({
-        type: 'send'
-      })
-    } else if (options.type === 'new') {
-      wx.setNavigationBarTitle({
-        title: '编辑地址薄'
-      })
-      self.setData({
-        type: 'new'
-      })
+    if (options.from == 'send') {
+      if (options.type === 'send') {
+        wx.setNavigationBarTitle({
+          title: '编辑收件人'
+        })
+        self.setData({
+          type: 'send'
+        })
+      }
+      if (options.type === 'receive') {
+        wx.setNavigationBarTitle({
+          title: '编辑寄件人',
+        })
+        self.setData({
+          type: 'receive'
+        })
+      }
+    } else {
+      if (options.type === 'receive') {
+        wx.setNavigationBarTitle({
+          title: '编辑收件人',
+        })
+        self.setData({
+          type: 'receive'
+        })
+      }
+      if (options.type === 'new') {
+        wx.setNavigationBarTitle({
+          title: '编辑地址薄'
+        })
+        self.setData({
+          type: 'new'
+        })
+      }
     }
     if (options.id) {
+      if (options.type == 'send') {
+        editor.getSenderAdrressDetail({id: options.id}, function(res) {
+          if (res.errno == 0 && res.data) {
+            self.setData({
+              receiverName: res.data.senderName,
+              receiverPhone: res.data.senderPhone,
+              detailAddress: res.data.address,
+              isDefault: res.data.isDefault,
+              id: res.data.id,
+              userId: res.data.userId
+            })
+          }
+        })
+        return
+      }
       editor.getAdrressDetail({
         id: options.id
       }, function (res) {
@@ -89,6 +117,10 @@ Page({
   },
   save: function () {
     const base = this.data;
+    if (base.type == 'send') {
+      this.saveSenderAddress();
+      return;
+    }
     let arrFlag = [];
     let param = {
       receiverName: base.receiverName,
@@ -138,6 +170,11 @@ Page({
   address: function (e) {
     this.setData({
       address: e.detail.value
+    })
+  },
+  detail: function (e) {
+    this.setData({
+      detailAddress: e.detail.value
     })
   },
   chooseArea: function () {
@@ -199,8 +236,64 @@ Page({
     })
   },
   delete: function () {
+    if (this.data.type == 'send') {
+      this.deleteSenderAddress();
+      return;
+    }
     let id = this.data.id;
     editor.delete({id: id}, function (res) {
+      if (res.errno == 0) {
+        wx.showToast({
+          title: '删除成功'
+        })
+        wx.navigateBack({
+          delta: 1
+        })
+      } else {
+        wx.showToast({
+          title: res.errmsg
+        })
+      }
+    })
+  },
+  saveSenderAddress: function () {
+    const base = this.data;
+    let arrFlag = [];
+    let param = {
+      senderName: base.receiverName,
+      senderPhone: base.receiverPhone,
+      address: base.detailAddress,
+      isDefault: base.isDefault,
+      id: base.id || null,
+      userId: base.userId || null
+    }
+    Object.keys(param).forEach(function(index) {
+      if (index != 'isDefault') {
+        arrFlag.push(Boolean(param[index]));
+      }
+    })
+    if (arrFlag.indexOf(false)>=0) {
+       wx.showToast({
+         title: '请填写全部表单项'
+       });
+       return;
+    }
+    editor.saveSender(param, function (res) {
+      if (res.errno == 0) {
+        wx.showToast({
+          title: '修改成功',
+          success: function () {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        })
+      }
+    })
+  },
+  deleteSenderAddress: function () {
+    let id = this.data.id;
+    editor.deleteSender({id: id}, function (res) {
       if (res.errno == 0) {
         wx.showToast({
           title: '删除成功'

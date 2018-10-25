@@ -4,7 +4,7 @@ page {
 }
 
 .my-address {
-  margin-bottom: 140rpx;
+  margin-bottom: 160rpx;
 }
 
 .my-address>view {
@@ -41,7 +41,7 @@ page {
   height: 29rpx;
 }
 
-.line {
+.line1 {
   display: inline-block;
   margin: 0 30rpx;
   width: 1rpx;

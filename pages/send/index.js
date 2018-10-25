@@ -1,5 +1,6 @@
 // pages/send/index.js
 import pickup from "../../services/pickup";
+import address from "../../services/myAddress";
 Page({
   data: {
     isChecked: null,
@@ -23,7 +24,8 @@ Page({
       3: '数码产品',
       4: '文件',
       5: '日用品'
-    }
+    },
+    senderAddressInfo: null
   },
   onLoad: function () {
     var self = this;
@@ -48,6 +50,47 @@ Page({
             defaultDate: todayArr.length > 0 ? todayArr : res.data,
             type: todayArr.length > 0 ? 'today' : 'tomorrow'
           })
+        }
+      }
+    })
+    pickup.goodsType({}, function(res) {
+      if (res.errno == 0 && res.data) {
+        self.setData({
+          typeList: res.data
+        })
+      }
+    })
+    pickup.servicePrice({schoolId: schoolId}, function(res) {
+      if (res.errno == 0) {
+
+      }
+    })
+  },
+  onShow: function () {
+    const self = this;
+    address.getAddressList({}, function(res) {
+      if (res.errno == 0) {
+        if(res.data.length > 0) {
+          for (let index in res.data) {
+            if (res.data[index].isDefault == 1) {
+              self.setData({
+                addressInfo: res.data[index]
+              })
+            }
+          }
+        }
+      }
+    })
+    address.gerSenderAddress({}, function(res) {
+      if (res.errno == 0) {
+        if (res.data.length > 0) {
+          for (let index in res.data) {
+            if (res.data[index].isDefault == 1) {
+              self.setData({
+                senderAddressInfo: res.data[index]
+              })
+            }
+          }
         }
       }
     })
@@ -110,6 +153,13 @@ Page({
       visible4: true
     })
   },
+  toggleDay: function (e) {
+    var type = e.target.dataset.type;
+    this.setData({
+      type: type,
+      defaultDate: type == 'today' ? this.data.todayList : this.data.tomorrowList
+    })
+  },
   maskFlag4: function () {
     this.setData({
       visible4: false
@@ -117,10 +167,21 @@ Page({
   },
   chooseTp: function (e) {
     let id = e.target.dataset.id || '';
+    let name = ''
+    for (let item of this.data.typeList) {
+      if (item.goodsType == id) {
+        name = item.goodsName
+      }
+    }
     this.setData({
       pkgType: id,
       visible4: false,
-      pkgTypeName: this.data.typeList[id]
+      pkgTypeName: name
     });
+  },
+  goEditor: function (e) {
+    wx.navigateTo({
+      url: '../editor/editor?from=send&type='+ e.target.dataset.type
+    })
   }
 })

@@ -3,7 +3,7 @@
   <view>
     <input bindinput="name" placeholder="姓名" value="{{receiverName}}"></input>
   </view>
-  <view class="sex">
+  <view class="sex" wx:if="{{type != 'send'}}">
     <block wx:if="{{gender == 1}}">
       <view data-sex="female" bindtap="sexChoose">
         <view class="correct sex_active" data-sex="female">
@@ -36,26 +36,26 @@
   <view>
     <input bindinput="phone" placeholder="电话" value="{{receiverPhone}}"></input>
   </view>
-  <view>
+  <!-- <view wx:if="{{type == 'send'}}">
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
       <view class="picker">
         <input type="text" placeholder="选择省市区" value="{{pickerAddress}}"></input>
         <image class="arrow" src="../../images/arrow_down.png"></image>
       </view>
     </picker>
-  </view>
-  <!-- <view wx:if="{{type == 'receive'}}">
-    <input type="text" placeholder="详细地址" bindinput="detail" value="{{content.fullAddress}}"></input >
   </view> -->
+  <view wx:if="{{type == 'send'}}">
+    <input type="text" placeholder="详细地址" bindinput="detail" value="{{detailAddress}}"></input >
+  </view>
   <!-- <view wx:if="{{type == 'default'}}" class="address">
     <view>{{area}}</view>
     <view>{{schoolName}}</view>
   </view> -->
-  <view class="area" bindtap="chooseArea">
+  <view wx:if="{{type != 'send'}}" class="area" bindtap="chooseArea">
     <input type="text" placeholder="所在区域" value="{{hostelName}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
-  <view><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>
+  <view wx:if="{{type != 'send'}}"><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>
 </view>
 <view wx:if="{{id}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">

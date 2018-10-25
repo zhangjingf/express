@@ -92,6 +92,11 @@ Page({
       url: '../myAddress/index?type=receive',
     });
   },
+  goEditor: function (e) {
+    wx.navigateTo({
+      url: '../editor/editor?type=receive'
+    })
+  },
   add: function () {
     let baseData = this.data.basePkgList;
     let orderNumArr = this.data.orderInfo;

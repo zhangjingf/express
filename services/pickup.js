@@ -95,7 +95,7 @@ class Pickup {
             }
         })
     }
-    
+
     payResult(data, callback) {
         ajax({
             url: sendLink() + '/api/pay/payResultQuery',
@@ -107,6 +107,46 @@ class Pickup {
                 error: function (ret) {
                     typeof callback == 'function' && callback.call(this, ret)
                 }
+        })
+    }
+    servicePrice(data, callback) {
+        ajax({
+            url: sendLink() + '/api/estimated/servicePrice',
+            type: 'POST',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
+        })
+    }
+
+    goodsType(data, callback) {
+        ajax({
+            url: sendLink() + '/api/goods/getGoodsType',
+            type: 'POST',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
+        })
+    }
+    senderOrder(data, callback) {
+        ajax({
+            url: sendLink() + '/api/order/getGoodsType',
+            type: 'POST',
+            data: data,
+            success: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            },
+            error: function (ret) {
+                typeof callback == 'function' && callback.call(this, ret)
+            }
         })
     }
 }

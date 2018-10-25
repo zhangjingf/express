@@ -8,7 +8,7 @@
         <view>{{addressInfo.fullAddress}}</view>
       </block>
       <block wx:else>
-        <view bindtap="goAddress">请编辑收件人信息</view>
+        <view bindtap="goEditor" data-type="receiver">请编辑收件人信息</view>
       </block>
     </view>
     <view class="right" bindtap='goAddress'>地址簿</view>

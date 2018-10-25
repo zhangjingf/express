@@ -3,10 +3,15 @@
 <view class="send">
   <view class="info">
     <view class="title blue">寄</view>
-    <view class="left">
-      <view>蛋类 131423423</view>
-      <view>曾多次调查市场调查的</view>
-    </view>
+    <block wx:if="{{addressInfo}}">
+      <view class="left">
+        <view>{{addressInfo.receiverName}} {{addressInfo.receiverphone}}</view>
+        <view>{{addressInfo.fullAddress}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="please" bindtap="goEditor" data-type="receive">请编辑寄件人信息</view>
+    </block>
     <view class="right" bindtap='goMyAddress'>地址簿</view>
   </view>
   <view class="middle">
@@ -15,10 +20,15 @@
   </view>
   <view class="info">
     <view class="title orange">收</view>
-    <view class="left">
-      <view>蛋类 131423423</view>
-      <view>曾多次调查市场调查的</view>
-    </view>
+    <block wx:if="{{snederAddressInfo}}">
+      <view class="left">
+        <view>{{snederAddressInfo.senderName}} {{snederAddressInfo.senderPhone}}</view>
+        <view>{{snederAddressInfo.address}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="please" bindtap="goEditor" data-type="send">请编辑收件人信息</view>
+    </block>
     <view class="right" bindtap='goMyAddress'>地址簿</view>
   </view>
 </view>
@@ -39,7 +49,7 @@
   </view>
   <view class="same">
     <text>留言:</text>
-    <input maxlength="20" bindinput="bindInput"></input>
+    <input maxlength="20" bindinput="bindInput" ></input>
     <text>{{wordNum}}/20</text>
   </view>
   <view class="same">
@@ -49,16 +59,14 @@
   <view class="same">
     <text>小费</text>
     <view>
-      <text style="color:#CCCCCC">包裹太大，给点小费吧</text>
-      <text>2元</text>
+      <input type="text" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
     </view>
   </view>
 </view>
 <view class="agree">
   <view>
     <radio checked='{{isChecked}}' color="{{color}}"></radio>
-    我已阅读并同意
-    <text class="porotcol">《取件协议》</text>
+    我已阅读并同意<text class="porotcol">《取件协议》</text>
   </view>
 </view>
 <view class="submit">
@@ -103,12 +111,15 @@
 <i-action-sheet visible="{{ visible4 }}" bind:cancel="maskFlag4" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="type">
-      <view data-id="5" bindtap="chooseTp">日用品</view>
+      <block wx:for="{{typeList}}" wx:key="item.goodsType">
+        <view data-id="{{item.goodsType}}" bindtap="chooseTp">{{item.goodsName}}</view>
+      </block>
+      <!-- <view data-id="5" bindtap="chooseTp">日用品</view>
       <view data-id="1" bindtap="chooseTp">衣物</view>
       <view data-id="4" bindtap="chooseTp">文件</view>
       <view data-id="2" bindtap="chooseTp">食品</view>
       <view data-id="3" bindtap="chooseTp">数码产品</view>
-      <view data-id="0" bindtap="chooseTp">其他</view>
+      <view data-id="0" bindtap="chooseTp">其他</view> -->
     </view>
   </view>
 </i-action-sheet>

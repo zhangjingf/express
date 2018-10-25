@@ -13,6 +13,10 @@ page>view {
   align-items: center;
   padding: 0 30rpx;
   height: 118rpx;
+  font-size:26rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(78,78,78,1);
 }
 
 .title {
@@ -26,7 +30,9 @@ page>view {
   font-weight: bold;
   border-radius: 50%;
 }
-
+.please {
+  flex: 1;
+}
 .blue {
   color: rgba(0, 140, 240, 1);
   border: 2rpx solid rgba(0, 140, 240, 1);

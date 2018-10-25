@@ -3,7 +3,7 @@ import pickup from "../../services/pickup";
 import address from "../../services/myAddress";
 Page({
   data: {
-    isChecked: null,
+    isChecked: true,
     color: '#008CF0',
     wordNum: '0',
     message: null,
@@ -24,7 +24,10 @@ Page({
       3: '数码产品',
       4: '文件',
       5: '日用品'
-    }
+    },
+    servicePrice: 0,
+    tipPrice: 0,
+    totalPrice: 0
   },
   onLoad: function () {
     var self = this;
@@ -61,7 +64,9 @@ Page({
     })
     pickup.servicePrice({schoolId: schoolId}, function(res) {
       if (res.errno == 0) {
-
+        self.setData({
+          servicePrice: res.data.servicePrice
+        })
       }
     })
   },
@@ -94,6 +99,7 @@ Page({
         }
       }
     })
+    this.getEstimatedPrice();
   },
   bindInput: function (e) {
     this.setData({
@@ -182,6 +188,85 @@ Page({
   goEditor: function (e) {
     wx.navigateTo({
       url: '../editor/editor?from=send&type='+ e.target.dataset.type
+    })
+  },
+  fees: function (e) {
+    this.setData({
+      tipPrice: e.detail.value
+    })
+    this.getEstimatedPrice()
+  },
+  getEstimatedPrice: function () {
+    const self = this;
+    pickup.getEstimatedPriceOne({orderType: 2, tipPrice: this.data.tipPrice}, function(res) {
+      if (res.errno == 0) {
+        self.setData({
+          totalPrice: res.data.price
+        })
+      }
+    })
+  },
+  submit: function () {
+    if (!this.data.checkedDate) {
+      wx.showToast({
+        title: '请选择时间',
+        icon: 'none'
+      })
+      return;
+    }
+    if (!this.data.pkgType) {
+      wx.showToast({
+        title: '请选择物品类型',
+        icon: 'none'
+      })
+      return;
+    }
+    if (!this.data.addressInfo) {
+      wx.showToast({
+        title: '请选择寄件人',
+        icon: 'none'
+      })
+      return;
+    }
+    if (!this.data.senderAddressInfo) {
+      wx.showToast({
+        title: '请选择收件人',
+        icon: 'none'
+      })
+      return;
+    }
+    this.order()
+  },
+  order: function () {
+    let params = {
+      userLng: wx.getStorageSync('lng'),
+      userLat: wx.getStorageSync('lat'),
+      isTody: this.data.type == 'today' ? 0 : 1,
+      hopeTime: this.data.checkedDate.replace(/[\u4e00-\u9fa5]/g, ''),
+      goodsType: this.data.pkgType,
+      tipPrice: this.data.tipPrice, //小费
+      servicePrice: this.data.servicePrice, //服务金额
+      estimatePrice: this.data.totalPrice, //预估价格
+      totalPrice: this.data.totalPrice, //totalPrice
+      receiverId: this.data.senderAddressInfo.id,
+      senderId: this.data.addressInfo.id,
+      remark: ''
+    }
+    pickup.senderOrder(params, function(res) {
+      if (res.errno == 0) {
+        wx.showToast({
+          title: '下单成功',
+          icon: 'none'
+        })
+        wx.reLaunch({
+          url: '../order/index',
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
     })
   }
 })

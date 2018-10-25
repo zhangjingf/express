@@ -268,3 +268,6 @@ page>view {
   color: rgba(0, 140, 240, 1) !important;
   border:1rpx solid rgba(0, 140, 240, 1);
 }
+radio {
+  transform:scale(0.7);
+}

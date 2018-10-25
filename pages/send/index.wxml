@@ -54,12 +54,12 @@
   </view>
   <view class="same">
     <text>服务费</text>
-    <text>1元</text>
+    <text>{{servicePrice}}元</text>
   </view>
   <view class="same">
     <text>小费</text>
     <view>
-      <input type="text" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
+      <input type="number" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
     </view>
   </view>
 </view>
@@ -72,12 +72,11 @@
 <view class="submit">
   <view>
     <view class="fee">
-      <text>¥</text>
-      5
+      <text>¥</text>{{totalPrice}}
     </view>
     <view>此费用不包含包裹费用</view>
   </view>
-  <view>下单</view>
+  <view bindtap="submit">下单</view>
 </view>
 <i-action-sheet visible="{{ visible3 }}" bind:cancel="maskFlag3" show-cancel="{{showCancel}}">
   <view slot="header">

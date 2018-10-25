@@ -112,7 +112,7 @@ class Pickup {
     servicePrice(data, callback) {
         ajax({
             url: sendLink() + '/api/estimated/servicePrice',
-            type: 'POST',
+            type: 'GET',
             data: data,
             success: function (ret) {
                 typeof callback == 'function' && callback.call(this, ret)
@@ -138,7 +138,7 @@ class Pickup {
     }
     senderOrder(data, callback) {
         ajax({
-            url: sendLink() + '/api/order/getGoodsType',
+            url: sendLink() + '/api/userOrder/createSenderOrder',
             type: 'POST',
             data: data,
             success: function (ret) {

@@ -20,10 +20,10 @@
   </view>
   <view class="info">
     <view class="title orange">收</view>
-    <block wx:if="{{snederAddressInfo}}">
+    <block wx:if="{{senderAddressInfo}}">
       <view class="left">
-        <view>{{snederAddressInfo.senderName}} {{snederAddressInfo.senderPhone}}</view>
-        <view>{{snederAddressInfo.address}}</view>
+        <view>{{senderAddressInfo.senderName}} {{senderAddressInfo.senderPhone}}</view>
+        <view>{{senderAddressInfo.address}}</view>
       </view>
     </block>
     <block wx:else>

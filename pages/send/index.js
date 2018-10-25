@@ -24,8 +24,7 @@ Page({
       3: '数码产品',
       4: '文件',
       5: '日用品'
-    },
-    senderAddressInfo: null
+    }
   },
   onLoad: function () {
     var self = this;
@@ -89,6 +88,7 @@ Page({
               self.setData({
                 senderAddressInfo: res.data[index]
               })
+              console.log(self.data.senderAddressInfo)
             }
           }
         }

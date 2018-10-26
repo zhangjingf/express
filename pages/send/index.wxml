@@ -12,7 +12,7 @@
     <block wx:else>
       <view class="please" bindtap="goEditor" data-type="receive">请编辑寄件人信息</view>
     </block>
-    <view class="right" bindtap='goMyAddress'>地址簿</view>
+    <view class="right" data-type="receive" bindtap='goMyAddress'>地址簿</view>
   </view>
   <view class="middle">
     <i-icon type="switch" size="20" color="{{switchColor}}" />
@@ -29,7 +29,7 @@
     <block wx:else>
       <view class="please" bindtap="goEditor" data-type="send">请编辑收件人信息</view>
     </block>
-    <view class="right" bindtap='goMyAddress'>地址簿</view>
+    <view class="right" data-type="send" bindtap='goMyAddress'>地址簿</view>
   </view>
 </view>
 <view class="same-list">

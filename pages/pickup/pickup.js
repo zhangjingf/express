@@ -94,7 +94,7 @@ Page({
   },
   goEditor: function (e) {
     wx.navigateTo({
-      url: '../editor/editor?type=receive'
+      url: '../editor/editor?type=receive&status=new'
     })
   },
   add: function () {

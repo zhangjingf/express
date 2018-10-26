@@ -27,44 +27,93 @@ Page({
       schoolName: wx.getStorageSync('schoolName'),
       area: wx.getStorageSync('proviceName') + wx.getStorageSync('cityName')
     })
-    if (options.from == 'send') {
-      if (options.type === 'send') {
-        wx.setNavigationBarTitle({
-          title: '编辑收件人'
-        })
-        self.setData({
-          type: 'send'
-        })
+    if (options.status == 'new') {
+      if (options.from == 'send') {
+        if (options.type === 'send') {
+          wx.setNavigationBarTitle({
+            title: '新建收件人'
+          })
+          self.setData({
+            type: 'send'
+          })
+        }
+        if (options.type === 'receive') {
+          wx.setNavigationBarTitle({
+            title: '新建寄件人',
+          })
+          self.setData({
+            type: 'receive'
+          })
+        }
+      } else {
+        if (options.type === 'receive') {
+          wx.setNavigationBarTitle({
+            title: '新建收件人',
+          })
+          self.setData({
+            type: 'receive'
+          })
+        }
+        if (options.type === 'send') {
+          wx.setNavigationBarTitle({
+            title: '新建寄件人',
+          })
+          self.setData({
+            type: 'receive'
+          })
+        }
+        if (options.type === 'new') {
+          wx.setNavigationBarTitle({
+            title: '新建地址薄'
+          })
+          self.setData({
+            type: 'new'
+          })
+        }
       }
-      if (options.type === 'receive') {
-        wx.setNavigationBarTitle({
-          title: '编辑寄件人',
-        })
-        self.setData({
-          type: 'receive'
-        })
-      }
+
     } else {
-      if (options.type === 'receive') {
-        wx.setNavigationBarTitle({
-          title: '编辑收件人',
-        })
-        self.setData({
-          type: 'receive'
-        })
-      }
-      if (options.type === 'new') {
-        wx.setNavigationBarTitle({
-          title: '编辑地址薄'
-        })
-        self.setData({
-          type: 'new'
-        })
+      if (options.from == 'send') {
+        if (options.type === 'send') {
+          wx.setNavigationBarTitle({
+            title: '编辑收件人'
+          })
+          self.setData({
+            type: 'send'
+          })
+        }
+        if (options.type === 'receive') {
+          wx.setNavigationBarTitle({
+            title: '编辑寄件人',
+          })
+          self.setData({
+            type: 'receive'
+          })
+        }
+      } else {
+        if (options.type === 'receive') {
+          wx.setNavigationBarTitle({
+            title: '编辑收件人',
+          })
+          self.setData({
+            type: 'receive'
+          })
+        }
+        if (options.type === 'new') {
+          wx.setNavigationBarTitle({
+            title: '编辑地址薄'
+          })
+          self.setData({
+            type: 'new'
+          })
+        }
       }
     }
     if (options.id) {
       if (options.type == 'send') {
-        editor.getSenderAdrressDetail({id: options.id}, function(res) {
+        editor.getSenderAdrressDetail({
+          id: options.id
+        }, function (res) {
           if (res.errno == 0 && res.data) {
             self.setData({
               receiverName: res.data.senderName,
@@ -133,16 +182,16 @@ Page({
       isDefault: base.isDefault,
       gender: base.gender
     }
-    Object.keys(param).forEach(function(index) {
+    Object.keys(param).forEach(function (index) {
       if (index != 'gender' || index != 'isDefault') {
         arrFlag.push(Boolean(param[index]));
       }
     })
-    if (arrFlag.indexOf(false)>=0) {
-       wx.showToast({
-         title: '请填写全部表单项'
-       });
-       return;
+    if (arrFlag.indexOf(false) >= 0) {
+      wx.showToast({
+        title: '请填写全部表单项'
+      });
+      return;
     }
     editor.save(param, function (res) {
       if (res.errno == 0) {
@@ -207,7 +256,9 @@ Page({
   getCity: function (val) {
     const self = this;
     let multiArray = this.data.multiArray;
-    common.getCityList({provinceId: val}, function (res) {
+    common.getCityList({
+      provinceId: val
+    }, function (res) {
       if (res.errno == 0) {
         multiArray[1] = res.data;
         self.setData({
@@ -220,7 +271,9 @@ Page({
   getSchool: function (val) {
     const self = this;
     let multiArray = this.data.multiArray;
-    common.getSchoolList({cityId: val}, function (res) {
+    common.getSchoolList({
+      cityId: val
+    }, function (res) {
       if (res.errno == 0) {
         multiArray[2] = res.data;
         self.setData({
@@ -241,7 +294,9 @@ Page({
       return;
     }
     let id = this.data.id;
-    editor.delete({id: id}, function (res) {
+    editor.delete({
+      id: id
+    }, function (res) {
       if (res.errno == 0) {
         wx.showToast({
           title: '删除成功'
@@ -267,16 +322,16 @@ Page({
       id: base.id || null,
       userId: base.userId || null
     }
-    Object.keys(param).forEach(function(index) {
+    Object.keys(param).forEach(function (index) {
       if (index != 'isDefault') {
         arrFlag.push(Boolean(param[index]));
       }
     })
-    if (arrFlag.indexOf(false)>=0) {
-       wx.showToast({
-         title: '请填写全部表单项'
-       });
-       return;
+    if (arrFlag.indexOf(false) >= 0) {
+      wx.showToast({
+        title: '请填写全部表单项'
+      });
+      return;
     }
     editor.saveSender(param, function (res) {
       if (res.errno == 0) {
@@ -293,7 +348,9 @@ Page({
   },
   deleteSenderAddress: function () {
     let id = this.data.id;
-    editor.deleteSender({id: id}, function (res) {
+    editor.deleteSender({
+      id: id
+    }, function (res) {
       if (res.errno == 0) {
         wx.showToast({
           title: '删除成功'

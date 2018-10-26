@@ -4,20 +4,46 @@ Page({
   data: {
     addressList: null,
     color: 'blue',
-    type: ''
+    type: '',
+    from: ''
   },
   onLoad: function (options) {
-    if (options.type == 'receive') {
-      wx.setNavigationBarTitle({
-        title: '收件人列表',
-      })
-      this.setData({
-        type: options.type
-      })
+    if (options.from == 'send') {
+      if (options.type == 'receive') {
+        wx.setNavigationBarTitle({
+          title: '寄件人列表',
+        })
+        this.setData({
+          type: 'receive',
+          from: 'send'
+        })
+      }
+      if (options.type == 'send') {
+        wx.setNavigationBarTitle({
+          title: '收件人列表',
+        })
+        this.setData({
+          type: 'send',
+          from: 'send'
+        })
+      }
+    } else {
+      if (options.type == 'receive') {
+        wx.setNavigationBarTitle({
+          title: '收件人列表',
+        })
+        this.setData({
+          type: options.type
+        })
+      }
     }
   },
   onShow: function () {
-    this.getAddList();
+    if (this.data.type == 'send') {
+      this.getSenderAddress();
+    } else {
+      this.getAddList();
+    }
   },
   check: function (e) {
     var id = e.currentTarget.dataset.id;
@@ -34,20 +60,37 @@ Page({
   goEdit: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../editor/editor?id=' + id,
+      url: '../editor/editor?id=' + id + '&type=' + this.data.type,
     })
   },
   goEditNew: function () {
     wx.navigateTo({
-      url: '../editor/editor?type=' + this.data.type,
+      url: '../editor/editor?status=new&type=' + this.data.type,
     })
   },
   getAddList: function () {
     var self = this;
     address.getAddressList({}, function(res) {
-      if (res.errno == 0) {
-        if (res.data.length > 0) {
-          res.data[0].checked = true;
+      if (res.errno == 0 && res.data.length > 0) {
+        for (let item of res.data) {
+          if (item.isDefault == 1) {
+            item.checked = true;
+          }
+        }
+        self.setData({
+          addressList: res.data
+        })
+      }
+    })
+  },
+  getSenderAddress: function () {
+    var self = this;
+    address.gerSenderAddress({}, function(res) {
+      if (res.errno == 0 && res.data.length > 0) {
+        for (let item of res.data) {
+          if (item.isDefault == 1) {
+            item.checked = true;
+          }
         }
         self.setData({
           addressList: res.data

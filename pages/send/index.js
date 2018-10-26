@@ -93,7 +93,6 @@ Page({
               self.setData({
                 senderAddressInfo: res.data[index]
               })
-              console.log(self.data.senderAddressInfo)
             }
           }
         }
@@ -118,8 +117,9 @@ Page({
     })
   },
   goMyAddress: function (e) {
+    let type = e.target.dataset.type || '';
     wx.navigateTo({
-      url: '../myAddress/index',
+      url: '../myAddress/index?from=send&type=' + type,
     })
   },
   bookingDate: function (e) {
@@ -187,7 +187,7 @@ Page({
   },
   goEditor: function (e) {
     wx.navigateTo({
-      url: '../editor/editor?from=send&type='+ e.target.dataset.type
+      url: '../editor/editor?from=send&status=new&type='+ e.target.dataset.type
     })
   },
   fees: function (e) {
@@ -250,7 +250,7 @@ Page({
       totalPrice: this.data.totalPrice, //totalPrice
       receiverId: this.data.senderAddressInfo.id,
       senderId: this.data.addressInfo.id,
-      remark: ''
+      remark: this.data.message
     }
     pickup.senderOrder(params, function(res) {
       if (res.errno == 0) {

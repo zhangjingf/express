@@ -32,8 +32,8 @@
         </view>
         <view>￥{{item.actualPrice}}</view>
         <view class="btns">
-          <view class="delete" bindtap="delete">删除</view>
-          <view class="detail" bindtap='goDetail'>查看物流</view>
+          <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" bindtap="delete">删除</view>
+          <view class="detail" bindtap='goDetail' wx:if="{{item.status == 50}}">查看物流</view>
         </view>
       </view>
     </block>
@@ -71,6 +71,7 @@
           <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
           <!-- <view wx:if="{{item.status != 71}}" class="detail" bindtap='goDetail'>查看物流</view> -->
           <view wx:if="{{item.status == 71}}" class="detail" bindtap="goPickup">重新下单</view>
+          <view class="detail" wx:if="{{item.status < 60}}" data-id="{{item.orderId}}" catchtap="cancel">取消订单</view>
         </view>
       </view>
     </block>

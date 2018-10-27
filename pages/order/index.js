@@ -78,5 +78,12 @@ Page({
       })
       this.list();
     }
+  },
+  cancel: function (e) {
+    order.cancel({orderId: e.target.dataset.id.toString()}, function (res) {
+      if (res.code == 0) {
+        this.list()
+      }
+    })
   }
 })

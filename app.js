@@ -3,7 +3,7 @@ import login from "./services/login"
 App({
   onLaunch: function () {
     var logs = wx.getStorageSync('logs') || []
-    var token = wx.getStorageSync('token') || []
+    var token = wx.getStorageSync('token') || ''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 

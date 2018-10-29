@@ -20,6 +20,7 @@ Page({
     fullAddress: '',
     hostelName: '',
     isDefault: 1,
+    config: ''
   },
   onLoad: function (options) {
     const self = this;
@@ -188,7 +189,8 @@ Page({
     })
     if (arrFlag.indexOf(false) >= 0) {
       wx.showToast({
-        title: '请填写全部表单项'
+        title: '请填写全部表单项',
+        icon: 'none'
       });
       return;
     }
@@ -321,14 +323,16 @@ Page({
       id: base.id || null,
       userId: base.userId || null
     }
+    console.log(param)
     Object.keys(param).forEach(function (index) {
-      if (index != 'isDefault') {
+      if (index == 'senderName' || index == 'senderPhone' || index == 'address') {
         arrFlag.push(Boolean(param[index]));
       }
     })
     if (arrFlag.indexOf(false) >= 0) {
       wx.showToast({
-        title: '请填写全部表单项'
+        title: '请填写全部表单项',
+        icon: 'none'
       });
       return;
     }

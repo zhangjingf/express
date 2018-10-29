@@ -80,9 +80,10 @@ Page({
     }
   },
   cancel: function (e) {
+    const self = this;
     order.cancel({orderId: e.target.dataset.id.toString()}, function (res) {
       if (res.code == 0) {
-        this.list()
+        self.list()
       }
     })
   }

@@ -60,10 +60,6 @@ App({
                     })
                   }
                 })
-              } else {
-                wx.reLaunch({
-                  url: '../login/index',
-                })
               }
             }
           })

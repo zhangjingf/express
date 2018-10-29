@@ -82,7 +82,7 @@
     <view class="address-list">
       <block wx:for="{{expressList}}" wx:key="{{item.id}}">
         <view bindtap="chooseExpress" data-id="{{item.id}}">
-          <text>{{item.expressName}}</text>
+          <text data-id="{{item.id}}">{{item.expressName}}</text>
           <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png" />
         </view>
       </block>

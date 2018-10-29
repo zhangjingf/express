@@ -60,12 +60,12 @@ Page({
   goEdit: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../editor/editor?id=' + id + '&type=' + this.data.type,
+      url: '../editor/editor?id=' + id + '&type=' + this.data.type + '&from=' + this.data.from,
     })
   },
   goEditNew: function () {
     wx.navigateTo({
-      url: '../editor/editor?status=new&type=' + this.data.type,
+      url: '../editor/editor?status=new&type=' + this.data.type + '&from=' + this.data.from,
     })
   },
   getAddList: function () {

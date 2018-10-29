@@ -6,7 +6,8 @@ Page({
       id: 1,
       name: '4444444'
     }],
-    status: ''
+    status: '',
+    number: ''
   },
   onLoad: function (options) {
   },
@@ -14,11 +15,12 @@ Page({
 
   },
   search: function() {
-    this.getExpress(this.data.status);
+    this.getExpress(this.data.number);
   },
   inputNum: function (e) {
     this.setData({
-      status: e.detail.value.length > 0 ? 'active' : ''
+      status: e.detail.value.length > 0 ? 'active' : '',
+      number: e.detail.value
     })
   },
   scan: function () {

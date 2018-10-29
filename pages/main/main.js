@@ -32,6 +32,7 @@ Page({
           latLong: res.latitude
         }
         main.wxBindPosition(param, function (res) {
+          console.error(res)
           if (res.errno == 0 && res.data) {
             self.setData({
               topHeaderText: res.data.schoolName

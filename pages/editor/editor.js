@@ -71,7 +71,6 @@ Page({
           })
         }
       }
-
     } else {
       if (options.from == 'send') {
         if (options.type === 'send') {

@@ -1,7 +1,3 @@
-page {
-  background-color: #f0efef;
-}
-
 .main {
   margin-bottom: 96rpx;
 }
@@ -17,6 +13,10 @@ page {
 }
 
 .search {
+  position: fixed;
+  top: 0;
+  width: 750rpx;
+  height: 98rpx;
   font-size: 30rpx;
   font-family: PingFang-SC-Regular;
   font-weight: 400;
@@ -25,7 +25,9 @@ page {
   text-align: center;
   background: #ffffff;
 }
-
+swiper {
+  margin-top: 98rpx;
+}
 .slide-image {
   width: 750rpx;
   height: 350rpx;

@@ -41,6 +41,7 @@ export default {
       // _header['Content-Type'] = 'application/x-www-form-urlencoded' // 默认值,
     }
     _wx_option.header = _header
+    console.log(_wx_option)
     wx.request(_wx_option)
   }
 }

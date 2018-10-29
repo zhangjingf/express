@@ -39,7 +39,7 @@
   <view wx:if="{{type != 'send'}}">
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
       <view class="picker">
-        <input type="text" placeholder="选择省市区" value="{{pickerAddress}}"></input>
+        <input type="text" disabled placeholder="选择省市区" value="{{pickerAddress}}"></input>
         <image class="arrow" src="../../images/arrow_down.png"></image>
       </view>
     </picker>

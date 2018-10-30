@@ -52,7 +52,7 @@
     <view>{{schoolName}}</view>
   </view> -->
   <view wx:if="{{type != 'send'}}" class="area" bindtap="chooseArea">
-    <input type="text" placeholder="所在区域" value="{{hostelName}}"></input>
+    <input type="text" placeholder="所在区域" disabled value="{{hostelName}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
   <view wx:if="{{type != 'send'}}"><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>

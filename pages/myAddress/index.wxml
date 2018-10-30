@@ -11,9 +11,9 @@
       <view>{{item.address}}</view>
     </view>
     <view class="rihgt">
-      <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png"/>
+      <!-- <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png"/> -->
       <view class="line1"></view>
-      <image data-id="{{item.id}}" bindtap="goEdit" class="edit" src="../../images/address_01.png"/>
+      <image data-id="{{item.id}}" wx:if="{{item.isDisable == 1}}" bindtap="goEdit" class="edit" src="../../images/address_01.png"/>
     </view>
   </view>
 </view>

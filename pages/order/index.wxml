@@ -1,7 +1,7 @@
 <!-- pages/order/index.wxml -->
 <view class="line"></view>
-<scroll-view scroll-y bindscrolltolower="lower"  bindscrolltoupper="upper" class="order-list">
-  <view class="order" wx:for="{{orderList}}" wx:key="{{item.orderId}}" catchtap="goOrderDetail" data-id="{{item.orderId}}">
+<scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}"  bindscrolltoupper="upper" bindscroll="scroll" class="order-list">
+  <view class="order" wx:for="{{orderList}}" wx:key="{{item.orderId}}" catchtap="goOrderDetail" data-id="{{item.orderId}}" id="{{'order' + item.orderId}}">
     <block wx:if="{{item.orderType == 2}}">
       <view class="part1">
         <view>寄快递</view>
@@ -13,7 +13,9 @@
         <view>{{item.receiverAddress}}</view>
         <view>
           <view class="circle2"></view>
-          {{item.serviceTime}}
+          <text wx:if="{{item.isToday == 0}}">明天</text>
+          <text wx:if="{{item.isToday == 1}}">今天</text>
+          {{item.hopeTime}}
         </view>
       </view>
       <view class="part2">
@@ -30,10 +32,10 @@
           {{item.expressName}}
           <text>{{item.orderNum}}</text>
         </view>
-        <view>￥{{item.actualPrice}}</view>
+        <!-- <view>￥{{item.actualPrice}}</view> -->
         <view class="btns">
-          <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" bindtap="delete">删除</view>
-          <view class="detail" bindtap='goDetail' wx:if="{{item.status == 50}}">查看物流</view>
+          <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
+          <view class="detail" catchtap='goDetail' wx:if="{{item.status == 50}}">查看物流</view>
         </view>
       </view>
     </block>
@@ -70,7 +72,7 @@
         <view class="btns">
           <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
           <!-- <view wx:if="{{item.status != 71}}" class="detail" bindtap='goDetail'>查看物流</view> -->
-          <view wx:if="{{item.status == 71}}" class="detail" bindtap="goPickup">重新下单</view>
+          <view wx:if="{{item.status == 71}}" class="detail" catchtap="goPickup">重新下单</view>
           <view class="detail" wx:if="{{item.status < 60}}" data-id="{{item.orderId}}" catchtap="cancel">取消订单</view>
         </view>
       </view>

@@ -6,21 +6,21 @@
   </view>
   <view class="title">当前学校</view>
   <view class="school">
-    <view>{{schoolName}}</view>
+    <view bindtap="choose">{{schoolName}}</view>
     <view class="location" bindtap="reLocation">
       <image src="../../images/location.png"/>
       重新定位
     </view>
   </view>
   <view class="blank"></view>
-  <view class="title">附近学校</view>
+  <view wx:if="{{nearSchool.length > 0}}" class="title">附近学校</view>
   <view class="near-school">
-    <view wx:for="{{nearSchool}}" wx:key="{{item.id}}">
-      {{item.	schoolName}}
+    <view wx:for="{{nearSchool}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="choose">
+      {{item.schoolName}}
     </view>
   </view>
   <view class="blank"></view>
-  <view class="title">常用地址</view>
+  <!-- <view class="title">常用地址</view>
   <view class="history">
     <view class="item">
       <view class="left">
@@ -28,7 +28,7 @@
         <view>某某公寓</view>
         <view>xxxx 15220618484</view>
       </view>
-      <!-- <view class="right" bindtap="remove">X</view> -->
+      <view class="right" bindtap="remove">X</view>
     </view>
-  </view>
+  </view> -->
 </view>

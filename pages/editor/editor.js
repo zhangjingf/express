@@ -172,6 +172,7 @@ Page({
     }
     let arrFlag = [];
     let param = {
+      id: base.id || '',
       receiverName: base.receiverName,
       receiverPhone: base.receiverPhone,
       cityId: base.cityId,
@@ -183,7 +184,7 @@ Page({
       gender: base.gender
     }
     Object.keys(param).forEach(function (index) {
-      if (index != 'gender' || index != 'isDefault') {
+      if (index != 'gender' && index != 'isDefault' && index != 'id') {
         arrFlag.push(Boolean(param[index]));
       }
     })
@@ -235,13 +236,15 @@ Page({
   bindMultiPickerChange: function (e) {
     let multiArray = this.data.multiArray;
     let indexArr = e.detail.value;
-    let address = multiArray[0][indexArr[0]].name + multiArray[1][indexArr[1]].name + multiArray[2][indexArr[2]].name;
-    this.setData({
-      pickerAddress: address,
-      multiIndex: indexArr,
-      cityId: multiArray[1][indexArr[1]].id,
-      schoolId: multiArray[2][indexArr[2]].id
-    });
+    if (multiArray[0][indexArr[0]] && multiArray[1][indexArr[1]] && multiArray[2][indexArr[2]]) {
+      let address = multiArray[0][indexArr[0]].name + multiArray[1][indexArr[1]].name + multiArray[2][indexArr[2]].name;
+      this.setData({
+        pickerAddress: address,
+        multiIndex: indexArr,
+        cityId: multiArray[1][indexArr[1]].id,
+        schoolId: multiArray[2][indexArr[2]].id
+      });
+    }
   },
   bindMultiPickerColumnChange: function (e) {
     let multiArray = this.data.multiArray;

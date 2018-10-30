@@ -49,5 +49,25 @@ Page({
         })
       }
     })
+  },
+  choose: function(e) {
+    let id = e.target.dataset.id || '';
+    if (id) {
+      for (let index in this.data.nearSchool) {
+        if (this.data.nearSchool[index].id == id) {
+          wx.setStorage({
+            key: 'schoolId',
+            data: id
+          })
+          wx.setStorage({
+            key: 'schoolName',
+            data: this.data.nearSchool[index].name
+          })
+        }
+      }
+    }
+    wx.navigateBack({
+        delta: 1
+    })
   }
 })

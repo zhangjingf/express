@@ -79,6 +79,10 @@ Page({
                 console.warn('lat存储成功');
               }
             });
+          } else {
+            self.setData({
+              topHeaderText: wx.getStorageSync('schoolName') || ''
+            })
           }
         })
       }

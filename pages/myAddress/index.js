@@ -70,7 +70,7 @@ Page({
   },
   getAddList: function () {
     var self = this;
-    address.getAddressList({}, function(res) {
+    address.getAddressList({schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0 && res.data.length > 0) {
         for (let item of res.data) {
           if (item.isDefault == 1) {
@@ -85,7 +85,7 @@ Page({
   },
   getSenderAddress: function () {
     var self = this;
-    address.gerSenderAddress({}, function(res) {
+    address.gerSenderAddress({schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0 && res.data.length > 0) {
         for (let item of res.data) {
           if (item.isDefault == 1) {

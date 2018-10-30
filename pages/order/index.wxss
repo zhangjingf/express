@@ -1,7 +1,9 @@
 .order-list {
   margin-bottom: 116rpx;
 }
-
+scroll-view {
+  height: 1084rpx;
+}
 .order {
   display: flex;
   align-items: center;
@@ -68,7 +70,8 @@
 }
 
 .circle1,
-.circle2 {
+.circle2,
+.circle3 {
   display: inline-block;
   margin-right: 10rpx;
   width: 20rpx;

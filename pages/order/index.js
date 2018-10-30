@@ -4,7 +4,9 @@ Page({
     orderList: [],
     startIndex: 0,
     endIndex: 5,
-    loadMore: true
+    loadMore: true,
+    isLock: false,
+    toView: ''
   },
   onLoad: function (options) {
     this.setData({
@@ -25,6 +27,10 @@ Page({
   },
   list: function() {
     const self = this;
+    if (self.data.isLock) return;
+    self.setData({
+      isLock: true
+    })
     let param = {
       startIndex: this.data.startIndex,
       endIndex: this.data.endIndex
@@ -32,11 +38,10 @@ Page({
     order.orderList(param, function (res) {
       if (res.errno == 0 && res.data) {
         self.setData({
-          orderList: res.data
-        })
-      } else {
-        self.setData({
-          loadMore: false
+          orderList: res.data,
+          loadMore: res.data.length < 5 ? false : true,
+          isLock: false,
+          toView: 'order' + res.data[0].orderId
         })
       }
     })
@@ -63,7 +68,7 @@ Page({
     })
   },
   lower: function() {
-    if (!this.data.loadMore) return;
+    if (!this.data.loadMore || this.data.direction) return;
     this.setData({
       startIndex: this.data.endIndex,
       endIndex: this.data.endIndex + 5
@@ -71,7 +76,7 @@ Page({
     this.list();
   },
   upper: function() {
-    if (this.data.endIndex > 5) {
+    if (this.data.endIndex > 5 && this.data.direction) {
       this.setData({
         startIndex: this.data.endIndex - 10,
         endIndex: this.data.endIndex - 5
@@ -85,6 +90,11 @@ Page({
       if (res.code == 0) {
         self.list()
       }
+    })
+  },
+  scroll: function (e) {
+    this.setData({
+      direction: e.detail.deltaY > 0 ? true : false
     })
   }
 })

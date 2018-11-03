@@ -3,7 +3,7 @@
   position: fixed;
   bottom: 0;
   width: 750rpx;
-  height: 96rpx;
+  height: 94rpx;
   display: flex;
   align-items: center;
   font-size:22rpx;
@@ -11,6 +11,8 @@
   font-weight:500;
   color:rgba(102,102,102,1);
   background: #ffffff;
+  border-top: 1rpx solid rgba(204, 204, 204, 1);
+  overflow: hidden;
 }
 .nav view {
   flex: 1;

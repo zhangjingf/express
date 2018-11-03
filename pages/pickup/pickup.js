@@ -119,6 +119,7 @@ Page({
       }
     }
     for (let i in orderArr) {
+      orderArr[i].index = Number(i) + 1
       if (!!orderArr[i].price) {
         sum += orderArr[i].price;
       }

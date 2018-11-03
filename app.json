@@ -23,5 +23,27 @@
     "navigationBarTitleText": "代代裹裹",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#3B86F7",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/main/main",
+      "text": "首页",
+      "iconPath": "images/nav_11.png",
+      "selectedIconPath": "images/nav_01.png"
+    },{
+      "pagePath": "pages/order/index",
+      "text": "订单",
+      "iconPath": "./images/nav_02.png",
+      "selectedIconPath": "./images/nav_22.png"
+    },{
+      "pagePath": "pages/myMenu/index",
+      "text": "我的",
+      "iconPath": "images/nav_03.png",
+      "selectedIconPath": "images/nav_33.png"
+    }
+    ]
   }
 }

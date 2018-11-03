@@ -17,7 +17,7 @@
   <button class="content" open-type="contact" bindcontact="handleContact">我的客服</button>
   <i-icon type="enter" size="20" />
 </view>
-<view class="line"><view></view></view>
+<view class="line1"><view></view></view>
 <view class="advice" bindtap="goAdvice">
   <view class="image">
     <image src="../../images/mine_03.png"/>
@@ -32,4 +32,4 @@
   <view class="content">设置</view>
   <i-icon type="enter" size="20" />
 </view>
-<nav checkedStatus="{{checkedStatus}}" />
+<!-- <nav checkedStatus="{{checkedStatus}}" /> -->

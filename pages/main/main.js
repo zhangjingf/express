@@ -81,7 +81,7 @@ Page({
             });
           } else {
             self.setData({
-              topHeaderText: wx.getStorageSync('schoolName') || ''
+              topHeaderText: wx.getStorageSync('schoolName') || '请选择学校'
             })
           }
         })

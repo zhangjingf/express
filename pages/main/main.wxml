@@ -11,7 +11,7 @@
   </swiper>
   <view class="item" bindtap='gopickup'>
     <view class="image">
-      <image src="../../images/main_01.png"></image>
+      <image src="../../images/main_03.png"></image>
     </view>
     <view class="content">
       <view>取快递</view>
@@ -19,19 +19,17 @@
     </view>
     <view class="arrow">
       <image src="../../images/arrow.png"></image>
-      <image src="../../images/arrow.png"></image>
     </view>
   </view>
   <view class="item" bindtap="gosend">
     <view class="image">
-      <image src="../../images/main_03.png"></image>
+      <image src="../../images/main_01.png"></image>
     </view>
     <view class="content">
       <view>寄快递</view>
       <view>省事、快捷、高效，随时随地查询</view>
     </view>
     <view class="arrow">
-      <image src="../../images/arrow.png"></image>
       <image src="../../images/arrow.png"></image>
     </view>
   </view>
@@ -45,9 +43,8 @@
     </view>
     <view class="arrow">
       <image src="../../images/arrow.png"></image>
-      <image src="../../images/arrow.png"></image>
     </view>
   </view>
-  <view class="blank2"></view>
+  <!-- <view class="blank2"></view> -->
 </view>
-<nav checkedStatus="{{checkedStatus}}"/>
+<!-- <nav checkedStatus="{{checkedStatus}}"/> -->

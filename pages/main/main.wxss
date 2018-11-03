@@ -1,5 +1,5 @@
 .main {
-  margin-bottom: 96rpx;
+  margin-bottom: 20rpx;
 }
 
 .blank1 {
@@ -16,17 +16,19 @@
   position: fixed;
   top: 0;
   width: 750rpx;
-  height: 98rpx;
+  height: 86rpx;
   font-size: 30rpx;
   font-family: PingFang-SC-Regular;
   font-weight: 400;
   color: rgba(0, 0, 0, 1);
-  line-height: 98rpx;
+  line-height: 86rpx;
   text-align: center;
   background: #ffffff;
+  z-index: 98;
 }
 swiper {
-  margin-top: 98rpx;
+  margin-top: 86rpx;
+  height: 350rpx;
 }
 .slide-image {
   width: 750rpx;
@@ -37,11 +39,12 @@ swiper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 30rpx 30rpx 0 30rpx;
-  padding: 53rpx 28rpx 43rpx 30rpx;
+  margin: 20rpx 30rpx 0 30rpx;
+  padding: 49rpx 28rpx 40rpx 29rpx;
   font-size: 40rpx;
   color: #383838;
   background: #ffffff;
+  border-radius: 5rpx;
 }
 
 image {
@@ -55,13 +58,9 @@ image {
 }
 
 .arrow image {
-  width: 19rpx;
+  width: 33rpx;
   height: 33rpx;
   display: inline-block;
-}
-
-.arrow image:nth-child(2) {
-  margin-left: -5rpx;
 }
 
 .content {
@@ -77,7 +76,7 @@ image {
 }
 
 .content view:nth-child(2) {
-  margin-top: 25rpx;
+  margin-top: 17rpx;
   font-size: 26rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;

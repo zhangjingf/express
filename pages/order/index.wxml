@@ -79,4 +79,4 @@
     </block>
   </view>
 </scroll-view>
-<nav checkedStatus="{{checkedStatus}}" />
+<!-- <nav checkedStatus="{{checkedStatus}}" /> -->

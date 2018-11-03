@@ -48,12 +48,12 @@ page {
   margin-top: 20rpx;
 }
 
-.line {
+.line1 {
   padding: 0 27rpx 0 31rpx;
   background: #ffffff;
 }
 
-.line view {
+.line1 view {
   width: 691rpx;
   height: 1rpx;
   background: rgba(220, 220, 220, 1);

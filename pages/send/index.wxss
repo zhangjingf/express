@@ -243,6 +243,7 @@ page>view {
   width: 690rpx;
   height:150rpx;
   background:rgba(255, 255, 255, 1);
+  float: left;
 }
 .type view {
   margin-left: 25rpx;
@@ -258,10 +259,11 @@ page>view {
   font-weight:500;
   color:rgba(78, 78, 78, 1);
 }
-
-.type>view:nth-child(4),
-.type>view:nth-child(5),
-.type>view:nth-child(6) {
+.type>view:nth-child(1),
+.type>view:nth-child(4) {
+  margin-left: 0;
+}
+.type>view:nth-child(n+4) {
   margin-top: 30rpx;
 }
 .type .active {

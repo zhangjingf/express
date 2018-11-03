@@ -2,13 +2,23 @@
 <view class="line"></view>
 <view class="detail">
   <view class="status">
-    <text wx:if="{{detail.status == 8}}">待支付</text>
-    <text wx:if="{{detail.status == 21}}">待接单</text>
-    <text wx:if="{{detail.status == 31}}">待取件</text>
-    <text wx:if="{{detail.status == 50}}">正在配送</text>
-    <text wx:if="{{detail.status == 55}}">待确认</text>
-    <text wx:if="{{detail.status == 60}}">已送达</text>
-    <text wx:if="{{detail.status == 71}}">已取消</text>
+    <block wx:if="{{detail.orderType == 1}}">
+      <text wx:if="{{detail.status == 8}}">待支付</text>
+      <text wx:if="{{detail.status == 21}}">待接单</text>
+      <text wx:if="{{detail.status == 31}}">待取件</text>
+      <text wx:if="{{detail.status == 50}}">正在配送</text>
+      <text wx:if="{{detail.status == 55}}">待确认</text>
+      <text wx:if="{{detail.status == 60}}">已送达</text>
+      <text wx:if="{{detail.status == 71}}">已取消</text>
+    </block>
+    <block wx:else>
+      <text wx:if="{{detail.status == 8}}">待支付</text>
+      <text wx:if="{{detail.status == 21}}">待接单</text>
+      <text wx:if="{{detail.status == 32}}">待揽件</text>
+      <text wx:if="{{detail.status == 50}}">已揽件</text>
+      <text wx:if="{{detail.status == 60}}">已送达</text>
+      <text wx:if="{{detail.status == 71}}">已取消</text>
+    </block>
   </view>
   <view class="tips">
     <text>订单将在24小时之后自动确认收货，如有疑问请及时</text>
@@ -18,52 +28,124 @@
   <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">去支付</view>
 </view>
 <view class="call" wx:if="{{detail.isHaveRider}}">
-  <view><image class="avatar" src="{{detail.avatar}}"></image>{{detail.	riderName}}</view>
-  <view bindtap="call"><image class="phone" src="../../images/phone.png"></image></view>
+  <view>
+    <image class="avatar" src="{{detail.avatar}}"></image>
+    {{detail.	riderName}}
+  </view>
+  <view bindtap="call">
+    <image class="phone" src="../../images/phone.png"></image>
+  </view>
 </view>
 <view class="content1">
-  <view>
-    <text class="label">快递点</text>
-    <text class="text">{{detail.receiverAddress}}</text>
-  </view>
-  <view>
-    <text class="label">包裹规格</text>
-    <text class="text" wx:if="{{detail.pkgSize == 10}}">小</text>
-    <text class="text" wx:if="{{detail.pkgSize == 20}}">中</text>
-    <text class="text" wx:if="{{detail.pkgSize == 30}}">大</text>
-    <text class="text" wx:if="{{detail.pkgSize == 40}}">超大</text>
-  </view>
-  <view>
-    <text class="label">取货码</text>
-    <text class="text">{{detail.expressKey}}</text>
-  </view>
-  <view>
-    <text class="label">备注</text>
-    <text class="text">{{detail.remark}}</text>
-  </view>
-  <view class="price">
-    实付
-    <text>￥{{detail.payPrice}}</text>
-  </view>
+  <block wx:if="{{detail.orderType == 1}}">
+    <view>
+      <view class="label">快递点</view>
+      <view class="text">{{detail.receiverAddress}}</view>
+    </view>
+    <view>
+      <view class="label">包裹规格</view>
+      <view class="text" wx:if="{{detail.pkgSize == 10}}">小</view>
+      <view class="text" wx:if="{{detail.pkgSize == 20}}">中</view>
+      <view class="text" wx:if="{{detail.pkgSize == 30}}">大</view>
+      <view class="text" wx:if="{{detail.pkgSize == 40}}">超大</view>
+    </view>
+    <view>
+      <view class="label">取货码</view>
+      <view class="text">{{detail.expressKey}}</view>
+    </view>
+    <view>
+      <view class="label">备注</view>
+      <view class="text">{{detail.remark}}</view>
+    </view>
+    <view class="price">
+      实付
+      <text>￥{{detail.payPrice}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view>
+      <view class="label">物品类型</view>
+      <view class="text">{{detail.pkgTypeName}}</view>
+    </view>
+    <view>
+      <view class="label">上门时间</view>
+      <view class="text">
+        <block wx:if="{{detail.isToday}}">今天{{detail.hopeTime}}</block>
+        <block wx:else>{{detail.hopeDay}}</block>
+      </view>
+    </view>
+    <view>
+      <view class="label">寄件地址</view>
+      <view class="text">{{detail.senderAddress}}</view>
+    </view>
+    <view>
+      <view class="label">收件地址</view>
+      <view class="text">{{detail.receiverAddress}}</view>
+    </view>
+    <view>
+      <view class="label">下单时间</view>
+      <view class="text">{{detail.createTime}}}</view>
+    </view>
+    <view>
+      <view class="label">订单编号</view>
+      <view class="text">{{detail.orderId}}</view>
+    </view>
+  </block>
 </view>
 <view class="content2">
-  <view>
-    <text  class="label">送达时间</text>
-    <text class="text">
-      <block wx:if="{{detail.isToday}}">今天{{detail.hopeTime}}</block>
-      <block wx:else>{{detail.hopeDay}}</block>
-    </text>
-  </view>
-  <view>
-    <text  class="label">收货地址</text>
-    <text  class="text">{{detail.receiverAddress}}</text>
-  </view>
-  <view>
-    <text  class="label">下单时间</text>
-    <text  class="text">{{detail.createTime}}</text>
-  </view>
-  <view>
-    <text  class="label">订单编号</text>
-    <text  class="text">{{detail.orderId}}</text>
-  </view>
+  <block wx:if="{{detail.orderType == 1}}">
+    <view>
+      <view class="label">送达时间</view>
+      <view class="text">
+        <block wx:if="{{detail.isToday}}">今天{{detail.hopeTime}}</block>
+        <block wx:else>{{detail.hopeDay}}</block>
+      </view>
+    </view>
+    <view>
+      <view class="label">收货地址</view>
+      <view class="text">{{detail.receiverAddress}}</view>
+    </view>
+    <view>
+      <view class="label">下单时间</view>
+      <view class="text">{{detail.createTime}}</view>
+    </view>
+    <view>
+      <view class="label">订单编号</view>
+      <view class="text">{{detail.orderId}}</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view>
+      <view class="lable">运单号</view>
+      <view class="text">{{detail.expressNumber}}</view>
+    </view>
+    <view>
+      <view class="label">快递公司</view>
+      <view class="text">{{detail.expressName}}</view>
+    </view>
+    <view>
+      <view class="label">包裹重量</view>
+      <view class="text">{{detail.pkgKg}}</view>
+    </view>
+    <view>
+      <view class="label">运费</view>
+      <view class="text">{{detail.expressPrice}}</view>
+    </view>
+    <view>
+      <view class="label">服务费</view>
+      <view class="text">{{detail.servicePrice}}</view>
+    </view>
+    <view>
+      <view class="label">小费</view>
+      <view class="text">{{detail.tipPrice}}</view>
+    </view>
+    <view>
+      <view class="label">合计</view>
+      <view class="text">{{detail.totalPrice}}</view>
+    </view>
+    <view>
+      <view class="label">付款时间</view>
+      <view class="text">{{detail.payTime}}</view>
+    </view>
+  </block>
 </view>

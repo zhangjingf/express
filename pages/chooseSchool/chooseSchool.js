@@ -61,7 +61,7 @@ Page({
           })
           wx.setStorage({
             key: 'schoolName',
-            data: this.data.nearSchool[index].name
+            data: this.data.nearSchool[index].schoolName
           })
         }
       }

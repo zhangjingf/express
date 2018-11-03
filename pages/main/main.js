@@ -88,6 +88,11 @@ Page({
       }
     })
   },
+  onShow: function () {
+    this.setData({
+      topHeaderText: wx.getStorageSync('schoolName') || '请选择学校'
+    })
+  },
   gosend: function () {
     wx.navigateTo({
       url: '../send/index',

@@ -1,5 +1,5 @@
 .order-list {
-  margin-bottom: 116rpx;
+  margin-bottom: 20rpx;
 }
 scroll-view {
   height: 1084rpx;

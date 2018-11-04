@@ -66,7 +66,7 @@
   <view class="confrim"><view bindtap="checkOrder">确认支付</view></view>
 </view>
 <i-modal title="包裹规格说明" visible="{{ visible }}" bind:ok="handleVisible" show-cancel="{{showCancel}}">
-  <block wx:for="{{baskPkgList}}" wx:key="{{item.id}}">
+  <block wx:for="{{basePkgList}}" wx:key="{{item.id}}">
     <view class="explain">
       <view>{{item.pkgName}}</view>
       <view>

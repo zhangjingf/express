@@ -21,6 +21,7 @@ Page({
         self.setData({
           detail: res.data
         })
+        console.log(res.data)
       }
     })
   },

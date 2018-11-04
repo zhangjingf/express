@@ -76,6 +76,7 @@ Page({
           if (item.isDefault == 1) {
             item.checked = true;
           }
+          item.active = item.isDisable == 0 ? 'grey' : ''
         }
         self.setData({
           addressList: res.data

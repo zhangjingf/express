@@ -1,6 +1,6 @@
 <!-- pages/order/index.wxml -->
 <view class="line"></view>
-<scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}"  bindscrolltoupper="upper" bindscroll="scroll" class="order-list">
+<!-- <scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}"  bindscrolltoupper="upper" bindscroll="scroll" class="order-list"> -->
   <view class="order" wx:for="{{orderList}}" wx:key="{{item.orderId}}" catchtap="goOrderDetail" data-id="{{item.orderId}}" id="{{'order' + item.orderId}}">
     <block wx:if="{{item.orderType == 2}}">
       <view class="part1">
@@ -78,5 +78,5 @@
       </view>
     </block>
   </view>
-</scroll-view>
+<!-- </scroll-view> -->
 <!-- <nav checkedStatus="{{checkedStatus}}" /> -->

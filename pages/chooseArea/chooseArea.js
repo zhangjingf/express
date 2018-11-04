@@ -8,6 +8,9 @@ Page({
     current: null
   },
   onLoad: function (options) {
+    this.setData({
+      schoolId: options.id
+    })
     this.getHostelList()
   },
   search: function (e) {
@@ -47,7 +50,7 @@ Page({
   getHostelList: function (val) {
     let hostelName = val || '';
     const self = this;
-    let id = wx.getStorageSync('schoolId');
+    let id = this.data.schoolId;
     chooseArea.getHostel({
           schoolId: id,
           hostelName: hostelName

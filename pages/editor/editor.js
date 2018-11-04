@@ -229,8 +229,14 @@ Page({
     })
   },
   chooseArea: function () {
+    if (!this.data.schoolId) {
+      wx.showToast({
+        title: '请先选择校区',
+        icon: 'none'
+      })
+    }
     wx.navigateTo({
-      url: '../chooseArea/chooseArea',
+      url: '../chooseArea/chooseArea?id=' + this.data.schoolId,
     })
   },
   bindMultiPickerChange: function (e) {

@@ -20,7 +20,7 @@ Page({
     type: '',
     maskVisible: true,
     addressInfo: '',
-    basePkgList: '',
+    basePkgList: null,
     totalPrice: 0
   },
   onLoad: function (options) {

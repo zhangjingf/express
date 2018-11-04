@@ -71,3 +71,6 @@ page {
   background: rgba(0, 140, 240, 1);
   border-radius: 10rpx;
 }
+.grey {
+  background: #f5f5f5 !important;
+}

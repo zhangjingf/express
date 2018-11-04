@@ -1,24 +1,23 @@
 <!-- pages/orderDetail/index.wxml -->
 <view class="line"></view>
 <view class="detail">
-  <view class="status">
-    <block wx:if="{{detail.orderType == 1}}">
-      <text wx:if="{{detail.status == 8}}">待支付</text>
-      <text wx:if="{{detail.status == 21}}">待接单</text>
-      <text wx:if="{{detail.status == 31}}">待取件</text>
-      <text wx:if="{{detail.status == 50}}">正在配送</text>
-      <text wx:if="{{detail.status == 55}}">待确认</text>
-      <text wx:if="{{detail.status == 60}}">已送达</text>
-      <text wx:if="{{detail.status == 71}}">已取消</text>
-    </block>
-    <block wx:else>
-      <text wx:if="{{detail.status == 8}}">待支付</text>
-      <text wx:if="{{detail.status == 21}}">待接单</text>
-      <text wx:if="{{detail.status == 32}}">待揽件</text>
-      <text wx:if="{{detail.status == 50}}">已揽件</text>
-      <text wx:if="{{detail.status == 60}}">已送达</text>
-      <text wx:if="{{detail.status == 71}}">已取消</text>
-    </block>
+  <view class="status" wx:if="{{detail.orderType == 1}}">
+    <text wx:if="{{detail.status == 8}}">待支付</text>
+    <text wx:if="{{detail.status == 21}}">待接单</text>
+    <text wx:if="{{detail.status == 31}}">待取件</text>
+    <text wx:if="{{detail.status == 50}}">正在配送</text>
+    <text wx:if="{{detail.status == 55}}">待确认</text>
+    <text wx:if="{{detail.status == 60}}">已送达</text>
+    <text wx:if="{{detail.status == 71}}">已取消</text>
+  </view>
+  <view class="status" wx:if="{{detail.orderType == 2}}">
+    {{detail.status}}
+    <text wx:if="{{detail.status == 8}}">待支付</text>
+    <text wx:if="{{detail.status == 21}}">待接单</text>
+    <text wx:if="{{detail.status == 32}}">待揽件</text>
+    <text wx:if="{{detail.status == 50}}">已揽件</text>
+    <text wx:if="{{detail.status == 60}}">已送达</text>
+    <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
   <view class="tips">
     <text>订单将在24小时之后自动确认收货，如有疑问请及时</text>
@@ -62,7 +61,7 @@
       <text>￥{{detail.payPrice}}</text>
     </view>
   </block>
-  <block wx:else>
+  <block wx:if="{{detail.orderType == 2}}">
     <view>
       <view class="label">物品类型</view>
       <view class="text">{{detail.pkgTypeName}}</view>

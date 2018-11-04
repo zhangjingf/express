@@ -25,8 +25,11 @@ Page({
       url: '../orderDetail/index'
     })
   },
-  list: function() {
+  list: function(type) {
     const self = this;
+    wx.showLoading({
+      title: '加载中'
+    })
     if (self.data.isLock) return;
     self.setData({
       isLock: true
@@ -36,9 +39,11 @@ Page({
       endIndex: this.data.endIndex
     }
     order.orderList(param, function (res) {
+      wx.hideLoading();
       if (res.errno == 0 && res.data) {
+        let dataList = self.data.orderList
         self.setData({
-          orderList: res.data,
+          orderList: type == 'delete' ? res.data : dataList.concat(res.data),
           loadMore: res.data.length < 5 ? false : true,
           isLock: false,
           toView: 'order' + res.data[0].orderId
@@ -51,7 +56,11 @@ Page({
     let id = e.target.dataset.id || '';
     order.delete({orderId: id.toString()}, function(res) {
       if (res.errno == 0) {
-        self.list();
+        self.setData({
+          startIndex: 0,
+          endIndex: 5
+        })
+        self.list('delete');
       }
     })
   },
@@ -88,7 +97,11 @@ Page({
     const self = this;
     order.cancel({orderId: e.target.dataset.id.toString()}, function (res) {
       if (res.code == 0) {
-        self.list()
+        self.setData({
+          startIndex: 0,
+          endIndex: 5
+        })
+        self.list('delete')
       }
     })
   },
@@ -96,5 +109,13 @@ Page({
     this.setData({
       direction: e.detail.deltaY > 0 ? true : false
     })
+  },
+  onReachBottom: function () {
+    if (!this.data.loadMore) return;
+    this.setData({
+      startIndex: this.data.endIndex,
+      endIndex: this.data.endIndex + 5
+    })
+    this.list();
   }
 })

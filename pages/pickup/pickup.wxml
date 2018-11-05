@@ -16,15 +16,15 @@
   <view class="write">请填写相关快递信息</view>
   <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}" wx:for-index="idx">
     <view>
-      <view class="label">取货码</view>
+      <view class="label"><text>取</text><text>货</text><text>码</text> </view>
       <input placeholder='可粘贴短信至此' data-index="{{item.index}}" bindinput="expressKey"></input>
     </view>
     <view bindtap="checkExpress" data-index="{{item.index}}">
-      <view class="label" data-index="{{item.index}}">快递点</view>
+      <view class="label" data-index="{{item.index}}"><text>快</text><text>递</text><text>点</text></view>
       <view data-index="{{item.index}}">{{item.expressName}}</view>
     </view>
     <view class="special">
-      <view class="label">包裹规格</view>
+      <view class="label"><text>包</text><text>裹</text><text>规</text><text>格</text></view>
       <view class="range" bindtap="chooseRange" data-index="{{item.index}}">
         <block wx:for="{{item.pkgList}}"  wx:for-item="itemtwo" wx:key="{{itemtwo.id}}" >
           <text data-index="{{item.index}}" data-id="{{itemtwo.id}}" class="{{itemtwo.checked}}">{{itemtwo.pkgName}}</text>
@@ -33,12 +33,12 @@
       <view class="help" bindtap="handleVisible">?</view>
     </view>
     <view>
-      <view class="label">备注</view>
+      <view class="label"><text>备</text><text>注</text></view>
       <input placeholder='快递单上名字电话不同请备注' data-index="{{item.index}}" bindinput="remark"></input>
     </view>
     <view class="coupon">
-      <view class="label">优惠</view>
-      <view>无<i-icon type="enter" size="20" /></view>
+      <view class="label"><text>优</text><text>惠</text></view>
+      <view>无<i-icon type="enter" size="20" color="#cccccc" /></view>
     </view>
     <view class="price">当前为{{item.index}}件，价格为{{item.price}}元</view>
     <view class="delete" bindtap="delete" data-index="{{item.index}}" wx:if="{{item.index > 1}}">
@@ -47,10 +47,10 @@
   </view>
   <view class="add" bindtap='add'><view>添加快递</view></view>
   <view class="time" bindtap="chooseDate">
-    <view>期望到达时间</view>
+    <view>期望送达时间</view>
     <view class="date">
       {{checkedDate}}
-      <i-icon class="arrow" type="enter" size="20" />
+      <i-icon class="arrow" type="enter" size="20" color="#cccccc" />
     </view>
   </view>
   <view class="agree">

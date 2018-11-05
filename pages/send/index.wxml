@@ -37,14 +37,14 @@
     <text>期望上门时间</text>
     <view>
       <view class="porotcol">{{checkedDate}}</view>
-      <i-icon type="enter" size="20" />
+      <i-icon type="enter" size="20" color="#cccccc" />
     </view>
   </view>
   <view class="same" bindtap="chooseType">
     <text>物品类型</text>
     <view>
       {{pkgTypeName}}
-      <i-icon type="enter" size="20" />
+      <i-icon type="enter" size="20" color="#cccccc" />
     </view>
   </view>
   <view class="same">
@@ -56,7 +56,7 @@
     <text>服务费</text>
     <text>{{servicePrice}}元</text>
   </view>
-  <view class="same">
+  <view class="same last_view">
     <text>小费</text>
     <view>
       <input type="number" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
@@ -65,8 +65,10 @@
 </view>
 <view class="agree">
   <view>
-    <radio checked='{{isChecked}}' color="{{color}}"></radio>
-    我已阅读并同意<text class="porotcol">《取件协议》</text>
+    <view class="cancel" bindtap="cancel">
+      <image wx:if="{{cancel}}" src="../../images/cancel.png" />
+    </view>
+    我已阅读并同意<text class="porotcol">《寄件协议》</text>
   </view>
 </view>
 <view class="submit">

@@ -3,7 +3,7 @@ import pickup from "../../services/pickup";
 import address from "../../services/myAddress";
 Page({
   data: {
-    isChecked: true,
+    cancel: true,
     color: '#008CF0',
     wordNum: '0',
     message: null,
@@ -171,6 +171,11 @@ Page({
       visible4: false
     })
   },
+  cancel: function () {
+    this.setData({
+      cancel: !this.data.cancel
+    })
+  },
   chooseTp: function (e) {
     let id = e.target.dataset.id || '';
     let name = ''
@@ -235,6 +240,13 @@ Page({
       })
       return;
     }
+    if (!this.data.cancel) {
+      wx.showToast({
+        title: '请选择寄件协议',
+        icon: 'none'
+      });
+      return;
+    }
     this.order()
   },
   order: function () {
@@ -253,7 +265,7 @@ Page({
       remark: this.data.message
     }
     pickup.senderOrder(params, function(res) {
-      if (res.errno == 0) {
+      if (res.code == 0) {
         wx.showToast({
           title: '下单成功',
           icon: 'none'

@@ -11,7 +11,6 @@
     <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
   <view class="status" wx:if="{{detail.orderType == 2}}">
-    {{detail.status}}
     <text wx:if="{{detail.status == 8}}">待支付</text>
     <text wx:if="{{detail.status == 21}}">待接单</text>
     <text wx:if="{{detail.status == 32}}">待揽件</text>

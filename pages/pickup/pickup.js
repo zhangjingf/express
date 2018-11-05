@@ -3,7 +3,7 @@ import pickup from "../../services/pickup";
 import address from "../../services/myAddress";
 Page({
   data: {
-    orderInfo: [{index: 1 }],
+    orderInfo: [{index: 1, price: 0 }],
     agree: true,
     cancel: true,
     visible: false,
@@ -103,7 +103,7 @@ Page({
     for (let i in baseData) {
       baseData[i].checked = '';
     }
-    orderNumArr.push({index: (orderNumArr[orderNumArr.length-1].index + 1), pkgList: baseData});
+    orderNumArr.push({index: (orderNumArr[orderNumArr.length-1].index + 1), pkgList: baseData, price: 0});
     this.setData({
       orderInfo: orderNumArr,
       basePkgList: JSON.parse(JSON.stringify(baseData))
@@ -309,6 +309,13 @@ Page({
     if (!serviceTime) {
       wx.showToast({
         title: '请选择时间',
+        icon: 'none'
+      });
+      return;
+    }
+    if (!this.data.cancel) {
+      wx.showToast({
+        title: '请选择取件协议',
         icon: 'none'
       });
       return;

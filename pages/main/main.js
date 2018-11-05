@@ -94,11 +94,23 @@ Page({
     })
   },
   gosend: function () {
+    if (!wx.getStorageSync('schoolName')) {
+      wx.showToast({
+        title: '请先选择学校',
+        icon: 'none'
+      })
+    }
     wx.navigateTo({
       url: '../send/index',
     })
   },
   gopickup: function () {
+    if (!wx.getStorageSync('schoolName')) {
+      wx.showToast({
+        title: '请先选择学校',
+        icon: 'none'
+      })
+    }
     wx.navigateTo({
       url: '../pickup/pickup'
     });

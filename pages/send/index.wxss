@@ -125,7 +125,10 @@ page>view {
   color: rgba(78, 78, 78, 1);
   background: rgba(245, 245, 245, 1);
 }
-
+.agree>view {
+  display: flex;
+  align-items: center;
+}
 .porotcol {
   display: inline-block;
   color: rgba(0, 140, 240, 1) !important;
@@ -272,4 +275,22 @@ page>view {
 }
 radio {
   transform:scale(0.7);
+}
+.cancel {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 14rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background: rgba(0, 140, 240, 1);
+  border-radius: 15rpx;
+}
+
+.cancel image {
+  width: 14rpx;
+  height: 10rpx;
+}
+.last_view {
+  border-bottom: none;
 }

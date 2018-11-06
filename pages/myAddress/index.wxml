@@ -1,6 +1,6 @@
 <view class="line"></view>
 <view class="my-address">
-  <view wx:for="{{addressList}}" wx:key="item.id" class="{{item.active}}" bindtap="check" data-id="{{item.id}}">
+  <view wx:for="{{addressList}}" wx:key="item.id" class="{{item.active}}" bindtap="check" data-id="{{item.id}}" catchtap="save">
     <view class="left">
       <block wx:if="{{type == 'send'}}">
         <view>{{item.senderName}} {{item.senderPhone}}</view>
@@ -17,7 +17,7 @@
         <image data-id="{{item.id}}" class="edit" src="../../images/address_01.png" />
       </block>
       <block wx:else>
-        <image data-id="{{item.id}}" bindtap="goEdit" class="edit" src="../../images/address_01.png" />
+        <image data-id="{{item.id}}" catchtap="goEdit" class="edit" src="../../images/address_01.png" />
       </block>
     </view>
   </view>

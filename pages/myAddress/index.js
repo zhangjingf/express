@@ -1,5 +1,6 @@
 // pages/myAddress/index.js
 import address from "../../services/myAddress";
+import editor from "../../services/editor";
 Page({
   data: {
     addressList: null,
@@ -98,5 +99,54 @@ Page({
         })
       }
     })
-  }
+  },
+  save: function (ev) {
+    const base = this.data;
+    let id = ev.currentTarget.dataset.id || '';
+    if (!id) return;
+    if (base.type == 'send') {
+      this.saveSenderAddress(id);
+      return;
+    }
+    let param = {}
+    for (let item of base.addressList) {
+      if (item.grey) {
+        wx.showToast({
+          title: '当前地址不支持服务',
+          icon: 'none'
+        })
+        return;
+      }
+      if (item.id == id) {
+        item.isDefault = 1;
+        param = item;
+        break;
+      }
+    }
+    editor.save(param, function (res) {
+      if (res.errno == 0) {
+        wx.navigateBack({
+            delta: 1
+        })
+      }
+    })
+  },
+  saveSenderAddress: function (id) {
+    const base = this.data;
+    let param = {}
+    for (let item of base.addressList) {
+      if (item.id == id) {
+        item.isDefault = 1;
+        param = item;
+        break;
+      }
+    }
+    editor.saveSender(param, function (res) {
+      if (res.errno == 0) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    })
+  },
 })

@@ -29,9 +29,13 @@
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
-  border-right: 1rpx solid rgba(220, 220, 220, 1);
+  /* border-right: 1rpx solid rgba(220, 220, 220, 1); */
 }
-
+.aline {
+  width:1rpx;
+  height:60rpx;
+  background:rgba(220,220,220,1);
+}
 .middle view:nth-child(2) {
   padding: 17rpx 0 5rpx 0;
   font-size: 22rpx;
@@ -55,15 +59,15 @@
 
 .write {
   padding-left: 29rpx;
-  padding-top: 20rpx;
-  font-size: 22rpx;
-  font-family: PingFang-SC-Medium;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 1);
+  padding-top: 22rpx;
+  font-size:22rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(0,0,0,1);
 }
 
 .express-info {
-  margin-top: 20rpx;
+  margin-top: 17rpx;
   padding: 0 30rpx;
   background: #ffffff;
 }
@@ -72,7 +76,7 @@
   display: flex;
   align-items: center;
   font-size: 28rpx;
-  line-height: 89rpx;
+  line-height: 87rpx;
   border-bottom: 1rpx solid rgba(220, 220, 220, 1);
 }
 
@@ -82,13 +86,15 @@
 
 .express-info input {
   flex: 1;
+  line-height: normal;
 }
 
 .label {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 115rpx;
-  padding-right: 20rpx;
+  padding-right: 47rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(74, 74, 74, 1);
@@ -129,12 +135,14 @@
 }
 
 .help {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   width: 43rpx;
   height: 43rpx;
   border: 2rpx solid rgba(153, 153, 153, 1);
   border-radius: 50%;
   font-size: 39rpx;
-  line-height: 39rpx;
   text-align: center;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
@@ -142,7 +150,7 @@
 }
 
 .coupon {
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 .coupon>view:nth-child(2) {
   margin-right: -13rpx;
@@ -153,11 +161,12 @@
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(74, 74, 74, 1);
+  border-bottom: none !important;
 }
 
 .delete {
   font-size: 30rpx;
-  line-height: 70rpx;
+  line-height: 70rpx !important;
   border-radius: 8rpx;
   color: #ffffff;
   text-align: center;
@@ -169,12 +178,12 @@
 }
 
 .add {
-  padding: 20rpx 26rpx;
+  padding: 14rpx 28rpx;
   font-size: 28rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(0, 140, 240, 1);
-  line-height: 70rpx;
+  line-height: 67rpx;
 }
 
 .add view {
@@ -209,7 +218,7 @@
 
 .agree {
   display: flex;
-  padding: 44rpx 30rpx 34rpx 30rpx;
+  padding: 20rpx 30rpx 0rpx 30rpx;
   font-size: 22rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
@@ -252,7 +261,7 @@
 }
 
 .confrim {
-  padding: 26rpx 30rpx 18rpx 30rpx;
+  padding: 16rpx 30rpx 18rpx 30rpx;
 }
 
 .confrim view {

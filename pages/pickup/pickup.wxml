@@ -11,13 +11,14 @@
         <view bindtap="goEditor" data-type="receiver">请编辑收件人信息</view>
       </block>
     </view>
+    <view class="aline"></view>
     <view class="right" bindtap='goAddress'>地址簿</view>
   </view>
   <view class="write">请填写相关快递信息</view>
   <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}" wx:for-index="idx">
     <view>
       <view class="label"><text>取</text><text>货</text><text>码</text> </view>
-      <input placeholder='可粘贴短信至此' data-index="{{item.index}}" bindinput="expressKey"></input>
+      <input placeholder='可粘贴短信至此' data-index="{{item.index}}" maxlength="70" bindinput="expressKey"></input>
     </view>
     <view bindtap="checkExpress" data-index="{{item.index}}">
       <view class="label" data-index="{{item.index}}"><text>快</text><text>递</text><text>点</text></view>
@@ -30,17 +31,17 @@
           <text data-index="{{item.index}}" data-id="{{itemtwo.id}}" class="{{itemtwo.checked}}">{{itemtwo.pkgName}}</text>
         </block>
       </view>
-      <view class="help" bindtap="handleVisible">?</view>
+      <view class="help" bindtap="handleVisible"><text>?</text></view>
     </view>
     <view>
       <view class="label"><text>备</text><text>注</text></view>
-      <input placeholder='快递单上名字电话不同请备注' data-index="{{item.index}}" bindinput="remark"></input>
+      <input placeholder='快递单上名字电话不同请备注' maxlength="20" data-index="{{item.index}}" bindinput="remark"></input>
     </view>
     <view class="coupon">
       <view class="label"><text>优</text><text>惠</text></view>
       <view>无<i-icon type="enter" size="20" color="#cccccc" /></view>
     </view>
-    <view class="price">当前为{{item.index}}件，价格为{{item.price}}元</view>
+    <view class="price">当前第{{item.index}}件，价格为{{item.price}}元</view>
     <view class="delete" bindtap="delete" data-index="{{item.index}}" wx:if="{{item.index > 1}}">
       <view data-index="{{item.index}}">删除</view>
     </view>

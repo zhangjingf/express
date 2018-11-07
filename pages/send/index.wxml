@@ -12,11 +12,12 @@
     <block wx:else>
       <view class="please" bindtap="goEditor" data-type="receive">请编辑寄件人信息</view>
     </block>
+    <view class="aline"></view>
     <view class="right" data-type="receive" bindtap='goMyAddress'>地址簿</view>
   </view>
   <view class="middle">
     <i-icon type="switch" size="20" color="{{switchColor}}" />
-    <view class="line"></view>
+    <view class="hline"></view>
   </view>
   <view class="info">
     <view class="title orange">收</view>
@@ -29,6 +30,7 @@
     <block wx:else>
       <view class="please" bindtap="goEditor" data-type="send">请编辑收件人信息</view>
     </block>
+    <view class="aline"></view>
     <view class="right" data-type="send" bindtap='goMyAddress'>地址簿</view>
   </view>
 </view>
@@ -80,7 +82,7 @@
   </view>
   <view bindtap="submit">下单</view>
 </view>
-<i-action-sheet visible="{{ visible3 }}" bind:cancel="maskFlag3" show-cancel="{{showCancel}}">
+<i-action-sheet visible="{{ visible3 }}" i-class-mask="maskTime" bind:cancel="maskFlag3" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header2">选择送达时间</view>
     <view class="time-list">
@@ -109,7 +111,7 @@
     </view>
   </view>
 </i-action-sheet>
-<i-action-sheet visible="{{ visible4 }}" bind:cancel="maskFlag4" show-cancel="{{showCancel}}">
+<i-action-sheet visible="{{ visible4 }}" i-class-mask="maskTime" bind:cancel="maskFlag4" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="type">
       <block wx:for="{{typeList}}" wx:key="item.goodsType">

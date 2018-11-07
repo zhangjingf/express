@@ -55,7 +55,7 @@ Page({
       if (res.errno == 0) {
         if (res.data.length > 0) {
           for (let index in res.data) {
-            if (res.data[index].startTime.split(":")[0] < now && res.data[index].endTime.split(":")[0] > now) {
+            if (res.data[index].startTime.split(":")[0] > now) {
               todayArr.push(res.data[index]);
             }
           }

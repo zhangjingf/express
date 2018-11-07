@@ -67,17 +67,19 @@
   <view class="confrim"><view bindtap="checkOrder">确认支付</view></view>
 </view>
 <i-modal title="包裹规格说明" visible="{{ visible }}" bind:ok="handleVisible" show-cancel="{{showCancel}}">
+ <view class="explain_list">
   <block wx:for="{{basePkgList}}" wx:key="{{item.id}}">
     <view class="explain">
       <view>{{item.pkgName}}</view>
       <view>
         <!-- <view>重量：5-8kg</view> -->
-        <view>描述：{{item.pkgKgdesc}}</view>
+        <view>{{item.pkgKgdesc}}</view>
       </view>
     </view>
   </block>
+   </view>
 </i-modal>
-<i-action-sheet visible="{{ visible2 }}" bind:cancel="maskFlag2" show-cancel="{{showCancel}}">
+<i-action-sheet visible="{{ visible2 }}" i-class-mask="maskTime" bind:cancel="maskFlag2" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header">选择快递点</view>
     <view class="address-list">
@@ -90,7 +92,7 @@
     </view>
   </view>
 </i-action-sheet>
-<i-action-sheet visible="{{ visible3 }}" bind:cancel="maskFlag3" show-cancel="{{showCancel}}">
+<i-action-sheet visible="{{ visible3 }}" bind:cancel="maskFlag3" i-class-mask="maskTime" show-cancel="{{showCancel}}">
   <view slot="header">
     <view class="header2">选择送达时间</view>
     <view class="time-list">

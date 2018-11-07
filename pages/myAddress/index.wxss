@@ -30,8 +30,12 @@ page {
   font-weight: 500;
   color: rgba(153, 153, 153, 1);
 }
-
+.rihgt {
+  display: flex !important;
+  align-items: center !important;
+}
 .edit {
+  padding: 20rpx 0 20rpx 20rpx;
   width: 28rpx;
   height: 28rpx;
 }

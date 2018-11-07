@@ -34,17 +34,18 @@ Page({
     })
   },
   getExpress: function (val) {
-    Logistics.getExpress({number:val}, function(res) {
-      if(res.errno == 0 && res.data) {
-        wx.navigateTo({
-          url: '../logisticsDetail/logisticsDetail?val=' + val,
-        })
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
-      }
+    wx.navigateTo({
+      url: '../logisticsDetail/logisticsDetail?val=' + val,
     })
+    // Logistics.getExpress({number:val}, function(res) {
+    //   if(res.errno == 0 && res.data) {
+        
+    //   } else {
+    //     wx.showToast({
+    //       title: res.msg,
+    //       icon: 'none'
+    //     })
+    //   }
+    // })
   }
 })

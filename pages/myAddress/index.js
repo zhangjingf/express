@@ -77,7 +77,9 @@ Page({
           if (item.isDefault == 1) {
             item.checked = true;
           }
-          item.active = item.isDisable == 0 ? 'grey' : ''
+          if(self.data.type) {
+            item.active = item.isDisable == 0 ? 'grey' : ''
+          }
         }
         self.setData({
           addressList: res.data
@@ -110,7 +112,8 @@ Page({
     }
     let param = {}
     for (let item of base.addressList) {
-      if (item.grey) {
+      console.log(item)
+      if (item.id = id && item.active == 'grey') {
         wx.showToast({
           title: '当前地址不支持服务',
           icon: 'none'
@@ -120,9 +123,11 @@ Page({
       if (item.id == id) {
         item.isDefault = 1;
         param = item;
+        console.log(item)
         break;
       }
     }
+    
     editor.save(param, function (res) {
       if (res.errno == 0) {
         wx.navigateBack({
@@ -135,6 +140,13 @@ Page({
     const base = this.data;
     let param = {}
     for (let item of base.addressList) {
+      if (item.id = id && item.active == 'grey') {
+        wx.showToast({
+          title: '当前地址不支持服务',
+          icon: 'none'
+        })
+        return;
+      }
       if (item.id == id) {
         item.isDefault = 1;
         param = item;

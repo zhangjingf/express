@@ -1,8 +1,5 @@
 // pages/myMenu/index.js
 Page({
-  data: {
-
-  },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '我的',
@@ -12,6 +9,12 @@ Page({
     })
   },
   goAddress: function () {
+    if (!wx.getStorageSync('schoolId')) {
+      wx.showToast({
+        title: '请先选择学校',
+        icon: 'none'
+      })
+    }
     wx.navigateTo({
       url: '../myAddress/index',
     })

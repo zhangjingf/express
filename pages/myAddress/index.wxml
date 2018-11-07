@@ -11,8 +11,8 @@
       <view>{{item.address}}</view>
     </view>
     <view class="rihgt">
-      <!-- <image class="checked" wx:if="{{item.checked}}" src="../../images/address_02.png"/> -->
-      <!-- <view class="line1"></view> -->
+      <image class="checked" wx:if="{{item.isDefault}}" src="../../images/address_02.png"/>
+      <view class="line1"></view>
       <block wx:if="{{item.active}}">
         <image data-id="{{item.id}}" class="edit" src="../../images/address_01.png" />
       </block>

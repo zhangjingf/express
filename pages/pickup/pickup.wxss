@@ -37,7 +37,7 @@
   background:rgba(220,220,220,1);
 }
 .middle view:nth-child(2) {
-  padding: 17rpx 0 5rpx 0;
+  padding: 0rpx 0 5rpx 0;
   font-size: 22rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
@@ -374,4 +374,11 @@
 }
 .maskTime {
   background: rgba(0,0,0,.4) !important ;
+}
+.noaddress {
+  font-size:26rpx;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(78,78,78,1);
+
 }

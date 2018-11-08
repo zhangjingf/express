@@ -40,6 +40,7 @@ Page({
     }
   },
   onShow: function () {
+    this.addressList = null;
     if (this.data.type == 'send') {
       this.getSenderAddress();
     } else {

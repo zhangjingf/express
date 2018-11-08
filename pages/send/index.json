@@ -5,5 +5,5 @@
     "i-modal": "/components/modal/index",
     "i-action-sheet": "/components/action-sheet/index"
   },
-  "navigationBarTitleText": "寄快递"
+  "navigationBarTitleText": "寄件"
 }

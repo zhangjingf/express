@@ -179,18 +179,21 @@ Page({
       return;
     }
     let arrFlag = [];
+    let id = this.data.schoolId || wx.getStorageSync('schoolId');
+    let cityId = this.data.cityId || wx.getStorageSync('schoolId');
     let param = {
       id: base.id || '',
       receiverName: base.receiverName,
       receiverPhone: base.receiverPhone,
-      cityId: base.cityId,
-      schoolId: base.schoolId,
+      cityId: cityId,
+      schoolId: id,
       hostelId: base.hostelId,
       address: base.address,
-      fullAddress: base.pickerAddress + base.hostelName + base.address,
+      fullAddress: base.area + base.schoolName + base.hostelName + base.address,
       isDefault: base.isDefault,
       gender: base.gender
     }
+
     Object.keys(param).forEach(function (index) {
       if (index != 'gender' && index != 'isDefault' && index != 'id') {
         arrFlag.push(Boolean(param[index]));

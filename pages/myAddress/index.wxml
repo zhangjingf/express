@@ -4,11 +4,12 @@
     <view class="left">
       <block wx:if="{{type == 'send'}}">
         <view>{{item.senderName}} {{item.senderPhone}}</view>
+        <view>{{item.address}}</view>
       </block>
       <block wx:else>
         <view>{{item.receiverName}} {{item.receiverPhone}}</view>
+        <view>{{item.fullAddress}}</view>
       </block>
-      <view>{{item.address}}</view>
     </view>
     <view class="rihgt">
       <image class="checked" wx:if="{{item.isDefault}}" src="../../images/address_02.png"/>

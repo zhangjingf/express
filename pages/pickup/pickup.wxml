@@ -2,13 +2,13 @@
 <view class="pickup">
   <view class="person-info">
     <view class="left">收</view>
-    <view class="middle">
+    <view class="middle" bindtap="editor">
       <block wx:if="{{addressInfo}}">
-        <view>{{addressInfo.receiverName}} {{addressInfo.receiverphone}}</view>
+        <view>{{addressInfo.receiverName}} {{addressInfo.receiverPhone}}</view>
         <view>{{addressInfo.fullAddress}}</view>
       </block>
       <block wx:else>
-        <view bindtap="goEditor" data-type="receiver">请编辑收件人信息</view>
+        <view bindtap="goEditor" class="noaddress" data-type="receiver">请编辑收件人信息</view>
       </block>
     </view>
     <view class="aline"></view>

@@ -4,8 +4,8 @@
   <view class="info">
     <view class="title blue">寄</view>
     <block wx:if="{{addressInfo}}">
-      <view class="left">
-        <view>{{addressInfo.receiverName}} {{addressInfo.receiverphone}}</view>
+      <view class="left" bindtap="editorreceive">
+        <view>{{addressInfo.receiverName}} {{addressInfo.receiverPhone}}</view>
         <view>{{addressInfo.fullAddress}}</view>
       </view>
     </block>
@@ -22,7 +22,7 @@
   <view class="info">
     <view class="title orange">收</view>
     <block wx:if="{{senderAddressInfo}}">
-      <view class="left">
+      <view class="left" bindtap="editorsender">
         <view>{{senderAddressInfo.senderName}} {{senderAddressInfo.senderPhone}}</view>
         <view>{{senderAddressInfo.address}}</view>
       </view>

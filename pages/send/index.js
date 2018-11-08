@@ -72,9 +72,14 @@ Page({
   },
   onShow: function () {
     const self = this;
+    self.addressInfo = null;
+    self.senderAddressInfo = null;
     address.getAddressList({ schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0) {
         if(res.data.length > 0) {
+          self.setData({
+            addressInfo: res.data[0]
+          })
           for (let index in res.data) {
             if (res.data[index].isDefault == 1) {
               self.setData({
@@ -82,28 +87,21 @@ Page({
               })
             }
           }
-          if (!self.data.addressInfo) {
-            self.setData({
-              addressInfo: res.data[0]
-            })
-          }
         }
       }
     })
     address.gerSenderAddress({ schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0) {
         if (res.data.length > 0) {
+          self.setData({
+            senderAddressInfo: res.data[0]
+          })
           for (let index in res.data) {
             if (res.data[index].isDefault == 1) {
               self.setData({
                 senderAddressInfo: res.data[index]
               })
             }
-          }
-          if (!self.data.addressInfo) {
-            self.setData({
-              senderAddressInfo: res.data[0]
-            })
           }
         }
       }
@@ -289,6 +287,16 @@ Page({
           icon: 'none'
         })
       }
+    })
+  },
+  editorreceive: function() {
+    wx.navigateTo({
+      url: '../editor/editor?id=' + this.data.addressInfo.id + '&type=receive&from=send',
+    })
+  },
+  editorsender: function () {
+    wx.navigateTo({
+      url: '../editor/editor?id=' + this.data.senderAddressInfo.id + '&type=send&from=send',
     })
   }
 })

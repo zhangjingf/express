@@ -73,20 +73,19 @@ Page({
   },
   onShow: function () {
     const self = this;
+    self.addressInfo = null;
     address.getAddressList({schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0) {
         if(res.data.length > 0) {
+          self.setData({
+            addressInfo: res.data[0]
+          })
           for (let index in res.data) {
             if (res.data[index].isDefault == 1) {
               self.setData({
                 addressInfo: res.data[index]
               })
             }
-          }
-          if (!self.data.addressInfo) {
-            self.setData({
-              addressInfo:res.data[0]
-            })
           }
         }
       }
@@ -96,6 +95,11 @@ Page({
     wx.navigateTo({
       url: '../myAddress/index?type=receive',
     });
+  },
+  editor: function() {
+    wx.navigateTo({
+      url: '../editor/editor?id=' + this.data.addressInfo.id + '&type=receive&from=receive',
+    })
   },
   goEditor: function (e) {
     wx.navigateTo({

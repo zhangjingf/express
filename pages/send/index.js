@@ -72,7 +72,7 @@ Page({
   },
   onShow: function () {
     const self = this;
-    address.getAddressList({}, function(res) {
+    address.getAddressList({ schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0) {
         if(res.data.length > 0) {
           for (let index in res.data) {
@@ -82,10 +82,15 @@ Page({
               })
             }
           }
+          if (!self.data.addressInfo) {
+            self.setData({
+              addressInfo: res.data[0]
+            })
+          }
         }
       }
     })
-    address.gerSenderAddress({}, function(res) {
+    address.gerSenderAddress({ schoolId: wx.getStorageSync('schoolId')}, function(res) {
       if (res.errno == 0) {
         if (res.data.length > 0) {
           for (let index in res.data) {
@@ -94,6 +99,11 @@ Page({
                 senderAddressInfo: res.data[index]
               })
             }
+          }
+          if (!self.data.addressInfo) {
+            self.setData({
+              senderAddressInfo: res.data[0]
+            })
           }
         }
       }

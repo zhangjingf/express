@@ -103,6 +103,7 @@ Page({
     })
   },
   save: function (ev) {
+    const self = this;
     const base = this.data;
     let id = ev.currentTarget.dataset.id || '';
     if (!id) return;
@@ -111,9 +112,9 @@ Page({
       return;
     }
     let param = {}
+
     for (let item of base.addressList) {
-      console.log(item)
-      if (item.id = id && item.active == 'grey') {
+      if (item.id == id && item.active == 'grey') {
         wx.showToast({
           title: '当前地址不支持服务',
           icon: 'none'
@@ -123,13 +124,16 @@ Page({
       if (item.id == id) {
         item.isDefault = 1;
         param = item;
-        console.log(item)
         break;
       }
     }
-    
+    if (!param.cityId) return;
     editor.save(param, function (res) {
       if (res.errno == 0) {
+        if (!base.type) {
+          self.getAddList();
+          return;
+        }
         wx.navigateBack({
             delta: 1
         })
@@ -140,7 +144,7 @@ Page({
     const base = this.data;
     let param = {}
     for (let item of base.addressList) {
-      if (item.id = id && item.active == 'grey') {
+      if (item.id == id && item.active == 'grey') {
         wx.showToast({
           title: '当前地址不支持服务',
           icon: 'none'

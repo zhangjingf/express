@@ -1,5 +1,5 @@
 <view class="line"></view>
 <view class="myadvice">
-  <textarea bindblur="bindTextAreaBlur" placeholder="请详细描述你的问题或建议，我们将及时跟进解决"></textarea>
+  <textarea bindinput="bindTextAreaBlur" placeholder="请详细描述你的问题或建议，我们将及时跟进解决"></textarea>
 </view>
 <view class="submit"><view bindtap="submit">提交</view></view>

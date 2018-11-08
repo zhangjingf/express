@@ -40,6 +40,19 @@ class Common {
             }
         })
     }
+    advice(data, callback) {
+      ajax({
+        url: sendLink() + '/api/advise/save',
+        type: 'POST',
+        data: data,
+        success: function (ret) {
+          typeof callback == 'function' && callback.call(this, ret)
+        },
+        error: function (ret) {
+          typeof callback == 'function' && callback.call(this, ret)
+        }
+      })
+    }
 }
 
 export default new Common

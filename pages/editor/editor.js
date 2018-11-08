@@ -24,6 +24,14 @@ Page({
   },
   onLoad: function (options) {
     const self = this;
+    wx.setStorage({
+      key: 'hostelName',
+      data: '',
+    })
+    wx.setStorage({
+      key: 'hostelId',
+      data: '',
+    })
     self.setData({
       schoolName: wx.getStorageSync('schoolName'),
       area: wx.getStorageSync('proviceName') + wx.getStorageSync('cityName')
@@ -229,14 +237,15 @@ Page({
     })
   },
   chooseArea: function () {
-    if (!this.data.schoolId) {
-      wx.showToast({
-        title: '请先选择校区',
-        icon: 'none'
-      })
-    }
+    // if (!this.data.schoolId) {
+    //   wx.showToast({
+    //     title: '请先选择校区',
+    //     icon: 'none'
+    //   })
+    // }
+    let id = this.data.schoolId || wx.getStorageSync('schoolId');
     wx.navigateTo({
-      url: '../chooseArea/chooseArea?id=' + this.data.schoolId,
+      url: '../chooseArea/chooseArea?id=' + id,
     })
   },
   bindMultiPickerChange: function (e) {

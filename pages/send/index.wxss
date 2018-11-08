@@ -217,7 +217,6 @@ page>view {
   font-size: 28rpx;
   line-height: 100rpx;
   font-family: PingFang-SC-Medium;
-  font-weight: 500;
   color: rgba(78, 78, 78, 1);
 }
 

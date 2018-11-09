@@ -144,7 +144,7 @@ page>view {
 }
 
 .submit {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -307,4 +307,9 @@ radio {
 }
 .maskTime {
   background: rgba(0,0,0,.4) !important ;
+}
+.message {
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  border-bottom: none;
 }

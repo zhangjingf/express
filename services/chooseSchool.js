@@ -15,6 +15,19 @@ class ChooseSchool {
       }
     })
   }
+  chooseSchool(data, callback) {
+    ajax({
+      url: sendLink() + '/api/school/chooseSchool',
+      type: 'GET',
+      data: data,
+      success: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      },
+      error: function (ret) {
+        typeof callback == 'function' && callback.call(this, ret)
+      }
+    })
+  }
 }
 
 export default new ChooseSchool

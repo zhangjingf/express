@@ -54,7 +54,12 @@
   font-weight: 500;
   color: rgba(0, 0, 0, 1);
 }
+.call>view:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
 .call .avatar {
+  margin-right: 20rpx;
   width:55rpx;
   height:55rpx;
   border-radius:50%;

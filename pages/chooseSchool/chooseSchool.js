@@ -63,6 +63,11 @@ Page({
             key: 'schoolName',
             data: this.data.nearSchool[index].schoolName
           })
+          sendRequest.chooseSchool({schoolId: id}, function (res) {
+            if (res.errno == 0) {
+              console.error('提交成功')
+            }
+          })
         }
       }
     }

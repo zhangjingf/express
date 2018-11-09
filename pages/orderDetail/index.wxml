@@ -28,7 +28,7 @@
 <view class="call" wx:if="{{detail.isHaveRider}}">
   <view>
     <image class="avatar" src="{{detail.avatar}}"></image>
-    {{detail.	riderName}}
+    <text>{{detail.	riderName}}</text>
   </view>
   <view bindtap="call">
     <image class="phone" src="../../images/phone.png"></image>

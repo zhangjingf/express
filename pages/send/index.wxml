@@ -50,11 +50,6 @@
     </view>
   </view>
   <view class="same">
-    <text>留言:</text>
-    <input maxlength="20" bindinput="bindInput" ></input>
-    <text>{{wordNum}}/20</text>
-  </view>
-  <view class="same">
     <text>服务费</text>
     <text>{{servicePrice}}元</text>
   </view>
@@ -64,6 +59,11 @@
       <input type="number" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
     </view>
   </view>
+</view>
+<view class="message same">
+    <text>留言:</text>
+    <input maxlength="20" bindinput="bindInput" ></input>
+    <text>{{wordNum}}/20</text>
 </view>
 <view class="agree">
   <view>

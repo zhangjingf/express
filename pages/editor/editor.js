@@ -36,6 +36,9 @@ Page({
       schoolName: wx.getStorageSync('schoolName'),
       area: wx.getStorageSync('proviceName') + wx.getStorageSync('cityName')
     })
+    this.setData({
+      deletestatus: options.delete == 'no' ? false : true
+    })
     if (options.status == 'new') {
       if (options.from == 'send') {
         if (options.type === 'send') {

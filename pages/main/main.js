@@ -66,6 +66,13 @@ Page({
               }
             });
             wx.setStorage({
+              key: 'cityId',
+              data: res.data.cityId,
+              success: function () {
+                console.warn('城市存储成功');
+              }
+            });
+            wx.setStorage({
               key: 'lng',
               data: param.lngLong,
               success: function () {

@@ -98,7 +98,7 @@ Page({
   },
   editor: function() {
     wx.navigateTo({
-      url: '../editor/editor?id=' + this.data.addressInfo.id + '&type=receive&from=receive',
+      url: '../editor/editor?id=' + this.data.addressInfo.id + '&type=receive&from=receive&delete=no',
     })
   },
   goEditor: function (e) {
@@ -427,6 +427,9 @@ Page({
         wx.showToast({
           title: res.msg,
           icon: 'none'
+        })
+        wx.reLaunch({
+          url: '../order/index',
         })
       }
     })

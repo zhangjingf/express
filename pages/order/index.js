@@ -14,6 +14,11 @@ Page({
     })
   },
   onShow: function () {
+    this.setData({
+      orderList: [],
+      startIndex: 0,
+      endIndex: 5
+    })
     this.list()
   },
   onReady: function () {
@@ -40,12 +45,14 @@ Page({
     }
     order.orderList(param, function (res) {
       wx.hideLoading();
-      if (res.errno == 0 && res.data) {
+      self.setData({
+        isLock: false
+      })
+      if (res.errno == 0 && res.data.length > 0) {
         let dataList = self.data.orderList
         self.setData({
           orderList: type == 'delete' ? res.data : dataList.concat(res.data),
           loadMore: res.data.length < 5 ? false : true,
-          isLock: false,
           toView: 'order' + res.data[0].orderId
         })
       }
@@ -79,7 +86,7 @@ Page({
   lower: function() {
     if (!this.data.loadMore || this.data.direction) return;
     this.setData({
-      startIndex: this.data.endIndex,
+      startIndex: this.data.endIndex + 1,
       endIndex: this.data.endIndex + 5
     })
     this.list();
@@ -113,7 +120,7 @@ Page({
   onReachBottom: function () {
     if (!this.data.loadMore) return;
     this.setData({
-      startIndex: this.data.endIndex,
+      startIndex: this.data.endIndex + 1,
       endIndex: this.data.endIndex + 5
     })
     this.list();

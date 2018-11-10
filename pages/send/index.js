@@ -291,12 +291,12 @@ Page({
   },
   editorreceive: function() {
     wx.navigateTo({
-      url: '../editor/editor?id=' + this.data.addressInfo.id + '&type=receive&from=send',
+      url: '../editor/editor?id=' + this.data.addressInfo.id + '&type=receive&from=send&delete=no',
     })
   },
   editorsender: function () {
     wx.navigateTo({
-      url: '../editor/editor?id=' + this.data.senderAddressInfo.id + '&type=send&from=send',
+      url: '../editor/editor?id=' + this.data.senderAddressInfo.id + '&type=send&from=send&delete=no',
     })
   }
 })

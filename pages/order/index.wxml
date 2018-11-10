@@ -1,6 +1,7 @@
 <!-- pages/order/index.wxml -->
 <view class="line"></view>
 <!-- <scroll-view scroll-y bindscrolltolower="lower" scroll-into-view="{{toView}}"  bindscrolltoupper="upper" bindscroll="scroll" class="order-list"> -->
+<view class="noorder" wx:if="{{orderList.length == 0}}">暂无订单</view>
   <view class="order" wx:for="{{orderList}}" wx:key="{{item.orderId}}" catchtap="goOrderDetail" data-id="{{item.orderId}}" id="{{'order' + item.orderId}}">
     <block wx:if="{{item.orderType == 2}}">
       <view class="part1">
@@ -22,9 +23,8 @@
         <view>
           <text wx:if="{{item.status == 8}}">待支付</text>
           <text wx:if="{{item.status == 21}}">待接单</text>
-          <text wx:if="{{item.status == 31}}">待取件</text>
-          <text wx:if="{{item.status == 50}}">正在配送</text>
-          <text wx:if="{{item.status == 55}}">待确认</text>
+          <text wx:if="{{item.status == 32}}">待揽件</text>
+          <text wx:if="{{item.status == 50}}">已揽件</text>
           <text wx:if="{{item.status == 60}}">已送达</text>
           <text wx:if="{{item.status == 71}}">已取消</text>
         </view>

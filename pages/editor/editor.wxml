@@ -34,7 +34,7 @@
     </block>
   </view>
   <view>
-    <input bindinput="phone" placeholder="电话" value="{{receiverPhone}}"></input>
+    <input bindinput="phone" type="number" placeholder="电话" value="{{receiverPhone}}"></input>
   </view>
   <!-- <view wx:if="{{type != 'send'}}">
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="name">
@@ -57,7 +57,7 @@
   </view>
   <view wx:if="{{type != 'send'}}"><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>
 </view>
-<view wx:if="{{id}}" class="delete" bindtap="delete"><view>删除</view></view>
+<view wx:if="{{id && deletestatus}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">
   <view>保存</view>
 </view>

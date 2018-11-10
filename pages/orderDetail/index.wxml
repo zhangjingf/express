@@ -19,8 +19,8 @@
     <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
   <view class="tips">
-    <text>订单将在24小时之后自动确认收货，如有疑问请及时</text>
-    <button open-type="contact" bindcontact="handleContact">联系客服</button>
+    <text>{{detail.msg}}</text>
+    <button wx:if="{{detail.status == 55}}" open-type="contact" bindcontact="handleContact">联系客服</button>
   </view>
   <view class="confirm" bindtap="finish" wx:if="{{detail.status == 55}}">确认送达</view>
   <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">去支付</view>
@@ -112,7 +112,7 @@
       <view class="text">{{detail.orderId}}</view>
     </view>
   </block>
-  <block wx:else>
+  <block wx:if="{{detail.orderType == 1 && detail.status == 60}}">
     <view>
       <view class="lable">运单号</view>
       <view class="text">{{detail.expressNumber}}</view>

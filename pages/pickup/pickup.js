@@ -26,6 +26,7 @@ Page({
   onLoad: function (options) {
     var self = this;
     var now = new Date().getHours();
+    var minute = new Date().getMinutes();
     var todayArr = [];
     var schoolId =  wx.getStorageSync('schoolId') || '';
     pickup.getSchoolPkg({
@@ -55,7 +56,8 @@ Page({
       if (res.errno == 0) {
         if (res.data.length > 0) {
           for (let index in res.data) {
-            if (res.data[index].startTime.split(":")[0] > now) {
+            let timeRange = res.data[index].startTime.split(":");
+            if (timeRange[0] > now || (timeRange[0] == now) && timeRange[1] > minute) {
               todayArr.push(res.data[index]);
             }
           }
@@ -63,9 +65,15 @@ Page({
             tomorrowList: res.data,
             todayList: todayArr
           })
+          if (todayArr.length > 0) {
+            todayArr[0].checked = true;
+          } else {
+            res.data[0].checked = true;
+          }
           self.setData({
             defaultDate: todayArr.length > 0 ? todayArr : res.data,
-            type: todayArr.length > 0 ? 'today' : 'tomorrow'
+            type: todayArr.length > 0 ? 'today' : 'tomorrow',
+            checkedDate: todayArr.length > 0 ? ('今天' + todayArr[0].startTime + '-' + todayArr[0].endTime ) : ('明天' + res.data[0].startTime + '-' + res.data[0].endTime)
           })
         }
       }
@@ -223,6 +231,11 @@ Page({
           orderInfo: orderArr,
           totalPrice: sum
         });
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       }
     })
   },
@@ -265,10 +278,14 @@ Page({
     })
   },
   toggleDay: function (e) {
-    var type = e.target.dataset.type;
+    let type = e.target.dataset.type;
+    let dateList = type == 'today' ? this.data.todayList : this.data.tomorrowList;
+    for (let item of dateList) {
+      item.checked = false
+    }
     this.setData({
       type: type,
-      defaultDate: type == 'today' ? this.data.todayList : this.data.tomorrowList
+      defaultDate: dateList
     })
   },
   maskFlag2: function () {
@@ -403,10 +420,12 @@ Page({
         self.result(val);
       },
       fail: function (res) {
-        console.warn(res);
         wx.showToast({
           title: '支付失败，请重新支付',
           icon: 'none'
+        })
+        wx.reLaunch({
+          url: '../order/index',
         })
       }
     })

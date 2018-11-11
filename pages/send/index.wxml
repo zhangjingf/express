@@ -56,7 +56,7 @@
   <view class="same last_view">
     <text>小费</text>
     <view>
-      <input type="number" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
+      <input type="digit" style="text-align:right" placeholder="包裹太大，给点小费吧" bindinput="fees"></input>
     </view>
   </view>
 </view>
@@ -78,7 +78,7 @@
     <view class="fee">
       <text>¥</text>{{totalPrice}}
     </view>
-    <view>此费用不包含包裹费用</view>
+    <view>此费用不包扩包裹运费</view>
   </view>
   <view bindtap="submit">下单</view>
 </view>

@@ -51,6 +51,7 @@ scroll-view {
   margin-top: 24rpx;
   height: 26rpx;
   font-size: 26rpx;
+  line-height: 30rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(51, 51, 51, 1);
@@ -73,7 +74,7 @@ scroll-view {
 .circle2,
 .circle3 {
   display: inline-block;
-  margin-right: 10rpx;
+  margin-right: 5rpx;
   width: 20rpx;
   height: 20rpx;
   background: rgba(0, 140, 240, 1);
@@ -129,4 +130,22 @@ scroll-view {
   font-weight:500;
   text-align: center;
   color:#666666;
+}
+.goodscode {
+  margin-left: 30rpx;
+  width: 260rpx;
+  text-overflow: ellipsis;
+  overflow : hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.address {
+  margin-left: 30rpx;
+  width: 260rpx;
+  text-overflow: ellipsis;
+  overflow : hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }

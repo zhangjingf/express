@@ -18,7 +18,7 @@
   <view class="express-info" wx:for="{{orderInfo}}" wx:key="{{item.index}}" wx:for-index="idx">
     <view>
       <view class="label"><text>取</text><text>货</text><text>码</text> </view>
-      <input placeholder='可粘贴短信至此' data-index="{{item.index}}" maxlength="70" bindinput="expressKey"></input>
+      <input placeholder='可粘贴短信至此' data-index="{{item.index}}" maxlength="60" bindinput="expressKey"></input>
     </view>
     <view bindtap="checkExpress" data-index="{{item.index}}">
       <view class="label" data-index="{{item.index}}"><text>快</text><text>递</text><text>点</text></view>

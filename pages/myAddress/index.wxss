@@ -1,15 +1,12 @@
 /* pages/myAddress/index.wxss */
-page {
-  background: #e5e5e5;
-}
-
 .my-address {
   margin-bottom: 160rpx;
 }
 
 .my-address>view {
   margin-top: 20rpx;
-  padding: 35rpx 32rpx 34rpx 28rpx;
+  height: 140rpx;
+  padding: 0 32rpx 0 28rpx;
   display: flex;
   align-items: center;
   background: #ffffff;
@@ -35,19 +32,20 @@ page {
   align-items: center !important;
 }
 .edit {
-  padding: 20rpx 0 20rpx 20rpx;
+  padding: 50rpx 0 50rpx 30rpx;
   width: 28rpx;
   height: 28rpx;
 }
 
 .checked {
+  margin-right: 30rpx;
   width: 29rpx;
   height: 29rpx;
 }
 
 .line1 {
   display: inline-block;
-  margin: 0 30rpx;
+  margin: 0 10rpx;
   width: 1rpx;
   height: 42rpx;
   background: rgba(220, 220, 220, 1);

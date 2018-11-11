@@ -2,17 +2,12 @@
 import Logistics from '../../services/logistics';
 Page({
   data: {
-    logisticsHistory: [{
-      id: 1,
-      name: '4444444'
-    }],
+    logisticsHistory: [],
     status: '',
     number: ''
   },
   onLoad: function (options) {
-  },
-  clear: function () {
-
+    this.hisotry()
   },
   search: function() {
     this.getExpress(this.data.number);
@@ -47,5 +42,20 @@ Page({
     //     })
     //   }
     // })
+  },
+  hisotry: function () {
+    const self = this;
+    Logistics.history({}, function(res) {
+      if (res.errno == 0) {
+        self.setData({
+          logisticsHistory: res.data
+        })
+      }
+    })
+  },
+  clear: function () {
+    this.setData({
+      logisticsHistory: []
+    })
   }
 })

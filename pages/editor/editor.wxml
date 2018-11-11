@@ -45,7 +45,7 @@
     </picker>
   </view> -->
   <view wx:if="{{type == 'send'}}">
-    <input type="text" placeholder="详细地址" bindinput="detail" value="{{detailAddress}}"></input >
+    <input type="text" placeholder="详细地址" maxlength='50' bindinput="detail" value="{{detailAddress}}"></input >
   </view>
   <view wx:if="{{type != 'send'}}" class="address">
     <view>{{area}}</view>
@@ -55,7 +55,7 @@
     <input type="text" placeholder="所在区域" disabled value="{{hostelName}}"></input>
     <i-icon type="enter" size="20"/>
   </view>
-  <view wx:if="{{type != 'send'}}"><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}"></input></view>
+  <view wx:if="{{type != 'send'}}"><input placeholder="宿舍号、门牌号" bindinput="address" value="{{address}}" maxlength='10'></input></view>
 </view>
 <view wx:if="{{id && deletestatus}}" class="delete" bindtap="delete"><view>删除</view></view>
 <view class="save" bindtap="save">

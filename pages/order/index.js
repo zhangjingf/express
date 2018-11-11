@@ -23,7 +23,6 @@ Page({
   },
   onReady: function () {
     var self = getApp()
-    console.log(self.globalData)
   },
   goDetail: function () {
     wx.navigateTo({
@@ -48,6 +47,11 @@ Page({
       self.setData({
         isLock: false
       })
+      if (type == 'delete') {
+        self.setData({
+          orderList: []
+        })
+      }
       if (res.errno == 0 && res.data.length > 0) {
         let dataList = self.data.orderList
         self.setData({
@@ -55,19 +59,34 @@ Page({
           loadMore: res.data.length < 5 ? false : true,
           toView: 'order' + res.data[0].orderId
         })
+      } else if(res.data.length == 0) {
+        self.setData({
+          loadMore: false
+        })
       }
     })
   },
   delete: function(e) {
     const self = this;
     let id = e.target.dataset.id || '';
-    order.delete({orderId: id.toString()}, function(res) {
-      if (res.errno == 0) {
-        self.setData({
-          startIndex: 0,
-          endIndex: 5
-        })
-        self.list('delete');
+    wx.showModal({
+      title: '确定删除订单吗？',
+      content: '订单删除后将无法恢复',
+      cancelText: '不删除',
+      confirmText: '确定删除',
+      confirmColor: '#008CF0',
+      success: function (res) {
+        if (res.confirm) {
+          order.delete({ orderId: id.toString() }, function (res) {
+            if (res.errno == 0) {
+              self.setData({
+                startIndex: 0,
+                endIndex: 5
+              })
+              self.list('delete');
+            }
+          })
+        }
       }
     })
   },
@@ -102,13 +121,24 @@ Page({
   },
   cancel: function (e) {
     const self = this;
-    order.cancel({orderId: e.target.dataset.id.toString()}, function (res) {
-      if (res.code == 0) {
-        self.setData({
-          startIndex: 0,
-          endIndex: 5
-        })
-        self.list('delete')
+    wx.showModal({
+      title: ' ',
+      content: '确定取消订单吗？',
+      cancelText: '不取消',
+      confirmText: '确定取消',
+      confirmColor: '#008CF0',
+      success: function(res) {
+        if (res.confirm) {
+          order.cancel({ orderId: e.target.dataset.id.toString() }, function (res) {
+            if (res.code == 0) {
+              self.setData({
+                startIndex: 0,
+                endIndex: 5
+              })
+              self.list('delete')
+            }
+          })
+        }
       }
     })
   },
@@ -120,7 +150,7 @@ Page({
   onReachBottom: function () {
     if (!this.data.loadMore) return;
     this.setData({
-      startIndex: this.data.endIndex + 1,
+      startIndex: this.data.endIndex,
       endIndex: this.data.endIndex + 5
     })
     this.list();

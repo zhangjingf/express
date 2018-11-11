@@ -209,7 +209,6 @@ page>view {
   height: 500rpx;
   display: flex;
   background: rgba(245, 245, 245, 1);
-  overflow: scroll;
 }
 
 .day {
@@ -224,6 +223,7 @@ page>view {
   padding: 0 29rpx;
   flex: 1;
   background: #ffffff;
+  overflow-y: scroll;
 }
 
 .list>view,

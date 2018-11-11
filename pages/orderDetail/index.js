@@ -21,7 +21,6 @@ Page({
         self.setData({
           detail: res.data
         })
-        console.log(res.data)
       }
     })
   },
@@ -55,11 +54,9 @@ Page({
       signType: 'MD5', //签名
       paySign: val.paySign,
       success: function (res) {
-        console.warn(res);
         self.result(val);
       },
       fail: function (res) {
-        console.warn(res);
         wx.showToast({
           title: '支付失败，请重新支付',
           icon: 'none'

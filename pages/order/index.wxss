@@ -5,15 +5,15 @@ scroll-view {
   height: 1084rpx;
 }
 .order {
+  padding-top: 22rpx;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   height: 256rpx;
   margin: 18rpx 18rpx 0 18rpx;
   background:rgba(255, 255, 255, 1);
 }
 
 .part1 {
-  flex: 1;
   padding-left: 24rpx;
 }
 
@@ -91,7 +91,9 @@ scroll-view {
 
 .btns {
   display: flex;
+  justify-content: center;
   margin-top: 40rpx;
+  min-width: 133rpx;
   font-size:26rpx;
   line-height: 50rpx;
   font-family:PingFang-SC-Medium;
@@ -148,4 +150,7 @@ scroll-view {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+.distance {
+  margin-top: 92rpx;
 }

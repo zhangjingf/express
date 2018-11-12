@@ -76,3 +76,12 @@
 .grey {
   background: #f5f5f5 !important;
 }
+.limit {
+  width: 490rpx;
+  line-height: 40rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

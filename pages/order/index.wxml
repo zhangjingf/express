@@ -33,7 +33,7 @@
           <text>{{item.orderNum}}</text>
         </view>
         <!-- <view>￥{{item.actualPrice}}</view> -->
-        <view class="btns">
+        <view class="btns distance">
           <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
           <view class="detail" catchtap='goDetail' wx:if="{{item.status == 50}}">查看物流</view>
         </view>

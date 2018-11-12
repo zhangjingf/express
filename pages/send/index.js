@@ -27,7 +27,8 @@ Page({
     },
     servicePrice: 0,
     tipPrice: 0,
-    totalPrice: 0
+    totalPrice: 0,
+    first: true
   },
   onLoad: function () {
     var self = this;
@@ -103,23 +104,28 @@ Page({
         }
       }
     })
-    address.gerSenderAddress({ schoolId: wx.getStorageSync('schoolId')}, function(res) {
-      if (res.errno == 0) {
-        if (res.data.length > 0) {
-          self.setData({
-            senderAddressInfo: res.data[0]
-          })
-          for (let index in res.data) {
-            if (res.data[index].isDefault == 1) {
-              self.setData({
-                senderAddressInfo: res.data[index]
-              })
+    if(!this.data.first) {
+      address.gerSenderAddress({
+        schoolId: wx.getStorageSync('schoolId')
+      }, function (res) {
+        if (res.errno == 0) {
+          if (res.data.length > 0) {
+            self.setData({
+              senderAddressInfo: res.data[0]
+            })
+            for (let index in res.data) {
+              if (res.data[index].isDefault == 1) {
+                self.setData({
+                  senderAddressInfo: res.data[index]
+                })
+              }
             }
           }
         }
-      }
-    })
+      })
+    }
     this.getEstimatedPrice();
+    this.data.first = false;
   },
   bindInput: function (e) {
     this.setData({
@@ -222,7 +228,7 @@ Page({
   },
   fees: function (e) {
     this.setData({
-      tipPrice: e.detail.value
+      tipPrice: Math.abs(e.detail.value)
     })
     this.getEstimatedPrice()
   },

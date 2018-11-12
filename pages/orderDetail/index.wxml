@@ -20,7 +20,9 @@
   </view>
   <view class="tips">
     <text>{{detail.msg}}</text>
-    <button wx:if="{{detail.status == 55}}" open-type="contact" bindcontact="handleContact">联系客服</button>
+    <button wx:if="{{detail.status == 55}}" open-type="contact" bindcontact="handleContact">
+      联系客服
+    </button>
   </view>
   <view class="confirm" bindtap="finish" wx:if="{{detail.status == 55}}">确认送达</view>
   <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">去支付</view>
@@ -28,7 +30,7 @@
 <view class="call" wx:if="{{detail.isHaveRider}}">
   <view>
     <image class="avatar" src="{{detail.avatar}}"></image>
-    <text>{{detail.	riderName}}</text>
+    <text>{{detail.riderName}}</text>
   </view>
   <view bindtap="call">
     <image class="phone" src="../../images/phone.png"></image>
@@ -37,22 +39,38 @@
 <view class="content1">
   <block wx:if="{{detail.orderType == 1}}">
     <view>
-      <view class="label">快递点</view>
-      <view class="text limit">{{detail.receiverAddress}}</view>
+      <view class="label">
+        <text>快</text>
+        <text>递</text>
+        <text>点</text>
+      </view>
+      <view class="text limit">{{detail.expressName}}</view>
     </view>
     <view>
-      <view class="label">包裹规格</view>
+      <view class="label">
+        <text>包</text>
+        <text>裹</text>
+        <text>规</text>
+        <text>格</text>
+      </view>
       <view class="text" wx:if="{{detail.pkgSize == 10}}">小</view>
       <view class="text" wx:if="{{detail.pkgSize == 20}}">中</view>
       <view class="text" wx:if="{{detail.pkgSize == 30}}">大</view>
       <view class="text" wx:if="{{detail.pkgSize == 40}}">超大</view>
     </view>
     <view>
-      <view class="label">取货码</view>
-      <view class="text limit">{{detail.expressKey}}</view>
+      <view class="label">
+        <text>取</text>
+        <text>货</text>
+        <text>码</text>
+      </view>
+      <view class="text">{{detail.expressKey}}</view>
     </view>
     <view>
-      <view class="label">备注</view>
+      <view class="label">
+        <text>备</text>
+        <text>注</text>
+      </view>
       <view class="text limit">{{detail.remark}}</view>
     </view>
     <view class="price">
@@ -74,11 +92,17 @@
     </view>
     <view>
       <view class="label">寄件地址</view>
-      <view class="text limit">{{detail.senderAddress}}</view>
+      <view class="text">
+        <view>{{detail.senderName}} {{detail.senderPhone}}</view>
+        <view class="limit">{{detail.senderAddress}}</view>
+      </view>
     </view>
     <view>
       <view class="label">收件地址</view>
-      <view class="text limit">{{detail.receiverAddress}}</view>
+      <view class="text">
+        <view>{{detail.receiverName}} {{detail.receiverPhone}}</view>
+        <view class="limit">{{detail.receiverAddress}}</view>
+      </view>
     </view>
     <view>
       <view class="label">下单时间</view>
@@ -101,7 +125,10 @@
     </view>
     <view>
       <view class="label">收货地址</view>
-      <view class="text limit">{{detail.receiverAddress}}</view>
+      <view class="text">
+        <view>{{detail.receiverName}} {{detail.receiverPhone}}</view>
+        <view class="limit">{{detail.receiverAddress}}</view>
+      </view>
     </view>
     <view>
       <view class="label">下单时间</view>
@@ -114,7 +141,11 @@
   </block>
   <block wx:if="{{detail.orderType == 2 && (detail.status == 60 || detail.status == 50)}}">
     <view>
-      <view class="lable">运单号</view>
+      <view class="lable">
+        <text>运</text>
+        <text>单</text>
+        <text>号</text>
+      </view>
       <view class="text">{{detail.expressNumber}}</view>
     </view>
     <view>
@@ -126,19 +157,39 @@
       <view class="text">{{detail.pkgKg}}</view>
     </view>
     <view>
-      <view class="label">运费</view>
+      <view class="label">
+        <text>运</text>
+        <text>费</text>
+      </view>
       <view class="text">{{detail.expressPrice}}</view>
     </view>
     <view>
-      <view class="label">服务费</view>
+      <view class="label">
+        <text>服</text>
+        <text>务</text>
+        <text>费</text>
+      </view>
       <view class="text">{{detail.servicePrice}}</view>
     </view>
     <view>
-      <view class="label">小费</view>
+      <view class="label">
+        <text>小</text>
+        <text>费</text>
+      </view>
       <view class="text">{{detail.tipPrice}}</view>
     </view>
     <view>
-      <view class="label">合计</view>
+      <view class="label">
+        <text>备</text>
+        <text>注</text>
+      </view>
+      <view class="text limit">{{detail.remark}}</view>
+    </view>
+    <view>
+      <view class="label">
+        <text>合</text>
+        <text>计</text>
+      </view>
       <view class="text">{{detail.totalPrice}}</view>
     </view>
     <view>

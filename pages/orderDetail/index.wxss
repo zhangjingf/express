@@ -71,6 +71,7 @@
 .content1,
 .content2 {
   margin: 20rpx;
+  padding-top: 27rpx;
   background: rgba(255, 255, 255, 1);
   border-radius: 5rpx;
 }
@@ -78,19 +79,23 @@
   padding: 0 27rpx;
 }
 .content2 {
-  padding: 0 27rpx;
+  padding: 27rpx 27rpx 0 27rpx;
 }
 .content1>view,
 .content2>view {
   display: flex;
-  align-items: center;
-  line-height: 81rpx;
+  height: 81rpx;
+  /* align-items: center; */
+  /* line-height: 81rpx; */
 }
 
 .content1 .label,
 .content2 .label {
+  display: flex;
+  justify-content: space-between;
   width: 113rpx;
   font-size: 26rpx;
+  line-height: 30rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
   color: rgba(74, 74, 74, 1);
@@ -107,6 +112,8 @@
 
 .content1 .price {
   padding: none !important;
+  display: flex;
+  align-items: center;
   padding-left: 480rpx;
   border-top: 1rpx solid rgba(220, 220, 220, 1);
   font-size: 26rpx;
@@ -142,6 +149,6 @@
   text-overflow: ellipsis;
   overflow : hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }

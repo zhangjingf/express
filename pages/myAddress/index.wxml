@@ -4,11 +4,11 @@
     <view class="left">
       <block wx:if="{{type == 'send'}}">
         <view>{{item.senderName}} {{item.senderPhone}}</view>
-        <view>{{item.address}}</view>
+        <view class="limit">{{item.address}}</view>
       </block>
       <block wx:else>
         <view>{{item.receiverName}} {{item.receiverPhone}}</view>
-        <view>{{item.fullAddress}}</view>
+        <view class="limit">{{item.fullAddress}}</view>
       </block>
     </view>
     <view class="rihgt">

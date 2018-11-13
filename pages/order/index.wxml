@@ -25,17 +25,17 @@
           <text wx:if="{{item.status == 21}}">待接单</text>
           <text wx:if="{{item.status == 32}}">待取件</text>
           <text wx:if="{{item.status == 50}}">已取件</text>
-          <text wx:if="{{item.status == 60}}">已送达</text>
+          <text wx:if="{{item.status == 60}}">已完成</text>
           <text wx:if="{{item.status == 71}}">已取消</text>
         </view>
         <view>
           <text>{{item.expressNumber}}</text>
         </view>
         <view wx:if="{{item.status == 8 ||  item.status == 60}}">￥{{item.payPrice}}</view>
-        <view class="btns ">
+        <view class="btns distance">
           <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
           <view class="btnSurePay" data-id="{{item.orderId}}" catchtap='singlePay' wx:if="{{item.status == 8}}">确认支付</view>
-          <view class="detail" catchtap='goDetail' wx:if="{{item.status == 60}}">查看物流</view>
+          <view class="detail" catchtap='goWl' data-id="{{item.expressNumber}}" wx:if="{{item.status == 60}}">查看物流</view>
         </view>
       </view>
     </block>

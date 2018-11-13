@@ -219,5 +219,10 @@ Page({
         })
       }
     })
+  },
+  goWl: function (e) {
+    wx.navigateTo({
+      url: '../logisticsDetail/logisticsDetail?val=' + e.target.dataset.id,
+    })
   }
 })

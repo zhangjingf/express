@@ -124,6 +124,19 @@ scroll-view {
   font-weight:500;
   color:rgba(0,140,240,1);
 }
+.btnSurePay {
+  margin-left: 24rpx;
+  width:140rpx;
+  height:50rpx;
+  border:1rpx solid rgba(0, 140, 240, 1);
+  border-radius:5rpx;
+  font-size:26rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(0,140,240,1);
+}
 .noorder {
   padding: 40rpx 20rpx;
   font-size:30rpx;

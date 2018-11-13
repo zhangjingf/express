@@ -108,6 +108,10 @@ Page({
     const base = this.data;
     let id = ev.currentTarget.dataset.id || '';
     if (!id) return;
+    wx.setStorageSync({
+      key: 'first',
+      value: true
+    })
     if (base.type == 'send') {
       this.saveSenderAddress(id);
       return;

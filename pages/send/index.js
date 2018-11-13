@@ -72,7 +72,6 @@ Page({
           typeList: res.data,
           pkgType: res.data[0].goodsType,
           pkgTypeName: res.data[0].goodsName
-
         })
       }
     })
@@ -86,6 +85,9 @@ Page({
   },
   onShow: function () {
     const self = this;
+    this.setData({
+      first: wx.getStorageSync('first')
+    })
     self.addressInfo = null;
     self.senderAddressInfo = null;
     address.getAddressList({ schoolId: wx.getStorageSync('schoolId')}, function(res) {
@@ -125,7 +127,6 @@ Page({
       })
     }
     this.getEstimatedPrice();
-    this.data.first = false;
   },
   bindInput: function (e) {
     this.setData({

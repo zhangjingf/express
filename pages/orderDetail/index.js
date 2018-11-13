@@ -93,5 +93,16 @@ Page({
         self.detail(self.data.detail.orderId);
       }
     })
+  },
+  setCopy: function (e) {
+    wx.setClipboardData({
+      data: e.target.dataset.num,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'none'
+        })
+      }
+    })
   }
 })

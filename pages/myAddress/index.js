@@ -108,9 +108,9 @@ Page({
     const base = this.data;
     let id = ev.currentTarget.dataset.id || '';
     if (!id) return;
-    wx.setStorageSync({
+    wx.setStorage({
       key: 'first',
-      value: true
+      data: 'first',
     })
     if (base.type == 'send') {
       this.saveSenderAddress(id);

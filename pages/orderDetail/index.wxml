@@ -2,21 +2,21 @@
 <view class="line"></view>
 <view class="detail">
   <view class="status" wx:if="{{detail.orderType == 1}}">
-    <text wx:if="{{detail.status == 8}}">等待支付</text>
-    <text wx:if="{{detail.status == 21}}">等待接单</text>
-    <text wx:if="{{detail.status == 31}}">等待取件</text>
+    <text wx:if="{{detail.status == 8}}">待支付</text>
+    <text wx:if="{{detail.status == 21}}">待接单</text>
+    <text wx:if="{{detail.status == 31}}">待取件</text>
     <text wx:if="{{detail.status == 50}}">正在配送</text>
-    <text wx:if="{{detail.status == 55}}">等待确认</text>
-    <text wx:if="{{detail.status == 60}}">订单已送达</text>
-    <text wx:if="{{detail.status == 71}}">订单已取消</text>
+    <text wx:if="{{detail.status == 55}}">待确认</text>
+    <text wx:if="{{detail.status == 60}}">已送达</text>
+    <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
   <view class="status" wx:if="{{detail.orderType == 2}}">
     <text wx:if="{{detail.status == 8}}">待支付</text>
-    <text wx:if="{{detail.status == 21}}">等待接单</text>
-    <text wx:if="{{detail.status == 32}}">等待取件</text>
+    <text wx:if="{{detail.status == 21}}">待接单</text>
+    <text wx:if="{{detail.status == 32}}">待取件</text>
     <text wx:if="{{detail.status == 50}}">已取件</text>
-    <text wx:if="{{detail.status == 60}}">订单已完成</text>
-    <text wx:if="{{detail.status == 71}}">订单已取消</text>
+    <text wx:if="{{detail.status == 60}}">已完成</text>
+    <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
   <view class="tips">
     <text>{{detail.msg}}</text>
@@ -111,6 +111,7 @@
     <view>
       <view class="label">订单编号</view>
       <view class="text">{{detail.orderId}}</view>
+      <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image>
     </view>
   </block>
 </view>
@@ -137,9 +138,10 @@
     <view>
       <view class="label">订单编号</view>
       <view class="text">{{detail.orderId}}</view>
+      <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image>
     </view>
   </block>
-  <block wx:if="{{detail.orderType == 2 && (detail.status == 60 || detail.status == 50)}}">
+  <block wx:if="{{detail.orderType == 2 && (detail.status == 60 || detail.status == 8)}}">
     <view>
       <view class="lable">
         <text>运</text>
@@ -147,13 +149,14 @@
         <text>号</text>
       </view>
       <view class="text">{{detail.expressNumber}}</view>
+      <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.expressNumber}}"></image>
     </view>
     <view>
-      <view class="label">快递公司</view>
+      <view class="label"><text>快</text><text>递</text><text>公</text><text>司</text></view>
       <view class="text">{{detail.expressName}}</view>
     </view>
     <view>
-      <view class="label">包裹重量</view>
+      <view class="label"><text>包</text><text>裹</text><text>重</text><text>量</text></view>
       <view class="text">{{detail.pkgKg}}</view>
     </view>
     <view>
@@ -193,7 +196,7 @@
       <view class="text">{{detail.totalPrice}}</view>
     </view>
     <view>
-      <view class="label">付款时间</view>
+      <view class="label"><text>付</text><text>款</text><text>时</text><text>间</text></view>
       <view class="text">{{detail.payTime}}</view>
     </view>
   </block>

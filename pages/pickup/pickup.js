@@ -143,7 +143,7 @@ Page({
     }
     this.setData({
       orderInfo: orderArr,
-      totalPrice: sum
+      totalPrice: sum.toFixed(2)
     });
   },
   chooseRange: function (e) {
@@ -229,7 +229,7 @@ Page({
         }
         self.setData({
           orderInfo: orderArr,
-          totalPrice: sum
+          totalPrice: sum.toFixed(2)
         });
       } else {
         wx.showToast({

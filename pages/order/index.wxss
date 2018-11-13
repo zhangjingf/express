@@ -91,7 +91,7 @@ scroll-view {
 
 .btns {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 40rpx;
   min-width: 133rpx;
   font-size:26rpx;

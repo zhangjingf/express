@@ -30,12 +30,23 @@ Page({
     totalPrice: 0,
     first: true
   },
+  onReady: function () {
+    
+    
+  },
   onLoad: function () {
     var self = this;
     var now = new Date().getHours();
     var minute = new Date().getMinutes();
     var todayArr = [];
     var schoolId = wx.getStorageSync('schoolId') || '';
+    wx.setStorage({
+      key: 'first',
+      data: '',
+    })
+    this.setData({
+      first: ''
+    })
     pickup.getSchoolDate({
       schoolId: schoolId
     }, function (res) {
@@ -106,7 +117,7 @@ Page({
         }
       }
     })
-    if(!this.data.first) {
+    if(this.data.first) {
       address.gerSenderAddress({
         schoolId: wx.getStorageSync('schoolId')
       }, function (res) {

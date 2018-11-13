@@ -28,20 +28,15 @@ Page({
       }
     })
   },
+  goDetail: function (e) {
+    wx.navigateTo({
+      url: '../logisticsDetail/logisticsDetail?val=' + e.target.dataset.id,
+    })
+  },
   getExpress: function (val) {
     wx.navigateTo({
       url: '../logisticsDetail/logisticsDetail?val=' + val,
     })
-    // Logistics.getExpress({number:val}, function(res) {
-    //   if(res.errno == 0 && res.data) {
-        
-    //   } else {
-    //     wx.showToast({
-    //       title: res.msg,
-    //       icon: 'none'
-    //     })
-    //   }
-    // })
   },
   hisotry: function () {
     const self = this;

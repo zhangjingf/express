@@ -107,8 +107,17 @@ Page({
         icon: 'none'
       })
     }
-    wx.navigateTo({
-      url: '../send/index',
+    main.getAuth({}, function (res) {
+      if (res.errno == 0) {
+        wx.navigateTo({
+          url: '../send/index',
+        })
+      } else {
+        wx.showToast({
+          title: res.errmsg,
+          icon: 'none'
+        })
+      }
     })
   },
   gopickup: function () {

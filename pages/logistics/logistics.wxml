@@ -11,8 +11,8 @@
   <view class="submit"><view class="{{status}}" bindtap="search">查询</view></view>
   <view class="history" wx:if="{{logisticsHistory.length > 0}}">
     <view class="title">历史记录</view>
-    <view class="list" wx:for="{{logisticsHistory}}" wx:key="item.id">
-      <view>{{item.expressNumber}}</view><view class="delete"></view>
+    <view class="list" wx:for="{{logisticsHistory}}" wx:key="item.id" data-id="{{item.expressNumber}}" catchtap="goDetail">
+      <view>{{item.expressNumber}}</view><view class="delete">{{item.expressName}}</view>
     </view>
     <view class="clear" bindtap='clear'>清除历史记录</view>
   </view>

@@ -71,20 +71,19 @@
 .content1,
 .content2 {
   margin: 20rpx;
-  padding-top: 27rpx;
   background: rgba(255, 255, 255, 1);
   border-radius: 5rpx;
 }
-.content1>view {
-  padding: 0 27rpx;
+
+.content1>view:first-child, .content2>view:first-child {
+  padding-top: 27rpx;
 }
-.content2 {
-  padding: 27rpx 27rpx 0 27rpx;
-}
+
 .content1>view,
 .content2>view {
   display: flex;
   height: 81rpx;
+   padding: 0 27rpx;
   /* align-items: center; */
   /* line-height: 81rpx; */
 }
@@ -151,4 +150,9 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+}
+.copy {
+  margin-left: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
 }

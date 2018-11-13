@@ -34,7 +34,7 @@
         <view wx:if="{{item.status == 8 ||  item.status == 60}}">￥{{item.payPrice}}</view>
         <view class="btns ">
           <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">删除</view>
-          <view class="btnSurePay" catchtap='goDetail' wx:if="{{item.status == 8}}">确认支付</view>
+          <view class="btnSurePay" data-id="{{item.orderId}}" catchtap='singlePay' wx:if="{{item.status == 8}}">确认支付</view>
           <view class="detail" catchtap='goDetail' wx:if="{{item.status == 60}}">查看物流</view>
         </view>
       </view>

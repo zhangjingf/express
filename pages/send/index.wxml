@@ -78,7 +78,7 @@
     <view class="fee">
       <text>¥</text>{{totalPrice}}
     </view>
-    <view>此费用不包扩包裹运费</view>
+    <view>此费用不包括包裹运费</view>
   </view>
   <view bindtap="submit">下单</view>
 </view>

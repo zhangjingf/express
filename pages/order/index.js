@@ -224,5 +224,32 @@ Page({
     wx.navigateTo({
       url: '../logisticsDetail/logisticsDetail?val=' + e.target.dataset.id,
     })
-  }
+  },
+  finish: function (e) {
+    const self = this;
+    let id = e.target.dataset.id ||'';
+    if (!id) return;
+    order.finished({
+      orderId: id
+    }, function (res) {
+      if (res.errno == 0) {
+        self.setData({
+          startIndex: 0,
+          endIndex: 5
+        });
+        self.list();
+      }
+    })
+  },
+  copy: function (e) {
+    wx.setClipboardData({
+      data: e.target.dataset.num,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'none'
+        })
+      }
+    })
+  },
 })

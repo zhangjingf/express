@@ -24,8 +24,10 @@
       联系客服
     </button>
   </view>
-  <view class="confirm" bindtap="finish" wx:if="{{detail.status == 55}}">确认送达</view>
-  <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">去支付</view>
+  <view class="cancel" wx:if="{{detail.status < 50}}" data-id="{{item.orderId}}" bindtap="cancel">
+    取消订单
+  </view>
+  <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">确认支付</view>
 </view>
 <view class="call" wx:if="{{detail.isHaveRider}}">
   <view>
@@ -64,12 +66,12 @@
         <text>货</text>
         <text>码</text>
       </view>
-      <view class="text">{{detail.expressKey}}</view>
+      <view class="text limit">{{detail.expressKey}}</view>
     </view>
     <view>
       <view class="label">
-        <text>备</text>
-        <text>注</text>
+        <text>留</text>
+        <text>言</text>
       </view>
       <view class="text limit">{{detail.remark}}</view>
     </view>
@@ -86,7 +88,7 @@
     <view>
       <view class="label">上门时间</view>
       <view class="text">
-        <block wx:if="{{detail.isToday}}">今天{{detail.hopeTime}}</block>
+        <block wx:if="{{detail.isToday}}">{{today}}{{detail.hopeTime}}</block>
         <block wx:else>{{detail.hopeDay}}</block>
       </view>
     </view>
@@ -94,14 +96,14 @@
       <view class="label">寄件地址</view>
       <view class="text">
         <view>{{detail.senderName}} {{detail.senderPhone}}</view>
-        <view class="limit">{{detail.senderAddress}}</view>
+        <view class="">{{detail.senderAddress}}</view>
       </view>
     </view>
     <view>
       <view class="label">收件地址</view>
       <view class="text">
         <view>{{detail.receiverName}} {{detail.receiverPhone}}</view>
-        <view class="limit">{{detail.receiverAddress}}</view>
+        <view class="">{{detail.receiverAddress}}</view>
       </view>
     </view>
     <view>
@@ -128,7 +130,7 @@
       <view class="label">收货地址</view>
       <view class="text">
         <view>{{detail.receiverName}} {{detail.receiverPhone}}</view>
-        <view class="limit">{{detail.receiverAddress}}</view>
+        <view class="">{{detail.receiverAddress}}</view>
       </view>
     </view>
     <view>
@@ -142,14 +144,14 @@
     </view>
   </block>
   <block wx:if="{{detail.orderType == 2 && (detail.status == 60 || detail.status == 8)}}">
-    <view>
+    <view class="express_number">
       <view class="lable">
         <text>运</text>
         <text>单</text>
         <text>号</text>
       </view>
-      <view class="text">{{detail.expressNumber}}</view>
-      <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.expressNumber}}"></image>
+      <view class="text">{{detail.expressNumber}} <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.expressNumber}}"></image></view>
+      <view class="see_wl" data-id="{{detail.expressNumber}}" bindtap="goWl">查看物流</view>
     </view>
     <view>
       <view class="label"><text>快</text><text>递</text><text>公</text><text>司</text></view>
@@ -157,14 +159,14 @@
     </view>
     <view>
       <view class="label"><text>包</text><text>裹</text><text>重</text><text>量</text></view>
-      <view class="text">{{detail.pkgKg}}</view>
+      <view class="text">{{detail.pkgKg}}kg</view>
     </view>
     <view>
       <view class="label">
         <text>运</text>
         <text>费</text>
       </view>
-      <view class="text">{{detail.expressPrice}}</view>
+      <view class="text">{{detail.expressPrice}}元</view>
     </view>
     <view>
       <view class="label">
@@ -172,30 +174,23 @@
         <text>务</text>
         <text>费</text>
       </view>
-      <view class="text">{{detail.servicePrice}}</view>
+      <view class="text">{{detail.servicePrice}}元</view>
     </view>
     <view>
       <view class="label">
         <text>小</text>
         <text>费</text>
       </view>
-      <view class="text">{{detail.tipPrice}}</view>
-    </view>
-    <view>
-      <view class="label">
-        <text>备</text>
-        <text>注</text>
-      </view>
-      <view class="text limit">{{detail.remark}}</view>
+      <view class="text">{{detail.tipPrice}}元</view>
     </view>
     <view>
       <view class="label">
         <text>合</text>
         <text>计</text>
       </view>
-      <view class="text">{{detail.totalPrice}}</view>
+      <view class="text">{{detail.totalPrice}}元</view>
     </view>
-    <view>
+    <view wx:if="{{detail.status == 60}}">
       <view class="label"><text>付</text><text>款</text><text>时</text><text>间</text></view>
       <view class="text">{{detail.payTime}}</view>
     </view>

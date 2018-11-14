@@ -52,14 +52,12 @@ Page({
     }, function (res) {
       if (res.errno == 0) {
         if (res.data.length > 0) {
-          for (let index in res.data) {
            for (let index in res.data) {
              let timeRange = res.data[index].startTime.split(":");
              if (timeRange[0] > now || (timeRange[0] == now) && timeRange[1] > minute) {
                todayArr.push(res.data[index]);
              }
            }
-          }
           self.setData({
             tomorrowList: res.data,
             todayList: todayArr

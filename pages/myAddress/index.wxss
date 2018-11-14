@@ -5,7 +5,6 @@
 
 .my-address>view {
   margin-top: 20rpx;
-  height: 140rpx;
   padding: 0 32rpx 0 28rpx;
   display: flex;
   align-items: center;
@@ -79,9 +78,4 @@
 .limit {
   width: 490rpx;
   line-height: 40rpx;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }

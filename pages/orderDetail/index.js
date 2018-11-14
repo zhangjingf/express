@@ -4,13 +4,19 @@ import pickup from '../../services/pickup';
 Page({
   data: {
     detail: null,
-    options: null
+    options: null,
+    today: ''
   },
   onLoad: function (options) {
     const self = this;
     if (options.id) {
       self.detail(options.id);
     }
+    let month = new Date().getMonth + 1;
+    let date = new Date().getDate();
+    this.setData({
+      today: month + '-' + date
+    })
   },
   detail: function (val) {
     const self = this;
@@ -103,6 +109,34 @@ Page({
           icon: 'none'
         })
       }
+    })
+  },
+  cancel: function (e) {
+    const self = this;
+    wx.showModal({
+      title: ' ',
+      content: '确定取消订单吗？',
+      cancelText: '不取消',
+      confirmText: '确定取消',
+      confirmColor: '#008CF0',
+      success: function(res) {
+        if (res.confirm) {
+          order.cancel({ orderId: e.target.dataset.id.toString() }, function (res) {
+            if (res.code == 0) {
+              self.setData({
+                startIndex: 0,
+                endIndex: 5
+              })
+              self.list('delete')
+            }
+          })
+        }
+      }
+    })
+  },
+  goWl: function (e) {
+    wx.navigateTo({
+      url: '../logisticsDetail/logisticsDetail?val=' + e.target.dataset.id,
     })
   }
 })

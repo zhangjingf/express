@@ -91,9 +91,8 @@ scroll-view {
 
 .btns {
   display: flex;
-  justify-content: space-around;
+  flex-direction: row-reverse;
   margin-top: 40rpx;
-  min-width: 133rpx;
   font-size:26rpx;
   line-height: 50rpx;
   font-family:PingFang-SC-Medium;
@@ -102,7 +101,6 @@ scroll-view {
 }
 
 .delete {
-  margin-right: 5rpx;
   width:91rpx;
   height:50rpx;
   border:1rpx solid rgba(204, 204, 204, 1);
@@ -112,7 +110,17 @@ scroll-view {
   font-weight:500;
   font-family:PingFang-SC-Medium;
 }
-
+.confirm {
+  display: inline-block;
+  width: 180rpx;
+  height: 60rpx;
+  border: 2rpx solid rgba(0, 140, 240, 1);
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+  color: rgba(0, 140, 240, 1);
+}
 .detail {
   margin-left: 24rpx;
   width:140rpx;
@@ -138,6 +146,9 @@ scroll-view {
   font-family:PingFang-SC-Medium;
   font-weight:500;
   color:rgba(0,140,240,1);
+}
+.color_blue {
+  color:rgba(0, 140, 240, 1);
 }
 .noorder {
   padding: 40rpx 20rpx;

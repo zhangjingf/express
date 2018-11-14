@@ -29,7 +29,7 @@
           <text wx:if="{{item.status == 71}}">已取消</text>
         </view>
         <view>
-          <text>{{item.expressName}}</text>
+          <text>{{item.expressName}}</text>&nbsp;&nbsp;
           <text class="color_blue" data-num="{{item.expressNumber}}" catchtap="copy">{{item.expressNumber}}</text>
         </view>
         <view wx:if="{{item.status == 8 ||  item.status == 60}}">￥{{item.payPrice}}</view>

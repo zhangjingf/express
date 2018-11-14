@@ -18,17 +18,18 @@
     <text wx:if="{{detail.status == 60}}">已完成</text>
     <text wx:if="{{detail.status == 71}}">已取消</text>
   </view>
-  <view class="buttons">
   <view class="tips">
     <text>{{detail.msg}}</text>
     <button wx:if="{{detail.status == 55}}" open-type="contact" bindcontact="handleContact">
       联系客服
     </button>
   </view>
-  <view class="cancel" wx:if="{{detail.status < 50}}" data-id="{{item.orderId}}" bindtap="cancel">
-    取消订单
-  </view>
-  <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">确认支付</view>
+  <view class="buttons">
+    <view class="cancel" wx:if="{{detail.status == 21 || detail.status == 31 ||detail.status == 32 || (detail.orderType == 1 && detail.status == 8)}}" data-id="{{item.orderId}}" bindtap="cancel">
+      取消订单
+    </view>
+    <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">确认支付</view>
+    <view class="confirm" bindtap="finish" wx:if="{{item.status == 55}}">确认送达</view>
   </view>
 </view>
 <view class="call" wx:if="{{detail.isHaveRider}}">

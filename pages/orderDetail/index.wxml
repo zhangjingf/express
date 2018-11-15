@@ -115,8 +115,7 @@
     </view>
     <view>
       <view class="label">订单编号</view>
-      <view class="text">{{detail.orderId}}</view>
-      <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image>
+      <view class="text">{{detail.orderId}}<image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image></view>
     </view>
   </block>
 </view>
@@ -142,8 +141,7 @@
     </view>
     <view>
       <view class="label">订单编号</view>
-      <view class="text">{{detail.orderId}}</view>
-      <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image>
+      <view class="text">{{detail.orderId}}<image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image></view>
     </view>
   </block>
   <block wx:if="{{detail.orderType == 2 && (detail.status == 60 || detail.status == 8)}}">

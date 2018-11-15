@@ -23,7 +23,7 @@ Page({
         })
       } else {
         wx.showToast({
-          title: res.msg,
+          title: res.errmsg,
           icon: 'none'
         })
       }

@@ -29,7 +29,7 @@
       取消订单
     </view>
     <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">确认支付</view>
-    <view class="confirm" bindtap="finish" wx:if="{{item.status == 55}}">确认送达</view>
+    <view class="confirm" bindtap="finish" wx:if="{{detail.status == 55}}">确认送达</view>
   </view>
 </view>
 <view class="call" wx:if="{{detail.isHaveRider}}">
@@ -151,8 +151,8 @@
         <text>单</text>
         <text>号</text>
       </view>
-      <view class="text">{{detail.expressNumber}} <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.expressNumber}}"></image></view>
-      <view wx:if="{{detail.status == 60}}" class="see_wl" data-id="{{detail.expressNumber}}" bindtap="goWl">查看物流</view>
+      <view class="text whexpress">{{detail.expressNumber}} <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.expressNumber}}"></image></view>
+      <view wx:if="{{detail.status == 60}}" class="seeWl" data-id="{{detail.expressNumber}}" bindtap="goWl">查看物流</view>
     </view>
     <view>
       <view class="label"><text>快</text><text>递</text><text>公</text><text>司</text></view>

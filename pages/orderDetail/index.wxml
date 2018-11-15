@@ -69,14 +69,14 @@
         <text>货</text>
         <text>码</text>
       </view>
-      <view class="text limit">{{detail.expressKey}}</view>
+      <view class="text">{{detail.expressKey}}</view>
     </view>
     <view>
       <view class="label">
         <text>留</text>
         <text>言</text>
       </view>
-      <view class="text limit">{{detail.remark}}</view>
+      <view class="text">{{detail.remark}}</view>
     </view>
     <view class="price">
       实付

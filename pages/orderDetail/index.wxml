@@ -25,7 +25,7 @@
     </button>
   </view>
   <view class="buttons">
-    <view class="cancel" wx:if="{{detail.status == 21 || detail.status == 31 ||detail.status == 32 || (detail.orderType == 1 && detail.status == 8)}}" data-id="{{item.orderId}}" bindtap="cancel">
+    <view class="confirm cancel" wx:if="{{detail.status == 21 || detail.status == 31 ||detail.status == 32 || (detail.orderType == 1 && detail.status == 8)}}" data-id="{{detail.orderId}}" bindtap="cancel">
       取消订单
     </view>
     <view class="confirm" bindtap="singlePay" wx:if="{{detail.status == 8}}">确认支付</view>
@@ -73,8 +73,8 @@
     </view>
     <view>
       <view class="label">
-        <text>留</text>
-        <text>言</text>
+        <text>备</text>
+        <text>注</text>
       </view>
       <view class="text">{{detail.remark}}</view>
     </view>
@@ -92,7 +92,7 @@
       <view class="label">上门时间</view>
       <view class="text">
         <block wx:if="{{detail.isToday}}">{{today}}{{detail.hopeTime}}</block>
-        <block wx:else>{{detail.hopeDay}}</block>
+        <block wx:else>{{detail.hopeDay}} {{detail.hopeTime}}</block>
       </view>
     </view>
     <view>

@@ -38,7 +38,10 @@
   font-weight: bold;
   color: rgba(0, 140, 240, 1);
 }
-
+.cancel {
+  border:1rpx solid rgba(204, 204, 204, 1);
+  color:rgba(153, 153, 153, 1);
+}
 .call {
   display: flex;
   justify-content: space-between;

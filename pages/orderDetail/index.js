@@ -12,7 +12,7 @@ Page({
     if (options.id) {
       self.detail(options.id);
     }
-    let month = new Date().getMonth + 1;
+    let month = new Date().getMonth() + 1;
     let date = new Date().getDate();
     this.setData({
       today: month + '-' + date
@@ -123,11 +123,7 @@ Page({
         if (res.confirm) {
           order.cancel({ orderId: e.target.dataset.id.toString() }, function (res) {
             if (res.code == 0) {
-              self.setData({
-                startIndex: 0,
-                endIndex: 5
-              })
-              self.list('delete')
+              self.detail(e.target.dataset.id);
             }
           })
         }

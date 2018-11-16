@@ -1,6 +1,5 @@
 // pages/main/main.js
 import main from "../../services/main"
-const app = getApp()
 Page({
   data: {
     imgUrls: [],
@@ -15,9 +14,6 @@ Page({
   },
   onLoad: function () {
     var self = this;
-    this.setData({
-      checkedStatus: 'main'
-    });
     main.wxBindImg({}, function(res) {
       if (res.errno == 0) {
         self.setData({

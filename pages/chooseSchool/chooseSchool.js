@@ -63,6 +63,18 @@ Page({
             key: 'schoolName',
             data: this.data.nearSchool[index].schoolName
           })
+          wx.setStorage({
+            key: 'proviceName',
+            data: this.data.nearSchool[index].proviceName
+          });
+          wx.setStorage({
+            key: 'cityName',
+            data: this.data.nearSchool[index].cityName
+          });
+          wx.setStorage({
+            key: 'cityId',
+            data: this.data.nearSchool[index].cityId
+          });
           sendRequest.chooseSchool({schoolId: id}, function (res) {
             if (res.errno == 0) {
               console.error('提交成功')

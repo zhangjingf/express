@@ -30,10 +30,6 @@ Page({
     totalPrice: 0,
     first: true
   },
-  onReady: function () {
-    
-    
-  },
   onLoad: function () {
     var self = this;
     var now = new Date().getHours();

@@ -25,11 +25,11 @@
   <view class="content">我的建议</view>
   <i-icon type="enter" size="20" />
 </view>
-<view class="setting" bindtap="goSetting">
+<!-- <view class="setting" bindtap="goSetting">
   <view class="image">
     <image src="../../images/mine_04.png"/>
   </view>
   <view class="content">设置</view>
   <i-icon type="enter" size="20" />
-</view>
+</view> -->
 <!-- <nav checkedStatus="{{checkedStatus}}" /> -->

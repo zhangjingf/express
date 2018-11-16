@@ -15,7 +15,7 @@
     </view>
     <view class="content">
       <view>取快递</view>
-      <view>省事、快捷、高效，随时随地查询</view>
+      <view>快递都到手里来</view>
     </view>
     <view class="arrow">
       <image src="../../images/arrow.png"></image>
@@ -27,7 +27,7 @@
     </view>
     <view class="content">
       <view>寄快递</view>
-      <view>省事、快捷、高效，随时随地查询</view>
+      <view>足不出户寄快递</view>
     </view>
     <view class="arrow">
       <image src="../../images/arrow.png"></image>
@@ -39,7 +39,7 @@
     </view>
     <view class="content">
       <view>查快递</view>
-      <view>省事、快捷、高效，随时随地查询</view>
+      <view>一键查全网包裹</view>
     </view>
     <view class="arrow">
       <image src="../../images/arrow.png"></image>

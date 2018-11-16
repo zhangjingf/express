@@ -422,10 +422,12 @@ Page({
       fail: function (res) {
         wx.showToast({
           title: '支付失败，请重新支付',
-          icon: 'none'
-        })
-        wx.reLaunch({
-          url: '../order/index',
+          icon: 'none',
+          success: function () {
+            wx.reLaunch({
+              url: '../order/index',
+            })
+          }
         })
       }
     })
@@ -437,18 +439,22 @@ Page({
       if (res.code == 0) {
         wx.showToast({
           title: '支付成功',
-          icon: 'none'
-        })
-        wx.reLaunch({
-          url: '../order/index',
+          icon: 'none',
+          success: function () {
+            wx.reLaunch({
+              url: '../order/index',
+            })
+          }
         })
       } else {
         wx.showToast({
           title: res.msg,
-          icon: 'none'
-        })
-        wx.reLaunch({
-          url: '../order/index',
+          icon: 'none',
+          success: function () {
+            wx.reLaunch({
+              url: '../order/index',
+            })
+          }
         })
       }
     })

@@ -28,9 +28,9 @@
 
 .confirm {
   display: inline-block;
-  width: 180rpx;
+  width: 183rpx;
   height: 60rpx;
-  border: 2rpx solid rgba(0, 140, 240, 1);
+  border: 1rpx solid rgba(0, 140, 240, 1);
   border-radius: 10rpx;
   font-size: 26rpx;
   line-height: 60rpx;
@@ -174,4 +174,11 @@
   margin-left: 20rpx;
   width: 30rpx;
   height: 30rpx;
+}
+.buttons>view {
+  margin-left: 20rpx;
+  margin-right: 4rpx;
+}
+.buttons>view:first-child {
+  margin-left: 0;
 }

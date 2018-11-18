@@ -136,5 +136,11 @@ Page({
     wx.navigateTo({
       url: '../chooseSchool/chooseSchool'
     });
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '让时间留住美好',
+      path: 'pages/main/main'
+    }
   }
 })

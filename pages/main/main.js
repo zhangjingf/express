@@ -140,7 +140,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '让时间留给美好',
-      path: '/pages/main/main'
+      path: 'pages/main/main'
     }
   }
 })

@@ -310,7 +310,7 @@ Page({
   sexChoose: function (e) {
     var sex = e.target.dataset.sex || '';
     this.setData({
-      gender: sex == 'male' ? 0 : 1
+      gender: sex == 'male' ? 1 : 2
     })
   },
   delete: function () {

@@ -136,5 +136,14 @@ Page({
     wx.navigateTo({
       url: '../chooseSchool/chooseSchool'
     });
+  },
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      console.log(res.target)
+    }
+    return {
+      title: '让时间留给美好',
+      path: '/page/user?id=123'
+    }
   }
 })

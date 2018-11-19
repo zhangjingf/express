@@ -36,7 +36,7 @@
         <view class="btns">
           <view class="btnSurePay" data-id="{{item.orderId}}" catchtap='singlePay' wx:if="{{item.status == 8}}">确认支付</view>
           <view class="detail" catchtap='goWl' data-id="{{item.expressNumber}}" wx:if="{{item.status == 60}}">查看物流</view>
-          <view class="confirm" bindtap="finish" wx:if="{{item.status == 55}}">确认送达</view>
+          <view class="confirm" data-id="{{item.orderId}}" bindtap="finish" wx:if="{{item.status == 55}}">确认送达</view>
           <view class="delete" wx:if="{{item.status == 60 ||  item.status == 71}}" data-id="{{item.orderId}}" catchtap="delete">
             删除
           </view>

@@ -55,6 +55,12 @@ Page({
       }
       if (res.errno == 0 && res.data.length > 0) {
         let dataList = self.data.orderList
+        for (let item of res.data) {
+          if (item.hopeDay) {
+           let str = item.hopeDay.split('-')
+            item.timeStr = str[1] + '-' + str[2]
+          }
+        }
         self.setData({
           orderList: type == 'delete' ? res.data : dataList.concat(res.data),
           loadMore: res.data.length < 5 ? false : true,

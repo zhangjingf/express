@@ -110,12 +110,19 @@
       </view>
     </view>
     <view>
+      <view class="label">
+        <text>留</text>
+        <text>言</text>
+      </view>
+      <view class="text">{{detail.remark}}</view>
+    </view>
+    <view>
       <view class="label">下单时间</view>
       <view class="text">{{detail.createTime}}</view>
     </view>
     <view>
       <view class="label">订单编号</view>
-      <view class="text">{{detail.orderId}}<image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image></view>
+      <view class="text"  bindtap="setCopy" data-num="{{detail.orderId}}">{{detail.orderId}}<image class="copy" src="../../images/copy.png"></image></view>
     </view>
   </block>
 </view>
@@ -124,7 +131,7 @@
     <view>
       <view class="label">送达时间</view>
       <view class="text">
-        <block wx:if="{{detail.isToday}}">今天{{detail.hopeTime}}</block>
+        <block wx:if="{{detail.isToday}}">{{detail.hopeDay}} {{detail.hopeTime}}</block>
         <block wx:else>{{detail.hopeDay}}</block>
       </view>
     </view>
@@ -141,7 +148,7 @@
     </view>
     <view>
       <view class="label">订单编号</view>
-      <view class="text">{{detail.orderId}}<image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.orderId}}"></image></view>
+      <view class="text" bindtap="setCopy" data-num="{{detail.orderId}}">{{detail.orderId}}<image class="copy" src="../../images/copy.png"></image></view>
     </view>
   </block>
   <block wx:if="{{detail.orderType == 2 && (detail.status == 60 || detail.status == 8)}}">
@@ -151,7 +158,7 @@
         <text>单</text>
         <text>号</text>
       </view>
-      <view class="text whexpress">{{detail.expressNumber}} <image class="copy" src="../../images/copy.png" bindtap="setCopy" data-num="{{detail.expressNumber}}"></image></view>
+      <view class="text whexpress" bindtap="setCopy" data-num="{{detail.expressNumber}}">{{detail.expressNumber}} <image class="copy" src="../../images/copy.png"></image></view>
       <view wx:if="{{detail.status == 60}}" class="seeWl" data-id="{{detail.expressNumber}}" bindtap="goWl">查看物流</view>
     </view>
     <view>

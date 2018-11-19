@@ -147,8 +147,8 @@ scroll-view {
   font-weight:500;
   color:rgba(0,140,240,1);
 }
-.color_blue {
-  color:rgba(0, 140, 240, 1);
+.colorBlue {
+  color:rgba(0, 140, 240, 1) !important;
 }
 .noorder {
   padding: 40rpx 20rpx;

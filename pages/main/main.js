@@ -138,12 +138,9 @@ Page({
     });
   },
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      console.log(res.target)
-    }
     return {
       title: '让时间留给美好',
-      path: '/page/user?id=123'
+      path: '/pages/main/main'
     }
   }
 })

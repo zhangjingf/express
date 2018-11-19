@@ -14,8 +14,7 @@
         <view class="address">{{item.receiverAddress}}</view>
         <view>
           <view class="circle2"></view>
-          <text wx:if="{{item.isToday == 0}}">明天</text>
-          <text wx:if="{{item.isToday == 1}}">今天</text>
+          <text>{{item.timeStr}}</text>
           {{item.hopeTime}}
         </view>
       </view>
@@ -54,8 +53,7 @@
         <view class="goodscode">{{item.expressKey}}</view>
         <view>
           <view class="circle2"></view>
-          <text wx:if="{{item.isToday == 0}}">明天</text>
-          <text wx:if="{{item.isToday == 1}}">今天</text>
+          <text>{{item.timeStr}}</text>
           {{item.hopeTime}}
         </view>
       </view>

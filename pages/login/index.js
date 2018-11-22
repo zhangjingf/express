@@ -21,6 +21,7 @@ Page({
   bindGetUserInfo: function (e) {
     const self = this;
     var res = e.detail;
+    console.error(res)
     if (res) {
       self.login(res);
     } else {
@@ -40,7 +41,7 @@ Page({
   login: function (res) {
     app.globalData.userInfo = res.userInfo;
     var param = {
-      code: app.globalData.code,
+      code: '',
       userInfo: {
         userInfo: {
           country: res.userInfo.country,
@@ -58,22 +59,32 @@ Page({
         rawData: JSON.stringify(JSON.parse(res.rawData))
       }
     }
-    if (res.userInfo) {
-      login.wxBindLogin(param, function (res) {
-        if (res.errno == 0) {
-          wx.setStorage({
-            key: "token",
-            data: res.data.token
-          })
-          wx.setStorage({
-            key: 'userId',
-            data: res.data.userId
-          })
-          wx.reLaunch({
-            url: '../main/main',
+    wx.login({
+      success: req => {
+        param.code = req.code
+        if (res.userInfo) {
+          login.wxBindLogin(param, function (res) {
+            if (res.errno == 0) {
+              wx.setStorage({
+                key: "token",
+                data: res.data.token
+              })
+              wx.setStorage({
+                key: 'userId',
+                data: res.data.userId
+              })
+              wx.reLaunch({
+                url: '../main/main',
+              })
+            } else {
+              wx.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            }
           })
         }
-      })
-    }
+      }
+    })
   }
 })

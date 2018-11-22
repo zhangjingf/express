@@ -95,7 +95,7 @@ Page({
     order.finished({
       orderId: self.data.detail.orderId
     }, function (res) {
-      if (res.errno == 0) {
+      if (res.code == 0) {
         self.detail(self.data.detail.orderId);
       }
     })

@@ -31,7 +31,7 @@
           <text>{{item.expressName}} </text>
           <text class="color_blue" data-num="{{item.expressNumber}}" catchtap="copy"> {{item.expressNumber}}</text>
         </view>
-        <view wx:if="{{item.status == 8 ||  item.status == 60}}">￥{{item.payPrice}}</view>
+        <view><text wx:if="{{item.status == 8 ||  item.status == 60}}">￥{{item.payPrice}}</text></view>
         <view class="btns">
           <view class="btnSurePay" data-id="{{item.orderId}}" catchtap='singlePay' wx:if="{{item.status == 8}}">确认支付</view>
           <view class="detail" catchtap='goWl' data-id="{{item.expressNumber}}" wx:if="{{item.status == 60}}">查看物流</view>

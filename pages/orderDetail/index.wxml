@@ -91,7 +91,7 @@
     <view>
       <view class="label">上门时间</view>
       <view class="text">
-        <block wx:if="{{detail.isToday}}">{{today}}{{detail.hopeTime}}</block>
+        <block wx:if="{{detail.isToday}}">{{today}} {{detail.hopeTime}}</block>
         <block wx:else>{{detail.hopeDay}} {{detail.hopeTime}}</block>
       </view>
     </view>
@@ -131,8 +131,7 @@
     <view>
       <view class="label">送达时间</view>
       <view class="text">
-        <block wx:if="{{detail.isToday}}">{{detail.hopeDay}} {{detail.hopeTime}}</block>
-        <block wx:else>{{detail.hopeDay}}</block>
+        {{detail.hopeDay}} {{detail.hopeTime}}
       </view>
     </view>
     <view>

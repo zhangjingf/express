@@ -17,6 +17,7 @@ Page({
     this.setData({
       inputValue: str
     })
+    if(!str) return
     sendRequest.getSchool({schoolName: str}, function (res) {
       if (res.errno == 0) {
         self.setData({

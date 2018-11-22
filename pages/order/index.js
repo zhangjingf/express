@@ -109,23 +109,6 @@ Page({
       url: '../pickup/pickup'
     })
   },
-  lower: function() {
-    if (!this.data.loadMore || this.data.direction) return;
-    this.setData({
-      startIndex: this.data.endIndex + 1,
-      endIndex: this.data.endIndex + 5
-    })
-    this.list();
-  },
-  upper: function() {
-    if (this.data.endIndex > 5 && this.data.direction) {
-      this.setData({
-        startIndex: this.data.endIndex - 10,
-        endIndex: this.data.endIndex - 5
-      })
-      this.list();
-    }
-  },
   cancel: function (e) {
     const self = this;
     wx.showModal({
@@ -235,15 +218,19 @@ Page({
     const self = this;
     let id = e.target.dataset.id ||'';
     if (!id) return;
+    wx.showLoading({
+      title: '加载中',
+    })
     order.finished({
       orderId: id
     }, function (res) {
+      wx.hideLoading();
       if (res.errno == 0) {
         self.setData({
           startIndex: 0,
           endIndex: 5
         });
-        self.list();
+        self.list('delete');
       }
     })
   },

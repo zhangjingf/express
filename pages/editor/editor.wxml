@@ -5,31 +5,31 @@
   </view>
   <view class="sex" wx:if="{{type != 'send'}}">
     <block wx:if="{{gender == 1}}">
-      <view data-sex="female" bindtap="sexChoose">
-        <view class="correct sex_active" data-sex="female">
-          <image data-sex="female" src="../../images/cancel.png"></image>
-        </view>
-        <text data-sex="female">男生</text>
-      </view>
-      <view class="man" bindtap="sexChoose" data-sex="male">
-        <view class="correct" data-sex="male">
-          <image data-sex="male" src="../../images/cancel.png"></image>
-        </view>
-        <text data-sex="male">女生</text>
-      </view>
-    </block>
-    <block wx:else>
-      <view bindtap="sexChoose" data-sex="female">
-        <view class="correct" data-sex="female">
-          <image data-sex="female" src="../../images/cancel.png"></image>
-        </view>
-        <text data-sex="female">男生</text>
-      </view>
-      <view class="man" bindtap="sexChoose" data-sex="male">
+      <view data-sex="male" bindtap="sexChoose">
         <view class="correct sex_active" data-sex="male">
           <image data-sex="male" src="../../images/cancel.png"></image>
         </view>
-        <text data-sex="male">女生</text>
+        <text data-sex="male">男生</text>
+      </view>
+      <view class="man" bindtap="sexChoose" data-sex="female">
+        <view class="correct" data-sex="female">
+          <image data-sex="female" src="../../images/cancel.png"></image>
+        </view>
+        <text data-sex="female">女生</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view bindtap="sexChoose" data-sex="male">
+        <view class="correct" data-sex="male">
+          <image data-sex="male" src="../../images/cancel.png"></image>
+        </view>
+        <text data-sex="male">男生</text>
+      </view>
+      <view class="man" bindtap="sexChoose" data-sex="female">
+        <view class="correct sex_active" data-sex="female">
+          <image data-sex="female" src="../../images/cancel.png"></image>
+        </view>
+        <text data-sex="female">女生</text>
       </view>
     </block>
   </view>

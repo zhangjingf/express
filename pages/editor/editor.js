@@ -177,6 +177,10 @@ Page({
   },
   save: function () {
     const base = this.data;
+    wx.setStorage({
+      'key': 'first',
+      'data': true
+    })
     if (base.type == 'send') {
       this.saveSenderAddress();
       return;
@@ -347,7 +351,6 @@ Page({
       id: base.id || null,
       userId: base.userId || null
     }
-    console.log(param)
     Object.keys(param).forEach(function (index) {
       if (index == 'senderName' || index == 'senderPhone' || index == 'address') {
         arrFlag.push(Boolean(param[index]));

@@ -284,6 +284,9 @@ Page({
       });
       return;
     }
+    wx.showLoading({
+      title: '加载中...',
+    })
     this.order()
   },
   order: function () {
@@ -302,6 +305,7 @@ Page({
       remark: this.data.message
     }
     pickup.senderOrder(params, function(res) {
+      wx.hideLoading()
       if (res.code == 0) {
         wx.showToast({
           title: '下单成功',

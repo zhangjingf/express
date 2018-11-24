@@ -360,6 +360,9 @@ Page({
         icon: 'none'
       });
     } else {
+      wx.showLoading({
+        title: '加载中...',
+      });
       this.createOrder();
     }
   },
@@ -436,6 +439,7 @@ Page({
     pickup.payResult({
       paymentApplyId: val.paymentApplyId
     }, function (res) {
+      wx.hideLoading();
       if (res.code == 0) {
         wx.showToast({
           title: '支付成功',

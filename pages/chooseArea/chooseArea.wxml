@@ -1,9 +1,9 @@
 <view class="line"></view>
 <view class="choose-area">
-  <!-- <view>
+  <view>
     <image class="search" src="../../images/serach.png"/>
     <input placeholder='输入区域名称' bindinput="search"></input>
-  </view> -->
+  </view>
 </view>
 <view class="tips">未有区域，暂不服务，造成不便，敬请谅解</view>
 <view class="area" wx:for="{{areaList}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="handle">

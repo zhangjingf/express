@@ -28,7 +28,8 @@ Page({
     servicePrice: 0,
     tipPrice: 0,
     totalPrice: 0,
-    first: true
+    first: true,
+    hadSend: false
   },
   onLoad: function () {
     var self = this;
@@ -41,7 +42,8 @@ Page({
       data: '',
     })
     this.setData({
-      first: ''
+      first: '',
+      hadSend: false
     })
     pickup.getSchoolDate({
       schoolId: schoolId
@@ -249,6 +251,7 @@ Page({
     })
   },
   submit: function () {
+    if (this.data.hadSend) return;
     if (!this.data.checkedDate) {
       wx.showToast({
         title: '请选择时间',
@@ -290,6 +293,9 @@ Page({
     this.order()
   },
   order: function () {
+    this.setData({
+      hadSend: true
+    })
     let params = {
       userLng: wx.getStorageSync('lng'),
       userLat: wx.getStorageSync('lat'),

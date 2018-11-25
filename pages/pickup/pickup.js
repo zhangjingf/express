@@ -21,7 +21,8 @@ Page({
     maskVisible: true,
     addressInfo: '',
     basePkgList: null,
-    totalPrice: 0
+    totalPrice: 0,
+    hadPickup: false
   },
   onLoad: function (options) {
     var self = this;
@@ -77,6 +78,9 @@ Page({
           })
         }
       }
+    })
+    this.setData({
+      hadPickup: false
     })
   },
   onShow: function () {
@@ -332,6 +336,7 @@ Page({
   checkOrder: function () {
     let orderArr = this.data.orderInfo;
     let serviceTime = this.data.checkedDate;
+    if (this.data.hadPickup) return;
     if (!serviceTime) {
       wx.showToast({
         title: '请选择时间',
@@ -370,6 +375,9 @@ Page({
     const self = this;
     let orderArr = this.data.orderInfo;
     let orderDetail = [];
+    this.setData({
+      hadPickup: true
+    })
     for (let i in orderArr) {
       orderDetail.push({
         orderSeq: orderArr[i].index,

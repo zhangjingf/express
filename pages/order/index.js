@@ -225,7 +225,7 @@ Page({
       orderId: id
     }, function (res) {
       wx.hideLoading();
-      if (res.errno == 0) {
+      if (res.code == 0) {
         self.setData({
           startIndex: 0,
           endIndex: 5

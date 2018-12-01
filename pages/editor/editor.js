@@ -150,7 +150,6 @@ Page({
             receiverPhone: res.data.receiverPhone,
             gender: res.data.gender,
             address: res.data.address,
-            pickerAddress: res.data.fullAddress.replace(res.data.address, '').replace(res.data.hostelName, ''),
             hostelName: res.data.hostelName,
             isDefault: res.data.isDefault,
             id: res.data.id

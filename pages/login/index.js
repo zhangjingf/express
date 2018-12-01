@@ -16,7 +16,7 @@ Page({
           });
         }
       }
-    }) 
+    })
   },
   bindGetUserInfo: function (e) {
     const self = this;

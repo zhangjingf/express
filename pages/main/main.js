@@ -16,14 +16,8 @@ Page({
   },
   onLoad: function () {
     var self = this;
-    wx.checkSession({
-      success () {
-        self.nextStep()
-      },
-      fail () {
-        self.getAuthorization()
-      }
-    })
+    self.getAuthorization()
+
   },
   onShow: function () {
     this.setData({
@@ -31,6 +25,7 @@ Page({
     })
   },
   getAuthorization: function () {
+    const self = this
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {

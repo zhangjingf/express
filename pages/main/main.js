@@ -16,6 +16,21 @@ Page({
   },
   onLoad: function () {
     var self = this;
+    wx.checkSession({
+      success () {
+        self.nextStep()
+      },
+      fail () {
+        self.getAuthorization()
+      }
+    })
+  },
+  onShow: function () {
+    this.setData({
+      topHeaderText: wx.getStorageSync('schoolName') || '请选择学校'
+    })
+  },
+  getAuthorization: function () {
     wx.getSetting({
       success: function (res) {
         if (res.authSetting['scope.userInfo']) {
@@ -25,12 +40,12 @@ Page({
             }
           });
         }
+      },
+      fail: function () {
+        wx.reLaunch({
+          url: '../login/index',
+        })
       }
-    })
-  },
-  onShow: function () {
-    this.setData({
-      topHeaderText: wx.getStorageSync('schoolName') || '请选择学校'
     })
   },
   gosend: function () {

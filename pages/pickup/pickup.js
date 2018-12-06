@@ -351,25 +351,41 @@ Page({
       });
       return;
     }
-    let validArr = [];
+    //let validArr = [];
     for (let i in orderArr) {
-      if (orderArr[i].expressKey && orderArr[i].pkgSize && orderArr[i].expressId && orderArr[i].price) {
-        validArr.push(true);
-      } else {
-        validArr.push(false);
+      if (!orderArr[i].expressKey) {
+        wx.showToast({
+          title: '请输入取件码',
+          icon: 'none'
+        });
+        return;
+      }
+      if (!orderArr[i].expressId) {
+        wx.showToast({
+          title: '请选择快递点',
+          icon: 'none'
+        });
+        return;
+      }
+      if (!orderArr[i].pkgSize) {
+        wx.showToast({
+          title: '请选择包裹规格',
+          icon: 'none'
+        });
+        return;
+      }
+      if (!Boolean(orderArr[i].price)) {
+        wx.showToast({
+          title: '服务异常，请稍后再试',
+          icon: 'none'
+        });
+        return;
       }
     }
-    if (validArr.indexOf(false) >= 0) {
-      wx.showToast({
-        title: '请填写完整信息',
-        icon: 'none'
-      });
-    } else {
-      wx.showLoading({
-        title: '加载中...',
-      });
-      this.createOrder();
-    }
+    wx.showLoading({
+      title: '加载中...',
+    });
+    this.createOrder();
   },
   createOrder: function () {
     const self = this;

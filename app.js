@@ -6,7 +6,10 @@ App({
     var token = wx.getStorageSync('token') || ''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    wx.setStorage({
+      key: 'loginFlag',
+      data: false
+    })
     // 登录
     wx.login({
       success: res => {
@@ -49,6 +52,10 @@ App({
               }
               if (res.userInfo && !token) {
                 login.wxBindLogin(param, function (res) {
+                  wx.setStorage({
+                    key: 'loginFlag',
+                    data: true
+                  })
                   if (res.errno == 0) {
                     wx.setStorage({
                       key: "token",

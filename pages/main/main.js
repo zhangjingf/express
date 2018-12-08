@@ -16,8 +16,12 @@ Page({
   },
   onLoad: function () {
     var self = this;
-    self.getAuthorization()
-
+    var lgoinStatus = wx.getStorageSync('loginFlag')
+    if (lgoinStatus) {
+      self.nextStep()
+    } else {
+      self.getAuthorization()
+    }
   },
   onShow: function () {
     this.setData({

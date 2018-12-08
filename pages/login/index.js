@@ -21,7 +21,6 @@ Page({
   bindGetUserInfo: function (e) {
     const self = this;
     var res = e.detail;
-    console.error(res)
     if (res) {
       self.login(res);
     } else {
@@ -65,6 +64,10 @@ Page({
         if (res.userInfo) {
           login.wxBindLogin(param, function (res) {
             if (res.errno == 0) {
+              wx.setStorage({
+                key: 'loginFlag',
+                data: true
+              })
               wx.setStorage({
                 key: "token",
                 data: res.data.token
